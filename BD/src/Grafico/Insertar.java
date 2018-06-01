@@ -37,6 +37,12 @@ public class Insertar extends javax.swing.JFrame {
         lblMinimizar = new javax.swing.JLabel();
         lblLineas = new javax.swing.JLabel();
         rSPanelsSlider1 = new rojerusan.RSPanelsSlider();
+        lblCliente = new javax.swing.JLabel();
+        btnCliente = new javax.swing.JButton();
+        btnProveedor = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
+        lblProveedor = new javax.swing.JLabel();
+        lblProducto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -64,6 +70,7 @@ public class Insertar extends javax.swing.JFrame {
         kGradientPanel1.add(lblMover, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 30));
 
         lblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-eliminar-80.png"))); // NOI18N
+        lblCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCerrarMouseClicked(evt);
@@ -72,6 +79,7 @@ public class Insertar extends javax.swing.JFrame {
         kGradientPanel1.add(lblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, 80, 90));
 
         lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-chevron-abajo-en-círculo-95.png"))); // NOI18N
+        lblMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMinimizarMouseClicked(evt);
@@ -83,6 +91,37 @@ public class Insertar extends javax.swing.JFrame {
         kGradientPanel1.add(lblLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, -60, 920, 450));
 
         rSPanelsSlider1.setOpaque(false);
+        rSPanelsSlider1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCliente.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
+        lblCliente.setForeground(new java.awt.Color(204, 204, 204));
+        lblCliente.setText("CLIENTE");
+        rSPanelsSlider1.add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 190, 60));
+
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-usuario-masculino-240.png"))); // NOI18N
+        btnCliente.setContentAreaFilled(false);
+        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rSPanelsSlider1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+
+        btnProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-proveedor-240.png"))); // NOI18N
+        btnProveedor.setContentAreaFilled(false);
+        rSPanelsSlider1.add(btnProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+
+        btnProducto.setForeground(new java.awt.Color(204, 204, 204));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-producto-240.png"))); // NOI18N
+        btnProducto.setContentAreaFilled(false);
+        rSPanelsSlider1.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, -1, -1));
+
+        lblProveedor.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
+        lblProveedor.setForeground(new java.awt.Color(204, 204, 204));
+        lblProveedor.setText("PROVEEDOR");
+        rSPanelsSlider1.add(lblProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 260, 40));
+
+        lblProducto.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
+        lblProducto.setForeground(new java.awt.Color(204, 204, 204));
+        lblProducto.setText("PRODUCTO");
+        rSPanelsSlider1.add(lblProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 230, 60));
+
         kGradientPanel1.add(rSPanelsSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1170, 530));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -156,12 +195,18 @@ public class Insertar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnProducto;
+    private javax.swing.JButton btnProveedor;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblLineas;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
+    private javax.swing.JLabel lblProducto;
+    private javax.swing.JLabel lblProveedor;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     // End of variables declaration//GEN-END:variables
 }
