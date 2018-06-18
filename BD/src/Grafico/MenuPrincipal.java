@@ -135,7 +135,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         int n = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "CERRANDO", JOptionPane.YES_NO_OPTION);
         if(n == JOptionPane.YES_OPTION)
-        System.exit(0);
+            System.exit(0);
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
@@ -143,7 +143,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMinimizarMouseClicked
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        
+        this.dispose();
+        Insertar insertar = new Insertar();
+        insertar.setVisible(true);
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**
