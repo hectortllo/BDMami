@@ -65,6 +65,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         kGradientPanel1.add(btnNegocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
         lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-chevron-abajo-en-círculo-95.png"))); // NOI18N
+        lblMinimizar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Minimizar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         lblMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -74,6 +75,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         kGradientPanel1.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 100, 100));
 
         lblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-eliminar-80.png"))); // NOI18N
+        lblCerrar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cerrar aplicación</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         lblCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

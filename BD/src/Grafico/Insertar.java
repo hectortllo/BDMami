@@ -34,6 +34,7 @@ public class Insertar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
+        lblMenuPrincipal = new javax.swing.JLabel();
         lblCerrar = new javax.swing.JLabel();
         lblMinimizar = new javax.swing.JLabel();
         lblDisenio = new javax.swing.JLabel();
@@ -76,7 +77,18 @@ public class Insertar extends javax.swing.JFrame {
 
         pnlOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-página-principal-96.png"))); // NOI18N
+        lblMenuPrincipal.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver al menú principal</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        lblMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuPrincipalMouseClicked(evt);
+            }
+        });
+        pnlOpciones.add(lblMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
+
         lblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-eliminar-80.png"))); // NOI18N
+        lblCerrar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cerrar aplicación</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         lblCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,6 +98,7 @@ public class Insertar extends javax.swing.JFrame {
         pnlOpciones.add(lblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 90, 80));
 
         lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-chevron-abajo-en-círculo-95.png"))); // NOI18N
+        lblMinimizar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Minimizar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         lblMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,7 +235,7 @@ public class Insertar extends javax.swing.JFrame {
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         int n = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "CERRANDO", JOptionPane.YES_NO_OPTION);
         if(n == JOptionPane.YES_OPTION)
-        System.exit(0);
+            System.exit(0);
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void lblMoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMoverMouseDragged
@@ -263,6 +276,17 @@ public class Insertar extends javax.swing.JFrame {
             rSPanelsSlider1.setPanelSlider(10, pnlInsertarProducto, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_btnProductoActionPerformed
+
+    private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
+        int n = JOptionPane.showConfirmDialog(null, "¿Volver al menú principal?", "MENÚ PRINCIPAL", JOptionPane.YES_NO_OPTION);
+        if(n == JOptionPane.YES_OPTION)
+        {
+            this.dispose();
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+        }
+            
+    }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -311,6 +335,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDisenio;
+    private javax.swing.JLabel lblMenuPrincipal;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblProducto;
