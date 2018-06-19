@@ -5,6 +5,8 @@
  */
 package Clases;
 
+//import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  *
  * @author hector
@@ -16,6 +18,7 @@ public class main
     {
         conexion con = new conexion();
         con.getConection();
+        //System.out.println(DigestUtils.md5Hex("Admin"));
     }
     
 }
