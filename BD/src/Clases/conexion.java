@@ -7,7 +7,6 @@ package Clases;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +25,6 @@ public class conexion
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(url, user, password);
-            JOptionPane.showMessageDialog(null, "Conexión exitosa");
         }catch(Exception e)
         {
             e.printStackTrace();

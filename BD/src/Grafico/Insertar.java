@@ -6,8 +6,10 @@
 package Grafico;
 
 import javax.swing.JOptionPane;
+import rojerusan.RSNotifyAnimated;
 import rojerusan.RSPanelsSlider;
-
+import Clases.Cliente;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author hectortllo
@@ -19,7 +21,9 @@ public class Insertar extends javax.swing.JFrame {
      */
     int x, y;
     public Insertar() {
+        cliente = new Cliente();
         initComponents();
+        cmbDireccion.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccion.getModel()));
     }
 
     /**
@@ -59,7 +63,7 @@ public class Insertar extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaDescripcion = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -228,8 +232,7 @@ public class Insertar extends javax.swing.JFrame {
         pnlInsertarCliente.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         cmbDireccion.setForeground(new java.awt.Color(153, 102, 255));
-        cmbDireccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "San Francisco Zap.", "Colonia El Rosario", "Panorama", "San José", "Zunilito", " " }));
-        cmbDireccion.setSelectedIndex(-1);
+        cmbDireccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar nuevo" }));
         cmbDireccion.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbDireccion.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbDireccion.setColorFondo(new java.awt.Color(204, 204, 255));
@@ -261,12 +264,12 @@ public class Insertar extends javax.swing.JFrame {
         jLabel5.setText("Descripción:");
         pnlInsertarCliente.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, -1, -1));
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(153, 102, 255));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaDescripcion.setBackground(new java.awt.Color(204, 204, 255));
+        txtAreaDescripcion.setColumns(20);
+        txtAreaDescripcion.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtAreaDescripcion.setForeground(new java.awt.Color(153, 102, 255));
+        txtAreaDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtAreaDescripcion);
 
         pnlInsertarCliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 380, 140));
 
@@ -296,6 +299,11 @@ public class Insertar extends javax.swing.JFrame {
         btnCancelar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         btnCancelar.setContentAreaFilled(false);
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         pnlInsertarCliente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
 
         rSPanelsSlider1.add(pnlInsertarCliente, "card3");
@@ -395,7 +403,19 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        if(verificarUsuario())
+        {
+            if(cliente.insertarCliente(txtNombre.getText(), txtApellido.getText(), 
+                cmbDireccion.getSelectedIndex()-1, txtAreaDescripcion.getText(),
+                txtTelefono.getText()))
+            {
+                new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Cliente ingresado correctamente",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                limpiarCajas();
+                rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -411,6 +431,66 @@ public class Insertar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+        if(n == JOptionPane.YES_OPTION)
+            limpiarCajas();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void limpiarCajas()
+    {
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtTelefono.setText("");
+        txtAreaDescripcion.setText("");
+        cmbDireccion.setSelectedIndex(-1);
+    }
+    
+    private boolean verificarUsuario()
+    {
+        if(txtNombre.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtNombre.requestFocus();
+            return false;
+        }
+        else if(txtApellido.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Apellido vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtApellido.requestFocus();
+            return false;
+        }
+        else if(txtTelefono.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtTelefono.requestFocus();
+            return false;
+        }
+        else if(txtAreaDescripcion.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Descripción vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtAreaDescripcion.requestFocus();
+            return false;
+        }
+        else if(cmbDireccion.getSelectedItem().equals("Escoja una opción"))
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja un campo correcto en la dirección",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            cmbDireccion.requestFocus();
+            return false;
+        }
+        else
+            return true;
+    }
     /**
      * @param args the command line arguments
      */
@@ -446,6 +526,7 @@ public class Insertar extends javax.swing.JFrame {
         });
     }
 
+    private final Cliente cliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCliente;
@@ -461,7 +542,6 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCerrar;
@@ -481,6 +561,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOpciones;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextArea txtAreaDescripcion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
