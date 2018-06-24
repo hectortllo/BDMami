@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +21,11 @@ public class usuario
     
     private Connection con = null;
     private conexion conexion;
+    private String nombre;
+    
+    public String getUsuario() {
+        return nombre;
+    }
 
     public usuario() {
         conexion = new conexion();
@@ -50,22 +54,30 @@ public class usuario
         return false;
     }
     
-    //Función que verifica si ya existe algún usuario creado en la tabla 'usuario' de la BD
-    public int verificarInicio()
+    //Función que verifica que el usuario y la contraseña ingresados sean correctos
+    public boolean InicioSesion(String usuario, String password)
     {
-        int total = 0;
+        boolean encontrado = false;
         try {
-            String query = "SELECT COUNT(*) FROM usuario";
+            String query = "SELECT nombre, nombreusuario, password FROM usuario WHERE "
+                    + "nombreusuario ='" + usuario + "'";
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
+            String contrasenia = "";
             while(rs.next())
             {
-                total = rs.getInt(1);
+                contrasenia = rs.getString("password");
+                if(contrasenia.equals(password))
+                {
+                    nombre = rs.getString("nombre");
+                    encontrado = true;
+                }
+                else
+                    encontrado = false;
             }
-            JOptionPane.showMessageDialog(null, total);
         } catch (SQLException ex) {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return total;
+        return encontrado;
     }
 }
