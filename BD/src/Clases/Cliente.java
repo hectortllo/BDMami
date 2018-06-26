@@ -24,16 +24,30 @@ public class Cliente {
     }
     
     public boolean insertarCliente(String nombre, String apellido,
-        int direccion, String Descripcion, String telefono)
+        int direccion, String Descripcion, String telefono, String deuda)
     {
         try {
-            CallableStatement procedimiento = con.prepareCall("{call InsertarCliente(?,?,?,?,?)}");
-            procedimiento.setString(1, nombre);
-            procedimiento.setString(2, apellido);
-            procedimiento.setInt(3, direccion);
-            procedimiento.setString(4, Descripcion);
-            procedimiento.setString(5, telefono);
-            procedimiento.execute();
+            if(deuda.length() == 0)
+            {
+                CallableStatement procedimiento = con.prepareCall("{call InsertarClienteNuevo(?,?,?,?,?)}");
+                procedimiento.setString(1, nombre);
+                procedimiento.setString(2, apellido);
+                procedimiento.setInt(3, direccion);
+                procedimiento.setString(4, Descripcion);
+                procedimiento.setString(5, telefono);
+                procedimiento.execute();
+            }
+            else
+            {
+                CallableStatement procedimiento = con.prepareCall("{call InsertarCliente(?,?,?,?,?,?)}");
+                procedimiento.setString(1, nombre);
+                procedimiento.setString(2, apellido);
+                procedimiento.setInt(3, direccion);
+                procedimiento.setString(4, Descripcion);
+                procedimiento.setString(5, telefono);
+                procedimiento.setFloat(6, Float.parseFloat(deuda));
+                procedimiento.execute();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             return false;
