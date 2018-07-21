@@ -29,6 +29,7 @@ public class Cliente {
         try {
             if(deuda.length() == 0)
             {
+                //Si el campo deuda está vacío significa que el cliente compró al contado
                 CallableStatement procedimiento = con.prepareCall("{call InsertarClienteNuevo(?,?,?,?,?)}");
                 procedimiento.setString(1, nombre);
                 procedimiento.setString(2, apellido);
@@ -39,6 +40,7 @@ public class Cliente {
             }
             else
             {
+                //Si el campo deuda no está vacío significa que el cliente compró al crédito
                 CallableStatement procedimiento = con.prepareCall("{call InsertarCliente(?,?,?,?,?,?)}");
                 procedimiento.setString(1, nombre);
                 procedimiento.setString(2, apellido);
