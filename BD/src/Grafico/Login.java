@@ -28,6 +28,7 @@ public class Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 30, 30);
         AWTUtilities.setWindowShape(this, forma);
+        //System.out.println(DigestUtils.md5Hex("Admin"));
     }
 
     /**

@@ -9,7 +9,10 @@ import javax.swing.JOptionPane;
 import rojerusan.RSNotifyAnimated;
 import rojerusan.RSPanelsSlider;
 import Clases.Cliente;
+import Clases.Proveedor;
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
+import rojerusan.RSComboMetro;
 /**
  *
  * @author hectortllo
@@ -22,8 +25,10 @@ public class Insertar extends javax.swing.JFrame {
     int x, y;
     public Insertar() {
         cliente = new Cliente();
+        proveedor = new Proveedor();
         initComponents();
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
+        cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
     }
 
     /**
@@ -64,9 +69,9 @@ public class Insertar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaDescripcionCliente = new javax.swing.JTextArea();
-        btnGuardar = new javax.swing.JButton();
-        btnRegresar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnGuardarCliente = new javax.swing.JButton();
+        btnRegresarCliente = new javax.swing.JButton();
+        btnCancelarCliente = new javax.swing.JButton();
         lblNuevo = new javax.swing.JLabel();
         cmbNuevo = new rojerusan.RSComboMetro();
         lblDeuda = new javax.swing.JLabel();
@@ -84,6 +89,11 @@ public class Insertar extends javax.swing.JFrame {
         lblDescripcionProveedor = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaDescripcionProveedor = new javax.swing.JTextArea();
+        lblDeudaProveedor = new javax.swing.JLabel();
+        txtDuedaProveedor = new javax.swing.JTextField();
+        btnGuardarProveedor = new javax.swing.JButton();
+        btnCancelarProveedor = new javax.swing.JButton();
+        btnRegresarProveedor = new javax.swing.JButton();
         pnlInsertarProducto = new keeptoo.KGradientPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -247,11 +257,21 @@ public class Insertar extends javax.swing.JFrame {
         pnlInsertarCliente.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, -1, -1));
 
         cmbDireccionCliente.setForeground(new java.awt.Color(153, 102, 255));
-        cmbDireccionCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar nuevo" }));
+        cmbDireccionCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
         cmbDireccionCliente.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbDireccionCliente.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbDireccionCliente.setColorFondo(new java.awt.Color(204, 204, 255));
         cmbDireccionCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbDireccionCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbDireccionClienteMouseClicked(evt);
+            }
+        });
+        cmbDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDireccionClienteActionPerformed(evt);
+            }
+        });
         pnlInsertarCliente.add(cmbDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 290, 40));
 
         txtApellido.setBackground(new java.awt.Color(204, 204, 255));
@@ -288,46 +308,46 @@ public class Insertar extends javax.swing.JFrame {
 
         pnlInsertarCliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 380, 140));
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
-        btnGuardar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnGuardar.setContentAreaFilled(false);
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
+        btnGuardarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnGuardarCliente.setContentAreaFilled(false);
+        btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnGuardarClienteActionPerformed(evt);
             }
         });
-        pnlInsertarCliente.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
+        pnlInsertarCliente.add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
 
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
-        btnRegresar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnRegresar.setContentAreaFilled(false);
-        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarCliente.setContentAreaFilled(false);
+        btnRegresarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
+                btnRegresarClienteActionPerformed(evt);
             }
         });
-        pnlInsertarCliente.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
+        pnlInsertarCliente.add(btnRegresarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
-        btnCancelar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnCancelar.setContentAreaFilled(false);
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
+        btnCancelarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnCancelarCliente.setContentAreaFilled(false);
+        btnCancelarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnCancelarClienteActionPerformed(evt);
             }
         });
-        pnlInsertarCliente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
+        pnlInsertarCliente.add(btnCancelarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
 
         lblNuevo.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         lblNuevo.setForeground(new java.awt.Color(204, 255, 153));
-        lblNuevo.setText("¿Nuevo?");
+        lblNuevo.setText("Tipo:");
         pnlInsertarCliente.add(lblNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         cmbNuevo.setForeground(new java.awt.Color(153, 102, 255));
-        cmbNuevo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Sí", "No" }));
+        cmbNuevo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Crédito", "Contado" }));
         cmbNuevo.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbNuevo.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbNuevo.setColorFondo(new java.awt.Color(204, 204, 255));
@@ -348,6 +368,11 @@ public class Insertar extends javax.swing.JFrame {
         txtDueda.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtDueda.setForeground(new java.awt.Color(153, 102, 255));
         txtDueda.setEnabled(false);
+        txtDueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDuedaKeyTyped(evt);
+            }
+        });
         pnlInsertarCliente.add(txtDueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 290, 40));
 
         rSPanelsSlider1.add(pnlInsertarCliente, "card3");
@@ -382,35 +407,45 @@ public class Insertar extends javax.swing.JFrame {
         lblDireccionProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         lblDireccionProveedor.setForeground(new java.awt.Color(204, 255, 153));
         lblDireccionProveedor.setText("Dirección:");
-        pnlInsertarProveedor.add(lblDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
+        pnlInsertarProveedor.add(lblDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
 
         txtTelefonoProveedor.setBackground(new java.awt.Color(204, 204, 255));
         txtTelefonoProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtTelefonoProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        txtTelefonoProveedor.setPreferredSize(new java.awt.Dimension(6, 35));
         pnlInsertarProveedor.add(txtTelefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 270, 40));
 
         txtNombreProveedor.setBackground(new java.awt.Color(204, 204, 255));
         txtNombreProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtNombreProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProveedor.add(txtNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 270, 40));
+        pnlInsertarProveedor.add(txtNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
 
         txtApellidoProveedor.setBackground(new java.awt.Color(204, 204, 255));
         txtApellidoProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtApellidoProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProveedor.add(txtApellidoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 270, 40));
+        pnlInsertarProveedor.add(txtApellidoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 290, 40));
 
         cmbDireccionProveedor.setForeground(new java.awt.Color(153, 102, 255));
+        cmbDireccionProveedor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
         cmbDireccionProveedor.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbDireccionProveedor.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbDireccionProveedor.setColorFondo(new java.awt.Color(204, 204, 255));
         cmbDireccionProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        pnlInsertarProveedor.add(cmbDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 270, 40));
+        cmbDireccionProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbDireccionProveedorMouseClicked(evt);
+            }
+        });
+        cmbDireccionProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDireccionProveedorActionPerformed(evt);
+            }
+        });
+        pnlInsertarProveedor.add(cmbDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 270, 40));
 
         lblDescripcionProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         lblDescripcionProveedor.setForeground(new java.awt.Color(204, 255, 153));
         lblDescripcionProveedor.setText("Descripción:");
-        pnlInsertarProveedor.add(lblDescripcionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+        pnlInsertarProveedor.add(lblDescripcionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
 
         txtAreaDescripcionProveedor.setBackground(new java.awt.Color(204, 204, 255));
         txtAreaDescripcionProveedor.setColumns(20);
@@ -419,7 +454,55 @@ public class Insertar extends javax.swing.JFrame {
         txtAreaDescripcionProveedor.setRows(5);
         jScrollPane3.setViewportView(txtAreaDescripcionProveedor);
 
-        pnlInsertarProveedor.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 380, 140));
+        pnlInsertarProveedor.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 380, 140));
+
+        lblDeudaProveedor.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        lblDeudaProveedor.setForeground(new java.awt.Color(204, 255, 153));
+        lblDeudaProveedor.setText("Deuda inicial:");
+        pnlInsertarProveedor.add(lblDeudaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        txtDuedaProveedor.setBackground(new java.awt.Color(204, 204, 255));
+        txtDuedaProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtDuedaProveedor.setForeground(new java.awt.Color(153, 102, 255));
+        txtDuedaProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDuedaProveedorKeyTyped(evt);
+            }
+        });
+        pnlInsertarProveedor.add(txtDuedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
+
+        btnGuardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
+        btnGuardarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnGuardarProveedor.setContentAreaFilled(false);
+        btnGuardarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarProveedorActionPerformed(evt);
+            }
+        });
+        pnlInsertarProveedor.add(btnGuardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
+
+        btnCancelarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
+        btnCancelarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnCancelarProveedor.setContentAreaFilled(false);
+        btnCancelarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarProveedorActionPerformed(evt);
+            }
+        });
+        pnlInsertarProveedor.add(btnCancelarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
+
+        btnRegresarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarProveedor.setContentAreaFilled(false);
+        btnRegresarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarProveedorActionPerformed(evt);
+            }
+        });
+        pnlInsertarProveedor.add(btnRegresarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
 
         rSPanelsSlider1.add(pnlInsertarProveedor, "card4");
 
@@ -467,13 +550,16 @@ public class Insertar extends javax.swing.JFrame {
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         if(!this.btnCliente.isSelected())
         {
+            rSPanelsSlider1.setPanelSlider(10, pnlInsertarCliente, RSPanelsSlider.DIRECT.RIGHT);
             this.btnCliente.setSelected(true);
             this.btnProducto.setSelected(false);
             this.btnProveedor.setSelected(false);
-            this.btnRegresar.setSelected(false);
-            this.btnGuardar.setSelected(false);
-            this.btnCancelar.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarCliente, RSPanelsSlider.DIRECT.RIGHT);
+            this.btnRegresarCliente.setSelected(false);
+            this.btnGuardarCliente.setSelected(false);
+            this.btnCancelarCliente.setSelected(false);
+            this.btnCancelarProveedor.setSelected(false);
+            this.btnGuardarProveedor.setSelected(false);
+            this.btnRegresarProveedor.setSelected(false);
         }
     }//GEN-LAST:event_btnClienteActionPerformed
 
@@ -508,8 +594,8 @@ public class Insertar extends javax.swing.JFrame {
             
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(verificarUsuario())
+    private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
+        if(verificarCliente())
         {
             if(cliente.insertarCliente(txtNombre.getText(), txtApellido.getText(), 
                 cmbDireccionCliente.getSelectedIndex()-1, txtAreaDescripcionCliente.getText(),
@@ -518,39 +604,161 @@ public class Insertar extends javax.swing.JFrame {
                 new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Cliente ingresado correctamente",
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-                limpiarCajas();
-                rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+                limpiarCajasCliente();
+                if(!this.btnGuardarCliente.isSelected())
+                {
+                    this.btnRegresarCliente.setSelected(false);
+                    this.btnGuardarCliente.setSelected(true);
+                    this.btnCancelarCliente.setSelected(false);
+                    this.btnCliente.setSelected(false);
+                    this.btnProducto.setSelected(false);
+                    this.btnProveedor.setSelected(false);
+                    this.btnGuardarProveedor.setSelected(false);
+                    this.btnCancelarProveedor.setSelected(false);
+                    this.btnRegresarProveedor.setSelected(false);
+                    rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+                }
             }
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        if(!this.btnRegresar.isSelected())
+    private void btnRegresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarClienteActionPerformed
+        if(!this.btnRegresarCliente.isSelected())
         {
-            this.btnRegresar.setSelected(true);
-            this.btnGuardar.setSelected(false);
-            this.btnCancelar.setSelected(false);
+            this.btnRegresarCliente.setSelected(true);
+            this.btnGuardarCliente.setSelected(false);
+            this.btnCancelarCliente.setSelected(false);
             this.btnCliente.setSelected(false);
             this.btnProducto.setSelected(false);
             this.btnProveedor.setSelected(false);
+            this.btnGuardarProveedor.setSelected(false);
+            this.btnCancelarProveedor.setSelected(false);
+            this.btnRegresarProveedor.setSelected(false);
             rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
         }
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnRegresarClienteActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
         int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
         if(n == JOptionPane.YES_OPTION)
-            limpiarCajas();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+            limpiarCajasCliente();
+    }//GEN-LAST:event_btnCancelarClienteActionPerformed
 
     private void cmbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNuevoActionPerformed
-        if(cmbNuevo.getSelectedItem().equals("No"))
+        if(cmbNuevo.getSelectedItem().equals("Crédito"))
             txtDueda.setEnabled(true);
-        else if(cmbNuevo.getSelectedItem().equals("Sí"))
+        else if(cmbNuevo.getSelectedItem().equals("Contado"))
             txtDueda.setEnabled(false);
     }//GEN-LAST:event_cmbNuevoActionPerformed
 
-    private void limpiarCajas()
+    private void limpiarCajasProveedor()
+    {
+        txtNombreProveedor.setText("");
+        txtApellidoProveedor.setText("");
+        txtTelefonoProveedor.setText("");
+        txtDuedaProveedor.setText("");
+        txtAreaDescripcionProveedor.setText("");
+        cmbDireccionProveedor.setSelectedIndex(0);
+    }
+    
+    private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
+        if(verificarDatosProveedor())
+        {
+            if(proveedor.insertarProveedor(txtNombreProveedor.getText(), txtApellidoProveedor.getText(), 
+                    cmbDireccionProveedor.getSelectedIndex()-1, txtAreaDescripcionProveedor.getText(), 
+                    txtTelefonoProveedor.getText(), txtDuedaProveedor.getText()))
+            {
+                new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Proveedor ingresado correctamente",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                limpiarCajasProveedor();
+                if(!this.btnGuardarProveedor.isSelected())
+                {
+                    this.btnRegresarCliente.setSelected(false);
+                    this.btnGuardarCliente.setSelected(false);
+                    this.btnCancelarCliente.setSelected(false);
+                    this.btnCliente.setSelected(false);
+                    this.btnProducto.setSelected(false);
+                    this.btnProveedor.setSelected(false);
+                    this.btnGuardarProveedor.setSelected(true);
+                    this.btnCancelarProveedor.setSelected(false);
+                    this.btnRegresarProveedor.setSelected(false);
+                    rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_btnGuardarProveedorActionPerformed
+
+    private void btnCancelarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProveedorActionPerformed
+        int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+        if(n == JOptionPane.YES_OPTION)
+            limpiarCajasProveedor();
+    }//GEN-LAST:event_btnCancelarProveedorActionPerformed
+
+    private void btnRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProveedorActionPerformed
+        if(!this.btnRegresarProveedor.isSelected())
+        {
+            this.btnRegresarCliente.setSelected(false);
+            this.btnGuardarCliente.setSelected(false);
+            this.btnCancelarCliente.setSelected(false);
+            this.btnCliente.setSelected(false);
+            this.btnProducto.setSelected(false);
+            this.btnProveedor.setSelected(false);
+            this.btnGuardarProveedor.setSelected(false);
+            this.btnCancelarProveedor.setSelected(false);
+            this.btnRegresarProveedor.setSelected(true);
+            rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_btnRegresarProveedorActionPerformed
+
+    private void cmbDireccionClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbDireccionClienteMouseClicked
+    }//GEN-LAST:event_cmbDireccionClienteMouseClicked
+
+    private void cmbDireccionProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbDireccionProveedorMouseClicked
+    }//GEN-LAST:event_cmbDireccionProveedorMouseClicked
+
+    private void cmbDireccionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionProveedorActionPerformed
+        if(cmbDireccionProveedor.getSelectedItem().equals("Agregar"))
+        {
+            agregarNuevaDireccion(cmbDireccionProveedor);
+        }
+    }//GEN-LAST:event_cmbDireccionProveedorActionPerformed
+
+    private void Numeros(KeyEvent e) {
+        if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
+            e.consume();
+        }
+    }
+    
+    private void agregarNuevaDireccion(RSComboMetro cmbDireccion)
+    {
+        String direccion = JOptionPane.showInputDialog("Ingrese la nueva dirección: ");
+        if(direccion != null)
+        {
+            proveedor.insertarDireccion(direccion);
+            cmbDireccion.removeAllItems();
+            cmbDireccion.addItem("Escoja una opción");
+            cmbDireccion.addItem("Agregar");
+            cmbDireccion.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccion.getModel()));
+        }
+    }
+    private void cmbDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionClienteActionPerformed
+        if(cmbDireccionCliente.getSelectedItem().equals("Agregar"))
+        {
+            agregarNuevaDireccion(cmbDireccionCliente);
+        }
+    }//GEN-LAST:event_cmbDireccionClienteActionPerformed
+
+    private void txtDuedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuedaKeyTyped
+        Numeros(evt);
+    }//GEN-LAST:event_txtDuedaKeyTyped
+
+    private void txtDuedaProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuedaProveedorKeyTyped
+        Numeros(evt);
+    }//GEN-LAST:event_txtDuedaProveedorKeyTyped
+
+    private void limpiarCajasCliente()
     {
         txtNombre.setText("");
         txtApellido.setText("");
@@ -561,7 +769,7 @@ public class Insertar extends javax.swing.JFrame {
         txtDueda.setText("");
     }
     
-    private boolean verificarUsuario()
+    private boolean verificarCliente()
     {
         if(txtNombre.getText().length() == 0)
         {
@@ -585,14 +793,6 @@ public class Insertar extends javax.swing.JFrame {
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtTelefono.requestFocus();
-            return false;
-        }
-        else if(txtAreaDescripcionCliente.getText().length() == 0)
-        {
-            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Descripción vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-            txtAreaDescripcionCliente.requestFocus();
             return false;
         }
         else if(cmbDireccionCliente.getSelectedItem().equals("Escoja una opción"))
@@ -626,14 +826,64 @@ public class Insertar extends javax.swing.JFrame {
             return true;
     }
     
+    private boolean verificarDatosProveedor()
+    {
+        if(txtNombreProveedor.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtNombreProveedor.requestFocus();
+            return false;
+        }
+        else if(txtApellidoProveedor.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Apellido vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtApellidoProveedor.requestFocus();
+            return false;
+        }
+        else if(txtTelefonoProveedor.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtTelefonoProveedor.requestFocus();
+            return false;
+        }
+        else if(txtDuedaProveedor.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Deuda inicial vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtDuedaProveedor.requestFocus();
+            return false;
+        }
+        else if(cmbDireccionProveedor.getSelectedItem().equals("Escoja una opción"))
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja un campo correcto en la dirección",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            cmbDireccionProveedor.requestFocus();
+            return false;
+        }
+        else
+            return true;
+    }
+    
     private final Cliente cliente;
+    private final Proveedor proveedor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarCliente;
+    private javax.swing.JButton btnCancelarProveedor;
     private javax.swing.JButton btnCliente;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardarCliente;
+    private javax.swing.JButton btnGuardarProveedor;
     private javax.swing.JButton btnProducto;
     private javax.swing.JButton btnProveedor;
-    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnRegresarCliente;
+    private javax.swing.JButton btnRegresarProveedor;
     private rojerusan.RSComboMetro cmbDireccionCliente;
     private rojerusan.RSComboMetro cmbDireccionProveedor;
     private rojerusan.RSComboMetro cmbNuevo;
@@ -651,6 +901,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDescripcionProveedor;
     private javax.swing.JLabel lblDeuda;
+    private javax.swing.JLabel lblDeudaProveedor;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblDireccionProveedor;
     private javax.swing.JLabel lblDisenio;
@@ -675,6 +926,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaDescripcionCliente;
     private javax.swing.JTextArea txtAreaDescripcionProveedor;
     private javax.swing.JTextField txtDueda;
+    private javax.swing.JTextField txtDuedaProveedor;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreProveedor;
     private javax.swing.JTextField txtTelefono;

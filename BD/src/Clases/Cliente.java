@@ -57,7 +57,7 @@ public class Cliente {
         return true;
     }
     
-public DefaultComboBoxModel getDireccion(DefaultComboBoxModel modelo) {
+    public DefaultComboBoxModel getDireccion(DefaultComboBoxModel modelo) {
         try {
             String sql = "SELECT direccion FROM direccion;";
             Statement st = con.createStatement();
@@ -71,5 +71,6 @@ public DefaultComboBoxModel getDireccion(DefaultComboBoxModel modelo) {
             return modelo;
         }
     }
+    
     
 }
