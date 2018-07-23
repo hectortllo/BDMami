@@ -7,9 +7,12 @@ package Clases;
 
 import com.mysql.jdbc.Connection;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -45,7 +48,7 @@ public class Proveedor {
         return true;
     }
     
-        public boolean insertarDireccion(String direccion)
+    public boolean insertarDireccion(String direccion)
     {
         try {
             CallableStatement procedimiento = con.prepareCall("{call InsertarDireccion(?)}");
@@ -56,5 +59,20 @@ public class Proveedor {
             return false;
         }
         return true;
+    }
+    
+    public DefaultComboBoxModel getProveedor(DefaultComboBoxModel modelo) {
+        try {
+            String sql = "SELECT nombre FROM proveedor;";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                modelo.addElement(rs.getString("nombre"));
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            return modelo;
+        }
     }
 }

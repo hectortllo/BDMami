@@ -29,6 +29,7 @@ public class Insertar extends javax.swing.JFrame {
         initComponents();
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
         cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
+        cmbProveedorProducto.setModel(proveedor.getProveedor((DefaultComboBoxModel) cmbProveedorProducto.getModel()));
     }
 
     /**
@@ -96,6 +97,28 @@ public class Insertar extends javax.swing.JFrame {
         btnRegresarProveedor = new javax.swing.JButton();
         pnlInsertarProducto = new keeptoo.KGradientPanel();
         jLabel3 = new javax.swing.JLabel();
+        lblNombreProducto = new javax.swing.JLabel();
+        lblPresentacionProducto = new javax.swing.JLabel();
+        lblDescripcionProducto = new javax.swing.JLabel();
+        lblCostoProducto = new javax.swing.JLabel();
+        lblPrecioProducto = new javax.swing.JLabel();
+        lblCantidadProducto = new javax.swing.JLabel();
+        txtNombreProveedor1 = new javax.swing.JTextField();
+        txtNombreProveedor2 = new javax.swing.JTextField();
+        txtNombreProveedor3 = new javax.swing.JTextField();
+        txtNombreProveedor4 = new javax.swing.JTextField();
+        txtNombreProveedor5 = new javax.swing.JTextField();
+        txtNombreProveedor6 = new javax.swing.JTextField();
+        lblProveedorProducto = new javax.swing.JLabel();
+        cmbProveedorProducto = new rojerusan.RSComboMetro();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        rSTableMetro1 = new rojerusan.RSTableMetro();
+        btnFinalizarCompra = new javax.swing.JButton();
+        btnRegresarProducto = new javax.swing.JButton();
+        btnLimpiarProducto = new javax.swing.JButton();
+        btnCancelarCompraProducto = new javax.swing.JButton();
+        btnEditarProducto = new javax.swing.JButton();
+        btnCancelarProveedor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -512,12 +535,182 @@ public class Insertar extends javax.swing.JFrame {
         pnlInsertarProducto.setName("pnlInsertarProducto"); // NOI18N
         pnlInsertarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 255, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("INSERTAR PRODUCTO");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pnlInsertarProducto.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 50));
+
+        lblNombreProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblNombreProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblNombreProducto.setText("Nombre:");
+        pnlInsertarProducto.add(lblNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        lblPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblPresentacionProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblPresentacionProducto.setText("Presentación:");
+        pnlInsertarProducto.add(lblPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+
+        lblDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblDescripcionProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblDescripcionProducto.setText("Descripción:");
+        pnlInsertarProducto.add(lblDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        lblCostoProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblCostoProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblCostoProducto.setText("Costo:");
+        pnlInsertarProducto.add(lblCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        lblPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblPrecioProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblPrecioProducto.setText("Precio:");
+        pnlInsertarProducto.add(lblPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        lblCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblCantidadProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblCantidadProducto.setText("Cantidad:");
+        pnlInsertarProducto.add(lblCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        txtNombreProveedor1.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor1.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
+
+        txtNombreProveedor2.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor2.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 290, 40));
+
+        txtNombreProveedor3.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor3.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
+
+        txtNombreProveedor4.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor4.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor4.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 290, 40));
+
+        txtNombreProveedor5.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor5.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 290, 40));
+
+        txtNombreProveedor6.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProveedor6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProveedor6.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProveedor6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 290, 40));
+
+        lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblProveedorProducto.setText("Proveedor:");
+        pnlInsertarProducto.add(lblProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        cmbProveedorProducto.setForeground(new java.awt.Color(153, 102, 255));
+        cmbProveedorProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
+        cmbProveedorProducto.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbProveedorProducto.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbProveedorProducto.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbProveedorProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbProveedorProductoMouseClicked(evt);
+            }
+        });
+        cmbProveedorProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbProveedorProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(cmbProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 290, 40));
+
+        jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        rSTableMetro1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Cantidad", "Costo", "Subtotal"
+            }
+        ));
+        rSTableMetro1.setAltoHead(40);
+        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        rSTableMetro1.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 12)); // NOI18N
+        rSTableMetro1.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 12)); // NOI18N
+        rSTableMetro1.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
+        rSTableMetro1.setRowHeight(25);
+        jScrollPane4.setViewportView(rSTableMetro1);
+
+        pnlInsertarProducto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 560, 350));
+
+        btnFinalizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/finalizar_compra.png"))); // NOI18N
+        btnFinalizarCompra.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnFinalizarCompra.setContentAreaFilled(false);
+        btnFinalizarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFinalizarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarCompraActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, -1, -1));
+
+        btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarProducto.setContentAreaFilled(false);
+        btnRegresarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+
+        btnLimpiarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/limpiar.png"))); // NOI18N
+        btnLimpiarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnLimpiarProducto.setContentAreaFilled(false);
+        btnLimpiarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, -1, -1));
+
+        btnCancelarCompraProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar_compra.png"))); // NOI18N
+        btnCancelarCompraProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnCancelarCompraProducto.setContentAreaFilled(false);
+        btnCancelarCompraProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarCompraProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCompraProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 440, -1, -1));
+
+        btnEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/editar.png"))); // NOI18N
+        btnEditarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnEditarProducto.setContentAreaFilled(false);
+        btnEditarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
+
+        btnCancelarProveedor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
+        btnCancelarProveedor1.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnCancelarProveedor1.setContentAreaFilled(false);
+        btnCancelarProveedor1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarProveedor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarProveedor1ActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnCancelarProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
 
         rSPanelsSlider1.add(pnlInsertarProducto, "card5");
 
@@ -579,6 +772,7 @@ public class Insertar extends javax.swing.JFrame {
             this.btnProducto.setSelected(true);
             this.btnCliente.setSelected(false);
             this.btnProveedor.setSelected(false);
+            agregarCamposAComboBox(cmbProveedorProducto, 2);
             rSPanelsSlider1.setPanelSlider(10, pnlInsertarProducto, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_btnProductoActionPerformed
@@ -661,6 +855,11 @@ public class Insertar extends javax.swing.JFrame {
         cmbDireccionProveedor.setSelectedIndex(0);
     }
     
+    /*Debo verificar hacia qué panel debe regresar el programa al terminar de ingresar un proveedor.
+        1. Al ingresar un proveedor desde el botón "Ingresar proveedor" debe regresar al menún principal.
+        2. Al ingresar un proveedor desde la opción de agregar proveedro que está en el panel producto debe
+            regresar al panel Producto
+    */
     private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
         if(verificarDatosProveedor())
         {
@@ -721,7 +920,7 @@ public class Insertar extends javax.swing.JFrame {
     private void cmbDireccionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionProveedorActionPerformed
         if(cmbDireccionProveedor.getSelectedItem().equals("Agregar"))
         {
-            agregarNuevaDireccion(cmbDireccionProveedor);
+            agregarCamposAComboBox(cmbDireccionProveedor, 1);
         }
     }//GEN-LAST:event_cmbDireccionProveedorActionPerformed
 
@@ -731,22 +930,34 @@ public class Insertar extends javax.swing.JFrame {
         }
     }
     
-    private void agregarNuevaDireccion(RSComboMetro cmbDireccion)
+    private void agregarCamposAComboBox(RSComboMetro cmbDireccion, int opcion)
     {
-        String direccion = JOptionPane.showInputDialog("Ingrese la nueva dirección: ");
-        if(direccion != null)
-        {
-            proveedor.insertarDireccion(direccion);
-            cmbDireccion.removeAllItems();
-            cmbDireccion.addItem("Escoja una opción");
-            cmbDireccion.addItem("Agregar");
-            cmbDireccion.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccion.getModel()));
+        for (int i = cmbDireccion.getItemCount() - 1; i > 0; i--) {
+                cmbDireccion.removeItemAt(i);
+        }
+        //cmbDireccion.removeAllItems();
+        //cmbDireccion.addItem("Escoja una opción");
+        cmbDireccion.addItem("Agregar");
+        switch(opcion)
+        {    
+            case 1:
+                String direccion = JOptionPane.showInputDialog("Ingrese la nueva dirección: ");
+                if(direccion != null)
+                {
+                    proveedor.insertarDireccion(direccion);
+                    cmbDireccion.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccion.getModel()));
+                }
+                break;
+                
+            case 2:
+                cmbDireccion.setModel(proveedor.getProveedor((DefaultComboBoxModel) cmbDireccion.getModel()));
+                break;
         }
     }
     private void cmbDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionClienteActionPerformed
         if(cmbDireccionCliente.getSelectedItem().equals("Agregar"))
         {
-            agregarNuevaDireccion(cmbDireccionCliente);
+            agregarCamposAComboBox(cmbDireccionCliente, 1);
         }
     }//GEN-LAST:event_cmbDireccionClienteActionPerformed
 
@@ -757,6 +968,41 @@ public class Insertar extends javax.swing.JFrame {
     private void txtDuedaProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuedaProveedorKeyTyped
         Numeros(evt);
     }//GEN-LAST:event_txtDuedaProveedorKeyTyped
+
+    private void cmbProveedorProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbProveedorProductoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbProveedorProductoMouseClicked
+
+    private void cmbProveedorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProveedorProductoActionPerformed
+        if(cmbProveedorProducto.getSelectedItem().equals("Agregar"))
+        {
+            rSPanelsSlider1.setPanelSlider(10, pnlInsertarProveedor, RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_cmbProveedorProductoActionPerformed
+
+    private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinalizarCompraActionPerformed
+
+    private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarProductoActionPerformed
+
+    private void btnLimpiarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarProductoActionPerformed
+
+    private void btnCancelarCompraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarCompraProductoActionPerformed
+
+    private void btnEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarProductoActionPerformed
+
+    private void btnCancelarProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProveedor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarProveedor1ActionPerformed
 
     private void limpiarCajasCliente()
     {
@@ -876,17 +1122,24 @@ public class Insertar extends javax.swing.JFrame {
     private final Proveedor proveedor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarCliente;
+    private javax.swing.JButton btnCancelarCompraProducto;
     private javax.swing.JButton btnCancelarProveedor;
+    private javax.swing.JButton btnCancelarProveedor1;
     private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnEditarProducto;
+    private javax.swing.JButton btnFinalizarCompra;
     private javax.swing.JButton btnGuardarCliente;
     private javax.swing.JButton btnGuardarProveedor;
+    private javax.swing.JButton btnLimpiarProducto;
     private javax.swing.JButton btnProducto;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegresarCliente;
+    private javax.swing.JButton btnRegresarProducto;
     private javax.swing.JButton btnRegresarProveedor;
     private rojerusan.RSComboMetro cmbDireccionCliente;
     private rojerusan.RSComboMetro cmbDireccionProveedor;
     private rojerusan.RSComboMetro cmbNuevo;
+    private rojerusan.RSComboMetro cmbProveedorProducto;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -894,11 +1147,15 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblApellidoProveedor;
+    private javax.swing.JLabel lblCantidadProducto;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblCostoProducto;
+    private javax.swing.JLabel lblDescripcionProducto;
     private javax.swing.JLabel lblDescripcionProveedor;
     private javax.swing.JLabel lblDeuda;
     private javax.swing.JLabel lblDeudaProveedor;
@@ -909,10 +1166,14 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreProducto;
     private javax.swing.JLabel lblNombreProveedor;
     private javax.swing.JLabel lblNuevo;
+    private javax.swing.JLabel lblPrecioProducto;
+    private javax.swing.JLabel lblPresentacionProducto;
     private javax.swing.JLabel lblProducto;
     private javax.swing.JLabel lblProveedor;
+    private javax.swing.JLabel lblProveedorProducto;
     private javax.swing.JLabel lblTelefonoProveedor;
     private javax.swing.JLabel lblTitulo;
     private keeptoo.KGradientPanel pnlInsertarCliente;
@@ -921,6 +1182,7 @@ public class Insertar extends javax.swing.JFrame {
     private keeptoo.KGradientPanel pnlInsertarProveedor;
     private javax.swing.JPanel pnlOpciones;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
+    private rojerusan.RSTableMetro rSTableMetro1;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidoProveedor;
     private javax.swing.JTextArea txtAreaDescripcionCliente;
@@ -929,6 +1191,12 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField txtDuedaProveedor;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreProveedor;
+    private javax.swing.JTextField txtNombreProveedor1;
+    private javax.swing.JTextField txtNombreProveedor2;
+    private javax.swing.JTextField txtNombreProveedor3;
+    private javax.swing.JTextField txtNombreProveedor4;
+    private javax.swing.JTextField txtNombreProveedor5;
+    private javax.swing.JTextField txtNombreProveedor6;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoProveedor;
     // End of variables declaration//GEN-END:variables
