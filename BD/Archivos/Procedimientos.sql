@@ -2,6 +2,7 @@ delimiter //
 DROP PROCEDURE IF EXISTS InsertarClienteNuevo //
 DROP PROCEDURE IF EXISTS InsertarCliente //
 DROP PROCEDURE IF EXISTS InsertarProveedor //
+DROP PROCEDURE IF EXISTS InsertarDireccion //
 
 CREATE PROCEDURE InsertarClienteNuevo(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12))
@@ -50,7 +51,3 @@ BEGIN
     
 END; //
 delimiter ;
-
-ALTER TABLE direccion AUTO_INCREMENT=1;
-SELECT * FROM direccion;
-DELETE FROM direccion WHERE id=2;
