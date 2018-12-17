@@ -75,7 +75,3 @@ BEGIN
 		VALUES(vIdCompra, vIdProductos, vProveedorId);
 END; //
 delimiter ;
-CALL InsertarProducto("Impresora", 1, 2000, 1500, "Impresora epson", "Unidad", 2, 1, 1);
-SELECT * FROM compra;
-SELECT * FROM productos;
-SELECT * FROM detalle_compra;
