@@ -10,6 +10,7 @@ import rojerusan.RSNotifyAnimated;
 import rojerusan.RSPanelsSlider;
 import Clases.Cliente;
 import Clases.Proveedor;
+import Clases.compra;
 import Clases.producto;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Insertar extends javax.swing.JFrame {
         cliente = new Cliente();
         proveedor = new Proveedor();
         producto = new ArrayList<>();
+        compra = new compra();
         initComponents();
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
         cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
@@ -113,7 +115,7 @@ public class Insertar extends javax.swing.JFrame {
         txtCostoProducto = new javax.swing.JTextField();
         txtPrecioProducto = new javax.swing.JTextField();
         txtNombreProducto = new javax.swing.JTextField();
-        lblProveedorProducto = new javax.swing.JLabel();
+        lblTipoCompra = new javax.swing.JLabel();
         cmbProveedorProducto = new rojerusan.RSComboMetro();
         jScrollPane4 = new javax.swing.JScrollPane();
         rsTablaProducto = new rojerusan.RSTableMetro();
@@ -127,9 +129,11 @@ public class Insertar extends javax.swing.JFrame {
         lblTotalPagar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtMontoProducto = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtVueltoProducto = new javax.swing.JTextField();
+        lblProveedorProducto = new javax.swing.JLabel();
+        cmbTipoCompraProducto = new rojerusan.RSComboMetro();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
 
@@ -555,67 +559,67 @@ public class Insertar extends javax.swing.JFrame {
         lblNombreProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblNombreProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblNombreProducto.setText("Nombre:");
-        pnlInsertarProducto.add(lblNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        pnlInsertarProducto.add(lblNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         lblPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblPresentacionProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblPresentacionProducto.setText("Presentación:");
-        pnlInsertarProducto.add(lblPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        pnlInsertarProducto.add(lblPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         lblDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblDescripcionProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblDescripcionProducto.setText("Descripción:");
-        pnlInsertarProducto.add(lblDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        pnlInsertarProducto.add(lblDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         lblCostoProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblCostoProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblCostoProducto.setText("Costo:");
-        pnlInsertarProducto.add(lblCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        pnlInsertarProducto.add(lblCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         lblPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblPrecioProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblPrecioProducto.setText("Precio:");
-        pnlInsertarProducto.add(lblPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        pnlInsertarProducto.add(lblPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         lblCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblCantidadProducto.setForeground(new java.awt.Color(204, 255, 155));
         lblCantidadProducto.setText("Cantidad:");
-        pnlInsertarProducto.add(lblCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        pnlInsertarProducto.add(lblCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         txtCantidadProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtCantidadProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
+        pnlInsertarProducto.add(txtCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 290, 40));
 
         txtPresentacionProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtPresentacionProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 290, 40));
+        pnlInsertarProducto.add(txtPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 290, 40));
 
         txtDescripcionProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtDescripcionProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
+        pnlInsertarProducto.add(txtDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 290, 40));
 
         txtCostoProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtCostoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtCostoProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 290, 40));
+        pnlInsertarProducto.add(txtCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 290, 40));
 
         txtPrecioProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtPrecioProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 290, 40));
+        pnlInsertarProducto.add(txtPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 290, 40));
 
         txtNombreProducto.setBackground(new java.awt.Color(204, 204, 255));
         txtNombreProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtNombreProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 290, 40));
+        pnlInsertarProducto.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 290, 40));
 
-        lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblProveedorProducto.setText("Proveedor:");
-        pnlInsertarProducto.add(lblProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        lblTipoCompra.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblTipoCompra.setForeground(new java.awt.Color(204, 255, 155));
+        lblTipoCompra.setText("Tipo Compra:");
+        pnlInsertarProducto.add(lblTipoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
 
         cmbProveedorProducto.setForeground(new java.awt.Color(153, 102, 255));
         cmbProveedorProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
@@ -633,7 +637,7 @@ public class Insertar extends javax.swing.JFrame {
                 cmbProveedorProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(cmbProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 290, 40));
+        pnlInsertarProducto.add(cmbProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 290, 40));
 
         jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -654,12 +658,13 @@ public class Insertar extends javax.swing.JFrame {
         rsTablaProducto.setRowHeight(25);
         jScrollPane4.setViewportView(rsTablaProducto);
 
-        pnlInsertarProducto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 560, 310));
+        pnlInsertarProducto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 560, 310));
 
         btnFinalizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/finalizar_compra.png"))); // NOI18N
         btnFinalizarCompra.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Finalizar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         btnFinalizarCompra.setContentAreaFilled(false);
         btnFinalizarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFinalizarCompra.setEnabled(false);
         btnFinalizarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarCompraActionPerformed(evt);
@@ -676,7 +681,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnRegresarProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, -1));
+        pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 90, 80));
 
         btnLimpiarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/limpiar.png"))); // NOI18N
         btnLimpiarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Limpiar campos</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -704,6 +709,7 @@ public class Insertar extends javax.swing.JFrame {
         btnEditarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Editar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         btnEditarProducto.setContentAreaFilled(false);
         btnEditarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarProducto.setEnabled(false);
         btnEditarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarProductoActionPerformed(evt);
@@ -720,7 +726,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnCancelarProveedor1ActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnCancelarProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+        pnlInsertarProducto.add(btnCancelarProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 455, 100, 90));
 
         btnAñadirProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/añadir.png"))); // NOI18N
         btnAñadirProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Añadir</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -743,26 +749,45 @@ public class Insertar extends javax.swing.JFrame {
         jLabel1.setText("Monto:");
         pnlInsertarProducto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
 
+        txtTotalPagar.setEditable(false);
         txtTotalPagar.setBackground(new java.awt.Color(204, 204, 255));
         txtTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         txtTotalPagar.setForeground(new java.awt.Color(153, 102, 255));
         pnlInsertarProducto.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 180, 40));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 180, 40));
+        txtMontoProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtMontoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtMontoProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtMontoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 180, 40));
 
         jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 255, 115));
         jLabel6.setText("Vuelto:");
         pnlInsertarProducto.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 440, -1, -1));
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 180, 40));
+        txtVueltoProducto.setEditable(false);
+        txtVueltoProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtVueltoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtVueltoProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtVueltoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 180, 40));
+
+        lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
+        lblProveedorProducto.setText("Proveedor:");
+        pnlInsertarProducto.add(lblProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        cmbTipoCompraProducto.setForeground(new java.awt.Color(153, 102, 255));
+        cmbTipoCompraProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Contado", "Crédito", " " }));
+        cmbTipoCompraProducto.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbTipoCompraProducto.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbTipoCompraProducto.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbTipoCompraProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbTipoCompraProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoCompraProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(cmbTipoCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 402, 290, 40));
 
         rSPanelsSlider1.add(pnlInsertarProducto, "card5");
 
@@ -1029,20 +1054,46 @@ public class Insertar extends javax.swing.JFrame {
         Numeros(evt);
     }//GEN-LAST:event_txtDuedaProveedorKeyTyped
 
-    private void cmbProveedorProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbProveedorProductoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbProveedorProductoMouseClicked
-
-    private void cmbProveedorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProveedorProductoActionPerformed
-        if(cmbProveedorProducto.getSelectedItem().equals("Agregar"))
-        {
-            cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarProveedor, RSPanelsSlider.DIRECT.RIGHT);
-        }
-    }//GEN-LAST:event_cmbProveedorProductoActionPerformed
-
+    private boolean verificarFinalizarCompra()
+    {
+        if(txtMontoProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("ERROR", "Campo Monto vacío, favor de llenarlo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtMontoProducto.requestFocus();
+            return false;
+        } else            
+            return true;
+    }
     private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
-        // TODO add your handling code here:
+        int n = JOptionPane.showConfirmDialog(null, "¿Finalizar venta?", "FINALIZANDO VENTA", JOptionPane.YES_NO_OPTION);
+        if(n == JOptionPane.YES_OPTION){
+            if(verificarFinalizarCompra()){
+                float monto = Float.parseFloat(txtMontoProducto.getText());
+                float total = Float.parseFloat(txtTotalPagar.getText());
+                if(monto < total){
+                    new rojerusan.RSNotifyAnimated("ERROR", "El monto no puede ser menor a la cantidad a pagar",
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    txtMontoProducto.requestFocus();
+                } else {                    
+                    float vuelto = monto - total;
+                    txtVueltoProducto.setText(String.valueOf(vuelto));
+                    if(compra.insertarCompra(Float.parseFloat(txtTotalPagar.getText()))){
+                        producto.forEach((productos) -> {
+                            compra.insertarProductos(productos.getNombre(), productos.getCantidad(),
+                                    productos.getPrecio(), productos.getCosto(), productos.getDescripcion(),
+                                    productos.getPresentacion(), productos.getProveedor_id(), productos.getTipo_compra(), 
+                                    productos.getFinalizado());
+                        });
+                        new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Compra realizada con éxito",
+                        5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                        btnFinalizarCompra.setEnabled(false);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
@@ -1050,7 +1101,7 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarProductoActionPerformed
 
     private void btnLimpiarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProductoActionPerformed
-        // TODO add your handling code here:
+        limpiarTablaProducto();
     }//GEN-LAST:event_btnLimpiarProductoActionPerformed
 
     private void btnCancelarCompraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraProductoActionPerformed
@@ -1071,6 +1122,22 @@ public class Insertar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAñadirProductoActionPerformed
 
+    private void cmbProveedorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProveedorProductoActionPerformed
+        if(cmbProveedorProducto.getSelectedItem().equals("Agregar"))
+        {
+            cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
+            rSPanelsSlider1.setPanelSlider(10, pnlInsertarProveedor, RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_cmbProveedorProductoActionPerformed
+
+    private void cmbProveedorProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbProveedorProductoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbProveedorProductoMouseClicked
+
+    private void cmbTipoCompraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoCompraProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoCompraProductoActionPerformed
+
     private void limpiarProducto()
     {
         txtNombreProducto.setText("");
@@ -1080,6 +1147,17 @@ public class Insertar extends javax.swing.JFrame {
         txtDescripcionProducto.setText("");
         txtCantidadProducto.setText("");
         cmbProveedorProducto.setSelectedIndex(0);
+        cmbTipoCompraProducto.setSelectedIndex(0);
+    }
+    
+    private void limpiarTablaProducto(){
+        limpiarProducto();
+        DefaultTableModel modelo = (DefaultTableModel) rsTablaProducto.getModel();
+        for (int i = 0; i < rsTablaProducto.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i -= 1;
+        }
+        producto.clear();
     }
     private void agregarProducto()
     {
@@ -1090,6 +1168,8 @@ public class Insertar extends javax.swing.JFrame {
         String descripcion = txtDescripcionProducto.getText();
         String presentacion = txtPresentacionProducto.getText();
         int proveedor_id = cmbProveedorProducto.getSelectedIndex() - 1;
+        int tipo_compra = cmbTipoCompraProducto.getSelectedIndex();
+        System.out.println("tipo: " + tipo_compra);
         float subtotal = cantidad * costo;
         float total = 0;
         if(txtTotalPagar.getText().length() == 0)
@@ -1104,6 +1184,15 @@ public class Insertar extends javax.swing.JFrame {
         producto.get(producto.size()-1).setDescripcion(descripcion);
         producto.get(producto.size()-1).setPresentacion(presentacion);
         producto.get(producto.size()-1).setProveedor_id(proveedor_id);
+        //Si tipo_compra es igual a 1 la compra fue al contado
+        if(tipo_compra == 1){
+            producto.get(producto.size()-1).setTipo_compra(true);
+            producto.get(producto.size()-1).setFinalizado(true);
+        }
+        else {
+            producto.get(producto.size()-1).setTipo_compra(false);
+            producto.get(producto.size()-1).setFinalizado(false);
+        }
         
         DefaultTableModel modelo = (DefaultTableModel) rsTablaProducto.getModel();
         
@@ -1115,6 +1204,7 @@ public class Insertar extends javax.swing.JFrame {
         modelo.addRow(datos);
         txtTotalPagar.setText(String.valueOf(total));
         limpiarProducto();
+        btnFinalizarCompra.setEnabled(true);
         for(int i=0; i<producto.size(); i++)
         {
             System.out.println("Nombre: " + producto.get(i).getNombre());
@@ -1124,6 +1214,8 @@ public class Insertar extends javax.swing.JFrame {
             System.out.println("Descripción: " + producto.get(i).getDescripcion());
             System.out.println("Presentación: " + producto.get(i).getPresentacion());
             System.out.println("Proveedor: " + producto.get(i).getProveedor_id());
+            System.out.println("Proveedor: " + producto.get(i).getTipo_compra());
+            System.out.println("Proveedor: " + producto.get(i).getFinalizado());
         }
     }
     private void limpiarCajasCliente()
@@ -1174,11 +1266,11 @@ public class Insertar extends javax.swing.JFrame {
             txtDescripcionProducto.requestFocus();
             return false;
         }
-        else if(txtPresentacionProducto.getText().length() == 0){
-            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Presentación vacío, por favor llénelo",
+        else if(cmbTipoCompraProducto.getSelectedItem().equals("Escoja una opción")){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Tipo Compra no válido, escoja una campo válido",
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-            txtPresentacionProducto.requestFocus();
+            cmbTipoCompraProducto.requestFocus();
             return false;
         }
         else if(cmbProveedorProducto.getSelectedItem().equals("Escoja una opción") 
@@ -1299,6 +1391,7 @@ public class Insertar extends javax.swing.JFrame {
     private final Cliente cliente;
     private final Proveedor proveedor;
     private ArrayList<producto> producto;
+    private final compra compra;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnCancelarCliente;
@@ -1320,6 +1413,7 @@ public class Insertar extends javax.swing.JFrame {
     private rojerusan.RSComboMetro cmbDireccionProveedor;
     private rojerusan.RSComboMetro cmbNuevo;
     private rojerusan.RSComboMetro cmbProveedorProducto;
+    private rojerusan.RSComboMetro cmbTipoCompraProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1330,8 +1424,6 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblApellidoProveedor;
@@ -1359,6 +1451,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblProveedorProducto;
     private javax.swing.JLabel lblTelefonoProveedor;
+    private javax.swing.JLabel lblTipoCompra;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalPagar;
     private keeptoo.KGradientPanel pnlInsertarCliente;
@@ -1377,6 +1470,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField txtDescripcionProducto;
     private javax.swing.JTextField txtDueda;
     private javax.swing.JTextField txtDuedaProveedor;
+    private javax.swing.JTextField txtMontoProducto;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreProducto;
     private javax.swing.JTextField txtNombreProveedor;
@@ -1385,5 +1479,6 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoProveedor;
     private javax.swing.JTextField txtTotalPagar;
+    private javax.swing.JTextField txtVueltoProducto;
     // End of variables declaration//GEN-END:variables
 }

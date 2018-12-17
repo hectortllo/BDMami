@@ -15,6 +15,24 @@ public class producto {
         this.descripcion = "";
         this.presentacion = "";
         this.Proveedor_id = 0;
+        this.tipo_compra = false;
+        this.finalizado = false;
+    }
+
+    public boolean getTipo_compra() {
+        return tipo_compra;
+    }
+
+    public void setTipo_compra(boolean tipo_compra) {
+        this.tipo_compra = tipo_compra;
+    }
+
+    public boolean getFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public String getPresentacion() {
@@ -80,4 +98,6 @@ public class producto {
     private String descripcion;
     private String presentacion;
     private int Proveedor_id;    
+    private boolean tipo_compra;
+    private boolean finalizado;
 }
