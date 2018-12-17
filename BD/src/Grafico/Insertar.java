@@ -10,8 +10,11 @@ import rojerusan.RSNotifyAnimated;
 import rojerusan.RSPanelsSlider;
 import Clases.Cliente;
 import Clases.Proveedor;
+import Clases.producto;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import rojerusan.RSComboMetro;
 /**
  *
@@ -26,6 +29,7 @@ public class Insertar extends javax.swing.JFrame {
     public Insertar() {
         cliente = new Cliente();
         proveedor = new Proveedor();
+        producto = new ArrayList<>();
         initComponents();
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
         cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
@@ -103,22 +107,29 @@ public class Insertar extends javax.swing.JFrame {
         lblCostoProducto = new javax.swing.JLabel();
         lblPrecioProducto = new javax.swing.JLabel();
         lblCantidadProducto = new javax.swing.JLabel();
-        txtNombreProveedor1 = new javax.swing.JTextField();
-        txtNombreProveedor2 = new javax.swing.JTextField();
-        txtNombreProveedor3 = new javax.swing.JTextField();
-        txtNombreProveedor4 = new javax.swing.JTextField();
-        txtNombreProveedor5 = new javax.swing.JTextField();
-        txtNombreProveedor6 = new javax.swing.JTextField();
+        txtCantidadProducto = new javax.swing.JTextField();
+        txtPresentacionProducto = new javax.swing.JTextField();
+        txtDescripcionProducto = new javax.swing.JTextField();
+        txtCostoProducto = new javax.swing.JTextField();
+        txtPrecioProducto = new javax.swing.JTextField();
+        txtNombreProducto = new javax.swing.JTextField();
         lblProveedorProducto = new javax.swing.JLabel();
         cmbProveedorProducto = new rojerusan.RSComboMetro();
         jScrollPane4 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        rsTablaProducto = new rojerusan.RSTableMetro();
         btnFinalizarCompra = new javax.swing.JButton();
         btnRegresarProducto = new javax.swing.JButton();
         btnLimpiarProducto = new javax.swing.JButton();
         btnCancelarCompraProducto = new javax.swing.JButton();
         btnEditarProducto = new javax.swing.JButton();
         btnCancelarProveedor1 = new javax.swing.JButton();
+        btnAñadirProducto = new javax.swing.JButton();
+        lblTotalPagar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtTotalPagar = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
 
@@ -571,35 +582,35 @@ public class Insertar extends javax.swing.JFrame {
         lblCantidadProducto.setText("Cantidad:");
         pnlInsertarProducto.add(lblCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        txtNombreProveedor1.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor1.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
+        txtCantidadProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtCantidadProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
 
-        txtNombreProveedor2.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor2.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 290, 40));
+        txtPresentacionProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtPresentacionProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 290, 40));
 
-        txtNombreProveedor3.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor3.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
+        txtDescripcionProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtDescripcionProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
 
-        txtNombreProveedor4.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor4.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor4.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 290, 40));
+        txtCostoProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtCostoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtCostoProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 290, 40));
 
-        txtNombreProveedor5.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor5.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 290, 40));
+        txtPrecioProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtPrecioProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 290, 40));
 
-        txtNombreProveedor6.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor6.setForeground(new java.awt.Color(153, 102, 255));
-        pnlInsertarProducto.add(txtNombreProveedor6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 290, 40));
+        txtNombreProducto.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreProducto.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 290, 40));
 
         lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
@@ -626,8 +637,8 @@ public class Insertar extends javax.swing.JFrame {
 
         jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        rSTableMetro1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+        rsTablaProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        rsTablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -635,15 +646,15 @@ public class Insertar extends javax.swing.JFrame {
                 "Nombre", "Cantidad", "Costo", "Subtotal"
             }
         ));
-        rSTableMetro1.setAltoHead(40);
-        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
-        rSTableMetro1.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 12)); // NOI18N
-        rSTableMetro1.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 12)); // NOI18N
-        rSTableMetro1.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
-        rSTableMetro1.setRowHeight(25);
-        jScrollPane4.setViewportView(rSTableMetro1);
+        rsTablaProducto.setAltoHead(40);
+        rsTablaProducto.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        rsTablaProducto.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        rsTablaProducto.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        rsTablaProducto.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
+        rsTablaProducto.setRowHeight(25);
+        jScrollPane4.setViewportView(rsTablaProducto);
 
-        pnlInsertarProducto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 560, 350));
+        pnlInsertarProducto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 560, 310));
 
         btnFinalizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/finalizar_compra.png"))); // NOI18N
         btnFinalizarCompra.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Finalizar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -654,7 +665,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnFinalizarCompraActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, -1, -1));
+        pnlInsertarProducto.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 470, -1, -1));
 
         btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
         btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -665,7 +676,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnRegresarProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+        pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, -1));
 
         btnLimpiarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/limpiar.png"))); // NOI18N
         btnLimpiarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Limpiar campos</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -676,7 +687,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnLimpiarProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, -1, -1));
+        pnlInsertarProducto.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
 
         btnCancelarCompraProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar_compra.png"))); // NOI18N
         btnCancelarCompraProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -687,7 +698,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnCancelarCompraProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 440, -1, -1));
+        pnlInsertarProducto.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, -1, -1));
 
         btnEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/editar.png"))); // NOI18N
         btnEditarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Editar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -698,7 +709,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnEditarProductoActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
+        pnlInsertarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, -1, -1));
 
         btnCancelarProveedor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
         btnCancelarProveedor1.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -709,7 +720,49 @@ public class Insertar extends javax.swing.JFrame {
                 btnCancelarProveedor1ActionPerformed(evt);
             }
         });
-        pnlInsertarProducto.add(btnCancelarProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
+        pnlInsertarProducto.add(btnCancelarProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+
+        btnAñadirProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/añadir.png"))); // NOI18N
+        btnAñadirProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Añadir</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnAñadirProducto.setContentAreaFilled(false);
+        btnAñadirProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirProductoActionPerformed(evt);
+            }
+        });
+        pnlInsertarProducto.add(btnAñadirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 470, 100, 70));
+
+        lblTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTotalPagar.setForeground(new java.awt.Color(204, 255, 115));
+        lblTotalPagar.setText("Total a pagar:");
+        pnlInsertarProducto.add(lblTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 255, 115));
+        jLabel1.setText("Monto:");
+        pnlInsertarProducto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
+
+        txtTotalPagar.setBackground(new java.awt.Color(204, 204, 255));
+        txtTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtTotalPagar.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 180, 40));
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 180, 40));
+
+        jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 255, 115));
+        jLabel6.setText("Vuelto:");
+        pnlInsertarProducto.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 440, -1, -1));
+
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(153, 102, 255));
+        pnlInsertarProducto.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 180, 40));
 
         rSPanelsSlider1.add(pnlInsertarProducto, "card5");
 
@@ -1012,6 +1065,67 @@ public class Insertar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarProveedor1ActionPerformed
 
+    private void btnAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductoActionPerformed
+        if(verificarProducto()){
+            agregarProducto();
+        }
+    }//GEN-LAST:event_btnAñadirProductoActionPerformed
+
+    private void limpiarProducto()
+    {
+        txtNombreProducto.setText("");
+        txtPrecioProducto.setText("");
+        txtCostoProducto.setText("");
+        txtPresentacionProducto.setText("");
+        txtDescripcionProducto.setText("");
+        txtCantidadProducto.setText("");
+        cmbProveedorProducto.setSelectedIndex(0);
+    }
+    private void agregarProducto()
+    {
+        String nombre = txtNombreProducto.getText();
+        int cantidad = Integer.parseInt(txtCantidadProducto.getText());
+        float precio = Float.parseFloat(txtPrecioProducto.getText());
+        float costo = Float.parseFloat(txtCostoProducto.getText());
+        String descripcion = txtDescripcionProducto.getText();
+        String presentacion = txtPresentacionProducto.getText();
+        int proveedor_id = cmbProveedorProducto.getSelectedIndex() - 1;
+        float subtotal = cantidad * costo;
+        float total = 0;
+        if(txtTotalPagar.getText().length() == 0)
+            total = subtotal;
+        else
+            total = Float.parseFloat(txtTotalPagar.getText()) + subtotal;
+        producto.add(new producto());
+        producto.get(producto.size()-1).setNombre(nombre);
+        producto.get(producto.size()-1).setCantidad(cantidad);
+        producto.get(producto.size()-1).setPrecio(precio);
+        producto.get(producto.size()-1).setCosto(costo);
+        producto.get(producto.size()-1).setDescripcion(descripcion);
+        producto.get(producto.size()-1).setPresentacion(presentacion);
+        producto.get(producto.size()-1).setProveedor_id(proveedor_id);
+        
+        DefaultTableModel modelo = (DefaultTableModel) rsTablaProducto.getModel();
+        
+        String[] datos = new String[4];
+        datos[0] = nombre;
+        datos[1] = String.valueOf(cantidad);
+        datos[2] = String.valueOf(costo);
+        datos[3] = String.valueOf(subtotal);
+        modelo.addRow(datos);
+        txtTotalPagar.setText(String.valueOf(total));
+        limpiarProducto();
+        for(int i=0; i<producto.size(); i++)
+        {
+            System.out.println("Nombre: " + producto.get(i).getNombre());
+            System.out.println("Cantidad: " + producto.get(i).getCantidad());
+            System.out.println("Precio: " + producto.get(i).getPrecio());
+            System.out.println("Costo: " + producto.get(i).getCosto());
+            System.out.println("Descripción: " + producto.get(i).getDescripcion());
+            System.out.println("Presentación: " + producto.get(i).getPresentacion());
+            System.out.println("Proveedor: " + producto.get(i).getProveedor_id());
+        }
+    }
     private void limpiarCajasCliente()
     {
         txtNombre.setText("");
@@ -1021,6 +1135,62 @@ public class Insertar extends javax.swing.JFrame {
         cmbDireccionCliente.setSelectedIndex(0);
         cmbNuevo.setSelectedIndex(0);
         txtDueda.setText("");
+    }
+    
+    private boolean verificarProducto()
+    {
+        if(txtNombreProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtNombreProducto.requestFocus();
+            return false;
+        }
+        else if(txtCantidadProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Cantidad vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtCantidadProducto.requestFocus();
+            return false;
+        }
+        else if(txtPrecioProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Precio vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtPrecioProducto.requestFocus();
+            return false;
+        }
+        else if(txtCostoProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Costo vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtCostoProducto.requestFocus();
+            return false;
+        }
+        else if(txtDescripcionProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Descripción vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtDescripcionProducto.requestFocus();
+            return false;
+        }
+        else if(txtPresentacionProducto.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Presentación vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtPresentacionProducto.requestFocus();
+            return false;
+        }
+        else if(cmbProveedorProducto.getSelectedItem().equals("Escoja una opción") 
+                || cmbProveedorProducto.getSelectedItem().equals("Agregar")){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Proveedor no válido, escoja un campo válido",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            cmbProveedorProducto.requestFocus();
+            return false;
+        }
+        else
+            return true;
     }
     
     private boolean verificarCliente()
@@ -1128,7 +1298,9 @@ public class Insertar extends javax.swing.JFrame {
     
     private final Cliente cliente;
     private final Proveedor proveedor;
+    private ArrayList<producto> producto;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnCancelarCliente;
     private javax.swing.JButton btnCancelarCompraProducto;
     private javax.swing.JButton btnCancelarProveedor;
@@ -1148,14 +1320,18 @@ public class Insertar extends javax.swing.JFrame {
     private rojerusan.RSComboMetro cmbDireccionProveedor;
     private rojerusan.RSComboMetro cmbNuevo;
     private rojerusan.RSComboMetro cmbProveedorProducto;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblApellidoProveedor;
@@ -1184,28 +1360,30 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblProveedorProducto;
     private javax.swing.JLabel lblTelefonoProveedor;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotalPagar;
     private keeptoo.KGradientPanel pnlInsertarCliente;
     private keeptoo.KGradientPanel pnlInsertarInicio;
     private keeptoo.KGradientPanel pnlInsertarProducto;
     private keeptoo.KGradientPanel pnlInsertarProveedor;
     private javax.swing.JPanel pnlOpciones;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
-    private rojerusan.RSTableMetro rSTableMetro1;
+    private rojerusan.RSTableMetro rsTablaProducto;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidoProveedor;
     private javax.swing.JTextArea txtAreaDescripcionCliente;
     private javax.swing.JTextArea txtAreaDescripcionProveedor;
+    private javax.swing.JTextField txtCantidadProducto;
+    private javax.swing.JTextField txtCostoProducto;
+    private javax.swing.JTextField txtDescripcionProducto;
     private javax.swing.JTextField txtDueda;
     private javax.swing.JTextField txtDuedaProveedor;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreProducto;
     private javax.swing.JTextField txtNombreProveedor;
-    private javax.swing.JTextField txtNombreProveedor1;
-    private javax.swing.JTextField txtNombreProveedor2;
-    private javax.swing.JTextField txtNombreProveedor3;
-    private javax.swing.JTextField txtNombreProveedor4;
-    private javax.swing.JTextField txtNombreProveedor5;
-    private javax.swing.JTextField txtNombreProveedor6;
+    private javax.swing.JTextField txtPrecioProducto;
+    private javax.swing.JTextField txtPresentacionProducto;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoProveedor;
+    private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
 }
