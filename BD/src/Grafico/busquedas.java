@@ -31,9 +31,10 @@ public class busquedas extends javax.swing.JFrame {
         compra = new compra();
         initComponents();
         cmbBusquedaCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaCliente.getModel()));
-        cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
+        cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
         cmbProveedorProducto.setModel(proveedor.getProveedor((DefaultComboBoxModel) cmbProveedorProducto.getModel()));
-        tblBusquedaCliente.setModel(cliente.getCliente("", "", tblBusquedaCliente));
+        tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
+        tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
     }
 
     /**
@@ -73,22 +74,13 @@ public class busquedas extends javax.swing.JFrame {
         tblBusquedaCliente = new rojerusan.RSTableMetro();
         pnlBuscarProveedor = new keeptoo.KGradientPanel();
         jLabel2 = new javax.swing.JLabel();
-        lblNombreProveedor = new javax.swing.JLabel();
-        lblApellidoProveedor = new javax.swing.JLabel();
-        lblTelefonoProveedor = new javax.swing.JLabel();
-        lblDireccionProveedor = new javax.swing.JLabel();
-        txtTelefonoProveedor = new javax.swing.JTextField();
-        txtNombreProveedor = new javax.swing.JTextField();
-        txtApellidoProveedor = new javax.swing.JTextField();
-        cmbDireccionProveedor = new rojerusan.RSComboMetro();
-        lblDescripcionProveedor = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtAreaDescripcionProveedor = new javax.swing.JTextArea();
-        lblDeudaProveedor = new javax.swing.JLabel();
-        txtDuedaProveedor = new javax.swing.JTextField();
-        btnGuardarProveedor = new javax.swing.JButton();
-        btnCancelarProveedor = new javax.swing.JButton();
+        lblNombreBusquedaProveedor = new javax.swing.JLabel();
+        lblDireccionBusquedaProveedor = new javax.swing.JLabel();
+        txtNombreBusquedaProveedor = new javax.swing.JTextField();
+        cmbBusquedaProveedor = new rojerusan.RSComboMetro();
         btnRegresarProveedor = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblBusquedaProveedor = new rojerusan.RSTableMetro();
         pnlBuscarTapachula = new keeptoo.KGradientPanel();
         jLabel3 = new javax.swing.JLabel();
         lblNombreProducto = new javax.swing.JLabel();
@@ -325,7 +317,7 @@ public class busquedas extends javax.swing.JFrame {
                 btnRegresarBusquedaClienteActionPerformed(evt);
             }
         });
-        pnlBusquedaCliente.add(btnRegresarBusquedaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 80, 80));
+        pnlBusquedaCliente.add(btnRegresarBusquedaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 80, 80));
 
         tblBusquedaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -364,112 +356,46 @@ public class busquedas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 60)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 255, 153));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("INSERTAR PROVEEDOR");
+        jLabel2.setText("BÚSQUEDA POR PROVEEDOR");
         pnlBuscarProveedor.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 60));
 
-        lblNombreProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        lblNombreProveedor.setForeground(new java.awt.Color(204, 255, 155));
-        lblNombreProveedor.setText("Nombre:");
-        pnlBuscarProveedor.add(lblNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        lblNombreBusquedaProveedor.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblNombreBusquedaProveedor.setForeground(new java.awt.Color(204, 255, 155));
+        lblNombreBusquedaProveedor.setText("Nombre:");
+        pnlBuscarProveedor.add(lblNombreBusquedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
-        lblApellidoProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        lblApellidoProveedor.setForeground(new java.awt.Color(204, 255, 153));
-        lblApellidoProveedor.setText("Apellido:");
-        pnlBuscarProveedor.add(lblApellidoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        lblDireccionBusquedaProveedor.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblDireccionBusquedaProveedor.setForeground(new java.awt.Color(204, 255, 153));
+        lblDireccionBusquedaProveedor.setText("Dirección:");
+        pnlBuscarProveedor.add(lblDireccionBusquedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, -1, -1));
 
-        lblTelefonoProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        lblTelefonoProveedor.setForeground(new java.awt.Color(204, 255, 153));
-        lblTelefonoProveedor.setText("Teléfono:");
-        pnlBuscarProveedor.add(lblTelefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
+        txtNombreBusquedaProveedor.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreBusquedaProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreBusquedaProveedor.setForeground(new java.awt.Color(153, 102, 255));
+        txtNombreBusquedaProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreBusquedaProveedorKeyPressed(evt);
+            }
+        });
+        pnlBuscarProveedor.add(txtNombreBusquedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 290, 40));
 
-        lblDireccionProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        lblDireccionProveedor.setForeground(new java.awt.Color(204, 255, 153));
-        lblDireccionProveedor.setText("Dirección:");
-        pnlBuscarProveedor.add(lblDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
-
-        txtTelefonoProveedor.setBackground(new java.awt.Color(204, 204, 255));
-        txtTelefonoProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtTelefonoProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarProveedor.add(txtTelefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 270, 40));
-
-        txtNombreProveedor.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarProveedor.add(txtNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 290, 40));
-
-        txtApellidoProveedor.setBackground(new java.awt.Color(204, 204, 255));
-        txtApellidoProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtApellidoProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarProveedor.add(txtApellidoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 290, 40));
-
-        cmbDireccionProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        cmbDireccionProveedor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
-        cmbDireccionProveedor.setColorArrow(new java.awt.Color(255, 204, 204));
-        cmbDireccionProveedor.setColorBorde(new java.awt.Color(153, 153, 255));
-        cmbDireccionProveedor.setColorFondo(new java.awt.Color(204, 204, 255));
-        cmbDireccionProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        cmbDireccionProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+        cmbBusquedaProveedor.setForeground(new java.awt.Color(153, 102, 255));
+        cmbBusquedaProveedor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ver Todo" }));
+        cmbBusquedaProveedor.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbBusquedaProveedor.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbBusquedaProveedor.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbBusquedaProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbBusquedaProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbDireccionProveedorMouseClicked(evt);
+                cmbBusquedaProveedorMouseClicked(evt);
             }
         });
-        cmbDireccionProveedor.addActionListener(new java.awt.event.ActionListener() {
+        cmbBusquedaProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbDireccionProveedorActionPerformed(evt);
+                cmbBusquedaProveedorActionPerformed(evt);
             }
         });
-        pnlBuscarProveedor.add(cmbDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 270, 40));
-
-        lblDescripcionProveedor.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        lblDescripcionProveedor.setForeground(new java.awt.Color(204, 255, 153));
-        lblDescripcionProveedor.setText("Descripción:");
-        pnlBuscarProveedor.add(lblDescripcionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
-
-        txtAreaDescripcionProveedor.setBackground(new java.awt.Color(204, 204, 255));
-        txtAreaDescripcionProveedor.setColumns(20);
-        txtAreaDescripcionProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtAreaDescripcionProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        txtAreaDescripcionProveedor.setRows(5);
-        jScrollPane3.setViewportView(txtAreaDescripcionProveedor);
-
-        pnlBuscarProveedor.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 380, 140));
-
-        lblDeudaProveedor.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
-        lblDeudaProveedor.setForeground(new java.awt.Color(204, 255, 153));
-        lblDeudaProveedor.setText("Deuda inicial:");
-        pnlBuscarProveedor.add(lblDeudaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
-
-        txtDuedaProveedor.setBackground(new java.awt.Color(204, 204, 255));
-        txtDuedaProveedor.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtDuedaProveedor.setForeground(new java.awt.Color(153, 102, 255));
-        txtDuedaProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDuedaProveedorKeyTyped(evt);
-            }
-        });
-        pnlBuscarProveedor.add(txtDuedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 290, 40));
-
-        btnGuardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
-        btnGuardarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnGuardarProveedor.setContentAreaFilled(false);
-        btnGuardarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarProveedorActionPerformed(evt);
-            }
-        });
-        pnlBuscarProveedor.add(btnGuardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
-
-        btnCancelarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
-        btnCancelarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnCancelarProveedor.setContentAreaFilled(false);
-        btnCancelarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelarProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarProveedorActionPerformed(evt);
-            }
-        });
-        pnlBuscarProveedor.add(btnCancelarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
+        pnlBuscarProveedor.add(cmbBusquedaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 270, 40));
 
         btnRegresarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
         btnRegresarProveedor.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -480,7 +406,32 @@ public class busquedas extends javax.swing.JFrame {
                 btnRegresarProveedorActionPerformed(evt);
             }
         });
-        pnlBuscarProveedor.add(btnRegresarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
+        pnlBuscarProveedor.add(btnRegresarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 110, 80));
+
+        tblBusquedaProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "Nombre", "Apellido", "Teléfono", "Descripción", "Dirección", "Deuda"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblBusquedaProveedor.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblBusquedaProveedor.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        tblBusquedaProveedor.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        tblBusquedaProveedor.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
+        tblBusquedaProveedor.setRowHeight(25);
+        jScrollPane2.setViewportView(tblBusquedaProveedor);
+
+        pnlBuscarProveedor.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1100, 390));
 
         rSPanelsSlider1.add(pnlBuscarProveedor, "card4");
 
@@ -775,8 +726,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -795,8 +744,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaCliente.setSelected(false);
             this.btnBusquedaTapachula.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -816,8 +763,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaCliente.setSelected(false);
             this.btnProveedor.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -826,7 +771,7 @@ public class busquedas extends javax.swing.JFrame {
             this.btnAñadirProducto.setSelected(false);
             this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(false);
-            agregarCamposAComboBox(cmbProveedorProducto, cmbDireccionProveedor, 2);
+            agregarCamposAComboBox(cmbProveedorProducto, cmbBusquedaProveedor, 2);
             rSPanelsSlider1.setPanelSlider(10, pnlBuscarTapachula, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_btnBusquedaTapachulaActionPerformed
@@ -849,8 +794,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaCliente.setSelected(false);
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -863,32 +806,7 @@ public class busquedas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegresarBusquedaClienteActionPerformed
 
-    private void limpiarCajasProveedor()
-    {
-        txtNombreProveedor.setText("");
-        txtApellidoProveedor.setText("");
-        txtTelefonoProveedor.setText("");
-        txtDuedaProveedor.setText("");
-        txtAreaDescripcionProveedor.setText("");
-        cmbDireccionProveedor.setSelectedIndex(0);
-    }
     
-    /*Debo verificar hacia qué panel debe regresar el programa al terminar de ingresar un proveedor.
-        1. Al ingresar un proveedor desde el botón "Ingresar proveedor" debe regresar al menún principal.
-        2. Al ingresar un proveedor desde la opción de agregar proveedro que está en el panel producto debe
-            regresar al panel Producto
-    */
-    private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
-        
-        
-    }//GEN-LAST:event_btnGuardarProveedorActionPerformed
-
-    private void btnCancelarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProveedorActionPerformed
-        int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION)
-            limpiarCajasProveedor();
-    }//GEN-LAST:event_btnCancelarProveedorActionPerformed
-
     private void btnRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProveedorActionPerformed
         if(!this.btnRegresarProveedor.isSelected())
         {
@@ -896,8 +814,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaCliente.setSelected(false);
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(true);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -913,15 +829,12 @@ public class busquedas extends javax.swing.JFrame {
     private void cmbBusquedaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbBusquedaClienteMouseClicked
     }//GEN-LAST:event_cmbBusquedaClienteMouseClicked
 
-    private void cmbDireccionProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbDireccionProveedorMouseClicked
-    }//GEN-LAST:event_cmbDireccionProveedorMouseClicked
+    private void cmbBusquedaProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbBusquedaProveedorMouseClicked
+    }//GEN-LAST:event_cmbBusquedaProveedorMouseClicked
 
-    private void cmbDireccionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionProveedorActionPerformed
-        if(cmbDireccionProveedor.getSelectedItem().equals("Agregar"))
-        {
-            agregarCamposAComboBox(cmbDireccionProveedor, cmbBusquedaCliente, 1);
-        }
-    }//GEN-LAST:event_cmbDireccionProveedorActionPerformed
+    private void cmbBusquedaProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBusquedaProveedorActionPerformed
+        BusquedaProveedor();
+    }//GEN-LAST:event_cmbBusquedaProveedorActionPerformed
 
     private void Numeros(KeyEvent e) {
         if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
@@ -966,15 +879,18 @@ public class busquedas extends javax.swing.JFrame {
         //Declaro variables a utilizar. Y les asigno valores con if ternarios si dicen ver todo les mando cadena vacía si no lo que este en el combobox.
         String direccion; 
         direccion = cmbBusquedaCliente.getSelectedItem().equals("Ver Todo") ? "" : (String) cmbBusquedaCliente.getSelectedItem();
-        tblBusquedaCliente.setModel(cliente.getCliente(txtNombreBusquedaCliente.getText(), direccion, tblBusquedaCliente));
+        tblBusquedaCliente.setModel(cliente.buscarClientes(txtNombreBusquedaCliente.getText(), direccion, tblBusquedaCliente));
+    }
+    
+    private void BusquedaProveedor() {
+        //Declaro variables a utilizar. Y les asigno valores con if ternarios si dicen ver todo les mando cadena vacía si no lo que este en el combobox.
+        String direccion; 
+        direccion = cmbBusquedaProveedor.getSelectedItem().equals("Ver Todo") ? "" : (String) cmbBusquedaProveedor.getSelectedItem();
+        tblBusquedaProveedor.setModel(proveedor.buscarProveedores(txtNombreBusquedaProveedor.getText(), direccion, tblBusquedaProveedor));
     }
     private void cmbBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBusquedaClienteActionPerformed
         BusquedaCliente();      
     }//GEN-LAST:event_cmbBusquedaClienteActionPerformed
-
-    private void txtDuedaProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuedaProveedorKeyTyped
-        Numeros(evt);
-    }//GEN-LAST:event_txtDuedaProveedorKeyTyped
 
     private boolean verificarFinalizarCompra()
     {
@@ -1013,8 +929,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaCliente.setSelected(false);
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
             this.btnCancelarProducto.setSelected(false);
             this.btnEditarProducto.setSelected(false);
@@ -1028,7 +942,7 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarProductoActionPerformed
 
     private void btnLimpiarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProductoActionPerformed
-        limpiarTablaProducto();
+        
         bloquear_DesbloquearDatosProducto(true);
     }//GEN-LAST:event_btnLimpiarProductoActionPerformed
 
@@ -1041,11 +955,7 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarProductoActionPerformed
 
     private void btnCancelarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProductoActionPerformed
-        int n = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "CERRANDO", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION){
-            limpiarProducto();
-            limpiarTablaProducto();
-        }
+        
     }//GEN-LAST:event_btnCancelarProductoActionPerformed
 
     private void btnAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductoActionPerformed
@@ -1055,7 +965,7 @@ public class busquedas extends javax.swing.JFrame {
     private void cmbProveedorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProveedorProductoActionPerformed
         if(cmbProveedorProducto.getSelectedItem().equals("Agregar"))
         {
-            cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
+            cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
             rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_cmbProveedorProductoActionPerformed
@@ -1076,17 +986,11 @@ public class busquedas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtNombreBusquedaClienteKeyTyped
 
-    private void limpiarProducto()
-    {
-        txtNombreProducto.setText("");
-        txtPrecioProducto.setText("");
-        txtCostoProducto.setText("");
-        txtPresentacionProducto.setText("");
-        txtDescripcionProducto.setText("");
-        txtCantidadProducto.setText("");
-        cmbProveedorProducto.setSelectedIndex(0);
-        cmbTipoCompraProducto.setSelectedIndex(0);
-    }
+    private void txtNombreBusquedaProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreBusquedaProveedorKeyPressed
+        BusquedaProveedor();
+    }//GEN-LAST:event_txtNombreBusquedaProveedorKeyPressed
+
+    
     
     private void bloquear_DesbloquearDatosProducto(boolean bloqueo){
         txtNombreProducto.setEnabled(bloqueo);
@@ -1102,22 +1006,6 @@ public class busquedas extends javax.swing.JFrame {
         btnCancelarCompraProducto.setEnabled(bloqueo);
         btnAñadirProducto.setEnabled(bloqueo);
     }
-    
-    private void limpiarTablaProducto(){
-        limpiarProducto();
-        DefaultTableModel modelo = (DefaultTableModel) rsTablaProducto.getModel();
-        for (int i = 0; i < rsTablaProducto.getRowCount(); i++) {
-            modelo.removeRow(i);
-            i -= 1;
-        }
-        txtTotalPagar.setText("");
-        txtMontoProducto.setText("");
-        txtVueltoProducto.setText("");
-    }
-    
-    
-    
-   
        
     private final Cliente cliente;
     private final Proveedor proveedor;
@@ -1128,17 +1016,15 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JButton btnBusquedaTapachula;
     private javax.swing.JButton btnCancelarCompraProducto;
     private javax.swing.JButton btnCancelarProducto;
-    private javax.swing.JButton btnCancelarProveedor;
     private javax.swing.JButton btnEditarProducto;
     private javax.swing.JButton btnFinalizarCompra;
-    private javax.swing.JButton btnGuardarProveedor;
     private javax.swing.JButton btnLimpiarProducto;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegresarBusquedaCliente;
     private javax.swing.JButton btnRegresarProducto;
     private javax.swing.JButton btnRegresarProveedor;
     private rojerusan.RSComboMetro cmbBusquedaCliente;
-    private rojerusan.RSComboMetro cmbDireccionProveedor;
+    private rojerusan.RSComboMetro cmbBusquedaProveedor;
     private rojerusan.RSComboMetro cmbProveedorProducto;
     private rojerusan.RSComboMetro cmbTipoCompraProducto;
     private javax.swing.JLabel jLabel1;
@@ -1147,31 +1033,27 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private javax.swing.JLabel lblApellidoProveedor;
     private javax.swing.JLabel lblCantidadProducto;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCostoProducto;
     private javax.swing.JLabel lblDescripcionProducto;
-    private javax.swing.JLabel lblDescripcionProveedor;
-    private javax.swing.JLabel lblDeudaProveedor;
     private javax.swing.JLabel lblDireccionBusquedaCliente;
-    private javax.swing.JLabel lblDireccionProveedor;
+    private javax.swing.JLabel lblDireccionBusquedaProveedor;
     private javax.swing.JLabel lblDisenio;
     private javax.swing.JLabel lblMenuPrincipal;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblNombreBusquedaCliente;
+    private javax.swing.JLabel lblNombreBusquedaProveedor;
     private javax.swing.JLabel lblNombreProducto;
-    private javax.swing.JLabel lblNombreProveedor;
     private javax.swing.JLabel lblPrecioProducto;
     private javax.swing.JLabel lblPresentacionProducto;
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblProveedorProducto;
-    private javax.swing.JLabel lblTelefonoProveedor;
     private javax.swing.JLabel lblTipoCompra;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalPagar;
@@ -1185,19 +1067,16 @@ public class busquedas extends javax.swing.JFrame {
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro rsTablaProducto;
     private rojerusan.RSTableMetro tblBusquedaCliente;
-    private javax.swing.JTextField txtApellidoProveedor;
-    private javax.swing.JTextArea txtAreaDescripcionProveedor;
+    private rojerusan.RSTableMetro tblBusquedaProveedor;
     private javax.swing.JTextField txtCantidadProducto;
     private javax.swing.JTextField txtCostoProducto;
     private javax.swing.JTextField txtDescripcionProducto;
-    private javax.swing.JTextField txtDuedaProveedor;
     private javax.swing.JTextField txtMontoProducto;
     private javax.swing.JTextField txtNombreBusquedaCliente;
+    private javax.swing.JTextField txtNombreBusquedaProveedor;
     private javax.swing.JTextField txtNombreProducto;
-    private javax.swing.JTextField txtNombreProveedor;
     private javax.swing.JTextField txtPrecioProducto;
     private javax.swing.JTextField txtPresentacionProducto;
-    private javax.swing.JTextField txtTelefonoProveedor;
     private javax.swing.JTextField txtTotalPagar;
     private javax.swing.JTextField txtVueltoProducto;
     // End of variables declaration//GEN-END:variables

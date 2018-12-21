@@ -1,23 +1,10 @@
 delimiter //
-DROP PROCEDURE IF EXISTS InsertarClienteNuevo //
 DROP PROCEDURE IF EXISTS InsertarCliente //
 DROP PROCEDURE IF EXISTS InsertarProveedor //
 DROP PROCEDURE IF EXISTS InsertarDireccion //
 DROP PROCEDURE IF EXISTS InsertarProducto //
 DROP PROCEDURE IF EXISTS InsertarCompra //
-
-CREATE PROCEDURE InsertarClienteNuevo(vNombre VARCHAR(45), vApellido VARCHAR(45),
-	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12))
-BEGIN
-	DECLARE vIdCliente INT UNSIGNED DEFAULT 0;
-    
-	INSERT INTO cliente(nombre, apellido, descripcion, direccion_id)
-    VALUES(vNombre, vApellido, vDescripcion, vIdDireccion);
-    
-    SELECT MAX(id) INTO vIdCliente FROM cliente;
-    INSERT INTO telefono(telefono, cliente_id) VALUES(vTelefono, vIdCliente);
-END; //
-
+DROP PROCEDURE IF EXISTS InsertarLugar //
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
 BEGIN
@@ -29,7 +16,8 @@ BEGIN
     SELECT MAX(id) INTO vIdCliente FROM cliente;
     INSERT INTO telefono(telefono, cliente_id) VALUES(vTelefono, vIdCliente);
     
-    INSERT INTO detalle_pago_venta(cliente_id, deuda_inicial, fecha_pago) VALUES(vIdCliente, vDeudaInicial, CURDATE());
+    INSERT INTO detalle_pago_venta(cliente_id, deuda_inicial, deuda_actual, fecha_pago) 
+    VALUES(vIdCliente, vDeudaInicial, vDeudaInicial, CURDATE());
 END; //
 
 CREATE PROCEDURE InsertarProveedor(vNombre VARCHAR(45), vApellido VARCHAR(45),
@@ -43,7 +31,7 @@ BEGIN
     SELECT MAX(id) INTO vIdProveedor FROM proveedor;
     INSERT INTO telefono(telefono, proveedor_id) VALUES(vTelefono, vIdProveedor);
     
-    INSERT INTO detalle_pago_compra(proveedor_id, deuda_inicial, fecha_pago) VALUES(vIdProveedor, vDeudaInicial, CURDATE());
+    INSERT INTO detalle_pago_compra(proveedor_id, deuda_inicial, deuda_actual, fecha_pago) VALUES(vIdProveedor, vDeudaInicial, vDeudaInicial, CURDATE());
 END; //
 
 CREATE PROCEDURE InsertarDireccion(Direccion VARCHAR(60))
@@ -73,5 +61,12 @@ BEGIN
     SELECT MAX(id) INTO vIdCompra FROM compra;
     INSERT INTO detalle_compra(compra_id, productos_id, proveedor_id) 
 		VALUES(vIdCompra, vIdProductos, vProveedorId);
+END; //
+
+CREATE PROCEDURE InsertarLugar(Lugar VARCHAR(45))
+BEGIN
+	    
+	INSERT INTO lugar_tapachula(lugar) VALUE(Lugar);
+    
 END; //
 delimiter ;

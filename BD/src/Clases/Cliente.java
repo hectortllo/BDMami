@@ -29,34 +29,19 @@ public class Cliente {
         int direccion, String Descripcion, String telefono, String deuda)
     {
         try {
-            if(deuda.length() == 0)
-            {
-                //Si el campo deuda está vacío significa que el cliente compró al contado
-                CallableStatement procedimiento = con.prepareCall("{call InsertarClienteNuevo(?,?,?,?,?)}");
-                procedimiento.setString(1, nombre);
-                procedimiento.setString(2, apellido);
-                procedimiento.setInt(3, direccion);
-                procedimiento.setString(4, Descripcion);
-                procedimiento.setString(5, telefono);
-                procedimiento.execute();
-            }
-            else
-            {
-                //Si el campo deuda no está vacío significa que el cliente compró al crédito
-                CallableStatement procedimiento = con.prepareCall("{call InsertarCliente(?,?,?,?,?,?)}");
-                procedimiento.setString(1, nombre);
-                procedimiento.setString(2, apellido);
-                procedimiento.setInt(3, direccion);
-                procedimiento.setString(4, Descripcion);
-                procedimiento.setString(5, telefono);
-                procedimiento.setFloat(6, Float.parseFloat(deuda));
-                procedimiento.execute();
-            }
+            CallableStatement procedimiento = con.prepareCall("{call InsertarCliente(?,?,?,?,?,?)}");
+            procedimiento.setString(1, nombre);
+            procedimiento.setString(2, apellido);
+            procedimiento.setInt(3, direccion);
+            procedimiento.setString(4, Descripcion);
+            procedimiento.setString(5, telefono);
+            procedimiento.setFloat(6, Float.parseFloat(deuda));
+            return !procedimiento.execute() == true;
+            
         } catch (SQLException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        return true;
     }
     
     public DefaultComboBoxModel getDireccion(DefaultComboBoxModel modelo) {
@@ -74,7 +59,7 @@ public class Cliente {
         }
     }
     
-    public DefaultTableModel getCliente(String nombre, String direccion, JTable tabla) {
+    public DefaultTableModel buscarClientes(String nombre, String direccion, JTable tabla) {
 
         try {
             String titulos[] = new String[7];
