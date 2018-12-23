@@ -1788,7 +1788,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="rojeru_san.componentes.RSDateChooser" name="rSDateChooser1">
+                <Component class="rojeru_san.componentes.RSDateChooser" name="DCTapachula">
                   <Properties>
                     <Property name="fuente" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Microsoft JhengHei UI Light" size="24" style="1"/>

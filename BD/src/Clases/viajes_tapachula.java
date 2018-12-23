@@ -38,7 +38,7 @@ public class viajes_tapachula {
             }
             return modelo;
         } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
             return modelo;
         }
     }
@@ -50,19 +50,31 @@ public class viajes_tapachula {
             procedimiento.setString(1, lugar);
             return !procedimiento.execute() == true;
         } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean insertarFechaViaje(String fecha)
+    {
+        try {
+            CallableStatement procedimiento = con.prepareCall("{call InsertarFechaViajeTapachula(?)}");
+            procedimiento.setString(1, fecha);
+            return !procedimiento.execute() == true;
+        } catch (SQLException ex) {
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
     
     public boolean insertarDetalleTapachula(int lugarId, String descripcion){
         try {
-            CallableStatement procedimiento = con.prepareCall("{call InsertarLugar(?, ?)}");
+            CallableStatement procedimiento = con.prepareCall("{call InsertarViajeTapachula(?, ?)}");
             procedimiento.setInt(1, lugarId);
             procedimiento.setString(2, descripcion);
             return !procedimiento.execute() == true;
         } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

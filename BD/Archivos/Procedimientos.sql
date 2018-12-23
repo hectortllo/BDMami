@@ -5,6 +5,8 @@ DROP PROCEDURE IF EXISTS InsertarDireccion //
 DROP PROCEDURE IF EXISTS InsertarProducto //
 DROP PROCEDURE IF EXISTS InsertarCompra //
 DROP PROCEDURE IF EXISTS InsertarLugar //
+DROP PROCEDURE IF EXISTS InsertarViajeTapachula //
+DROP PROCEDURE IF EXISTS InsertarFechaViajeTapachula //
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
 BEGIN
@@ -68,5 +70,20 @@ BEGIN
 	    
 	INSERT INTO lugar_tapachula(lugar) VALUE(Lugar);
     
+END; //
+
+CREATE PROCEDURE InsertarFechaViajeTapachula(vFecha DATE)
+BEGIN
+	INSERT INTO viajes_tapachula(fecha) VALUE(vFecha);
+END; //
+
+CREATE PROCEDURE InsertarViajeTapachula(vLugarTapachulaId INT, vDescripcion VARCHAR(300))
+BEGIN
+	DECLARE vIdViajeTapachula INT UNSIGNED DEFAULT 0;
+    
+    SELECT MAX(id) INTO vIdViajeTapachula FROM viajes_tapachula;
+    
+	INSERT INTO detalle_tapachula(viajes_tapachula_id, lugar_tapachula_id, descripcion) 
+		VALUES(vIdViajeTapachula, vLugarTapachulaId, vDescripcion);
 END; //
 delimiter ;

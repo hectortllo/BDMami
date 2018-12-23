@@ -15,10 +15,12 @@ import Clases.compra;
 import Clases.producto;
 import Clases.viajes_tapachula;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import rojeru_san.componentes.RSDateChooser;
 import rojerusan.RSComboMetro;
 /**
  *
@@ -147,7 +149,7 @@ public class Insertar extends javax.swing.JFrame {
         btnGuardarTapachula = new javax.swing.JButton();
         btnRegresarTapachula = new javax.swing.JButton();
         btnCancelarTapachula = new javax.swing.JButton();
-        rSDateChooser1 = new rojeru_san.componentes.RSDateChooser();
+        DCTapachula = new rojeru_san.componentes.RSDateChooser();
         lblTipoCompra1 = new javax.swing.JLabel();
         cmbLugarTapachula = new rojerusan.RSComboMetro();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -869,8 +871,8 @@ public class Insertar extends javax.swing.JFrame {
     });
     pnlInsertarTapachula.add(btnCancelarTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
 
-    rSDateChooser1.setFuente(new java.awt.Font("Microsoft JhengHei UI Light", 1, 24)); // NOI18N
-    pnlInsertarTapachula.add(rSDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 270, 50));
+    DCTapachula.setFuente(new java.awt.Font("Microsoft JhengHei UI Light", 1, 24)); // NOI18N
+    pnlInsertarTapachula.add(DCTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 270, 50));
 
     lblTipoCompra1.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
     lblTipoCompra1.setForeground(new java.awt.Color(204, 255, 155));
@@ -1407,21 +1409,31 @@ public class Insertar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTapachulaActionPerformed
 
+    public String getFecha(RSDateChooser jd) {
+        if (jd.getDatoFecha() != null) {
+            return formato.format(jd.getDatoFecha());
+        } else {
+            return null;
+        }
+    }
     private void btnGuardarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarTapachulaActionPerformed
-        int n = JOptionPane.showConfirmDialog(null, "¿Finalizar?", "FINALIZANDO", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION){
-            tapa.forEach(lugares -> {
-                
-            });
-                producto.forEach((productos) -> {
-                compra.insertarProductos(productos.getNombre(), productos.getCantidad(),
-                productos.getPrecio(), productos.getCosto(), productos.getDescripcion(),
-                productos.getPresentacion(), productos.getProveedor_id(), productos.getTipo_compra(), 
-                productos.getFinalizado());
-            });
-            new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Compra realizada con éxito",
-            5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);        
+        String fecha = getFecha(DCTapachula);
+        if(fecha != null){
+            int n = JOptionPane.showConfirmDialog(null, "¿Finalizar?", "FINALIZANDO", JOptionPane.YES_NO_OPTION);
+            if(n == JOptionPane.YES_OPTION){
+                tapachula.insertarFechaViaje(fecha);
+                tapa.forEach(lugares -> {
+                    tapachula.insertarDetalleTapachula(lugares.getLugar(), lugares.getDescripcion());
+                });
+                new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Viaje a Tapachula ingresado con éxito",
+                        5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                limpiarTablaTapachula();
+            }
+        } else {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Seleccione una fecha correcta",
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
         }
     }//GEN-LAST:event_btnGuardarTapachulaActionPerformed
 
@@ -1457,11 +1469,7 @@ public class Insertar extends javax.swing.JFrame {
 
     
     private void cmbLugarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLugarTapachulaActionPerformed
-        if(cmbLugarTapachula.getSelectedItem().equals("Escoja una opción")){
-            new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja una opción correcta",
-            5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-        } else if(cmbLugarTapachula.getSelectedItem().equals("Agregar")){
+        if(cmbLugarTapachula.getSelectedItem().equals("Agregar")){
             agregarLugarTapachula(cmbLugarTapachula);
         } 
     }//GEN-LAST:event_cmbLugarTapachulaActionPerformed
@@ -1470,16 +1478,17 @@ public class Insertar extends javax.swing.JFrame {
         if(cmbLugarTapachula.getSelectedItem().equals("Escoja una opción")){
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja una opción correcta",
             5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             return false;
         } else if(txtAreaDescripcionLugarTapachula.getText().length() == 0){
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Descripción aún vacío, favor de llenarlo",
             5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtAreaDescripcionLugarTapachula.requestFocus();
             return false;
         }
-        else return true;
+        else 
+            return true;
     }
     private void btnAnadirLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirLugarActionPerformed
         if(verificarDetalleTapachula()){
@@ -1497,7 +1506,7 @@ public class Insertar extends javax.swing.JFrame {
         String presentacion = txtPresentacionProducto.getText();
         int proveedor_id = cmbProveedorProducto.getSelectedIndex() - 1;
         int tipo_compra = cmbTipoCompraProducto.getSelectedIndex();
-        System.out.println("tipo: " + tipo_compra);
+        //System.out.println("tipo: " + tipo_compra);
         float subtotal = cantidad * costo;
         float total = 0;
         if(txtTotalPagar.getText().length() == 0)
@@ -1533,7 +1542,7 @@ public class Insertar extends javax.swing.JFrame {
         txtTotalPagar.setText(String.valueOf(total));
         limpiarProducto();
         btnFinalizarCompra.setEnabled(true);
-        for(int i=0; i<producto.size(); i++)
+        /*for(int i=0; i<producto.size(); i++)
         {
             System.out.println("Nombre: " + producto.get(i).getNombre());
             System.out.println("Cantidad: " + producto.get(i).getCantidad());
@@ -1544,7 +1553,7 @@ public class Insertar extends javax.swing.JFrame {
             System.out.println("Proveedor: " + producto.get(i).getProveedor_id());
             System.out.println("Proveedor: " + producto.get(i).getTipo_compra());
             System.out.println("Proveedor: " + producto.get(i).getFinalizado());
-        }
+        }*/
     }
     
     private void limpiarCamposTapachula(){
@@ -1554,9 +1563,10 @@ public class Insertar extends javax.swing.JFrame {
     
     private void agregarTablaTapachula(){
         String lugar = (String)cmbLugarTapachula.getSelectedItem();
+        int idlugar = cmbLugarTapachula.getSelectedIndex()-1;
         String descripcion = txtAreaDescripcionLugarTapachula.getText();
         tapa.add(new ALTapachula());
-        tapa.get(tapa.size()-1).setLugar(lugar);
+        tapa.get(tapa.size()-1).setLugar(idlugar);
         tapa.get(tapa.size()-1).setDescripcion(descripcion);
         
         DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
@@ -1609,6 +1619,16 @@ public class Insertar extends javax.swing.JFrame {
         txtMontoProducto.setText("");
         txtVueltoProducto.setText("");
         producto.clear();
+    }
+    
+    private void limpiarTablaTapachula(){
+        DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
+        for (int i = 0; i < tblDetalleTapachula.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i -= 1;
+        }
+        tapa.clear();
+        DCTapachula.setDatoFecha(null);
     }
     
     private void limpiarCajasCliente()
@@ -1768,6 +1788,7 @@ public class Insertar extends javax.swing.JFrame {
             return true;
     }
     
+    private final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
     private final Cliente cliente;
     private final Proveedor proveedor;
     private ArrayList<producto> producto;
@@ -1775,6 +1796,7 @@ public class Insertar extends javax.swing.JFrame {
     private final viajes_tapachula tapachula;
     private ArrayList<ALTapachula> tapa;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojeru_san.componentes.RSDateChooser DCTapachula;
     private javax.swing.JButton btnAnadirLugar;
     private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnCancelarCliente;
@@ -1854,7 +1876,6 @@ public class Insertar extends javax.swing.JFrame {
     private keeptoo.KGradientPanel pnlInsertarProveedor;
     private keeptoo.KGradientPanel pnlInsertarTapachula;
     private javax.swing.JPanel pnlOpciones;
-    private rojeru_san.componentes.RSDateChooser rSDateChooser1;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro rsTablaProducto;
     private rojerusan.RSTableMetro tblDetalleTapachula;

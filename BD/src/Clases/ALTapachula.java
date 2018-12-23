@@ -12,16 +12,16 @@ package Clases;
 public class ALTapachula {
 
     public ALTapachula() {
-        this.Lugar = "";
+        this.idLugar = 0;
         this.Descripcion = "";
     }
 
-    public String getLugar() {
-        return Lugar;
+    public int getLugar() {
+        return idLugar;
     }
 
-    public void setLugar(String Lugar) {
-        this.Lugar = Lugar;
+    public void setLugar(int Lugar) {
+        this.idLugar = Lugar;
     }
 
     public String getDescripcion() {
@@ -30,11 +30,8 @@ public class ALTapachula {
 
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
-    }
+    }  
     
-    
-    
-    
-    private String Lugar;
+    private int idLugar;
     private String Descripcion;
 }
