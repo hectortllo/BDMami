@@ -77,7 +77,6 @@ public class Proveedor {
     }
     
     public DefaultTableModel buscarProveedores(String nombre, String direccion, JTable tabla) {
-
         try {
             String titulos[] = new String[7];
             for (byte i = 0; i < titulos.length; i++) {

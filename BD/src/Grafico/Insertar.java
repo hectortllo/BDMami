@@ -18,7 +18,6 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import rojeru_san.componentes.RSDateChooser;
 import rojerusan.RSComboMetro;

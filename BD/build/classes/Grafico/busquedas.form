@@ -739,7 +739,7 @@
                       <Color blue="99" green="ff" red="cc" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="INSERTAR PRODUCTO"/>
+                    <Property name="text" type="java.lang.String" value="B&#xda;SQUEDA VIAJE TAPACHULA"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
                   <Constraints>
@@ -748,7 +748,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblNombreProducto">
+                <Component class="javax.swing.JLabel" name="lblMesTapachula">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Consolas" size="30" style="1"/>
@@ -756,227 +756,23 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="9b" green="ff" red="cc" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="Mes:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="50" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="620" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblPresentacionProducto">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Presentaci&#xf3;n:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="300" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblDescripcionProducto">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="250" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblCostoProducto">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Costo:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="200" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblPrecioProducto">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Precio:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="150" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblCantidadProducto">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Cantidad:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="100" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtCantidadProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="100" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtPresentacionProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="300" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtDescripcionProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="250" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtCostoProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="200" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtPrecioProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="150" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNombreProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="50" width="290" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblTipoCompra">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="30" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="9b" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tipo Compra:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="410" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="rojerusan.RSComboMetro" name="cmbProveedorProducto">
+                <Component class="rojerusan.RSComboMetro" name="cmbAnioTapachula">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="66" red="99" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
-                        <StringItem index="0" value="Escoja una opci&#xf3;n"/>
-                        <StringItem index="1" value="Agregar"/>
+                        <StringItem index="0" value="Todos los a&#xf1;os"/>
+                        <StringItem index="1" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="colorArrow" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -993,12 +789,12 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmbProveedorProductoMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbProveedorProductoActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmbAnioTapachulaMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbAnioTapachulaActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="350" width="290" height="40"/>
+                      <AbsoluteConstraints x="280" y="60" width="290" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1013,13 +809,13 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="590" y="50" width="560" height="310"/>
+                      <AbsoluteConstraints x="40" y="130" width="1090" height="390"/>
                     </Constraint>
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="rojerusan.RSTableMetro" name="rsTablaProducto">
+                    <Component class="rojerusan.RSTableMetro" name="tblBusquedaTapachula">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1027,35 +823,14 @@
                           </Border>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Nombre&quot;, &quot;Cantidad&quot;, &quot;Costo&quot;, &quot;Subtotal&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}&#xa;" type="code"/>
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;N&#xfa;mero&quot;, &quot;Fecha&quot;, &quot;Lugares visitados&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}&#xa;" type="code"/>
                         </Property>
                         <Property name="altoHead" type="int" value="40"/>
                         <Property name="colorBackgoundHead" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="0" type="rgb"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
+                          <TableColumnModel selectionModel="0"/>
                         </Property>
                         <Property name="fuenteFilas" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Microsoft JhengHei UI Light" size="16" style="1"/>
@@ -1074,27 +849,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="btnFinalizarCompra">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/finalizar_compra.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;Finalizar compra&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarCompraActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1030" y="470" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnRegresarProducto">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1111,216 +865,11 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="210" y="460" width="90" height="80"/>
+                      <AbsoluteConstraints x="1050" y="40" width="90" height="80"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnLimpiarProducto">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/limpiar.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;Limpiar campos&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarProductoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="710" y="470" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnCancelarCompraProducto">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/cancelar_compra.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;Cancelar compra&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarCompraProductoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="810" y="470" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnEditarProducto">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/editar.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;Editar&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarProductoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="600" y="470" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnCancelarProducto">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/cancelar.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;Cancelar&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarProductoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="320" y="455" width="100" height="90"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnA&#xf1;adirProducto">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Pictures/a&#xf1;adir.png"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;head&gt;&#xa;&#x9;&lt;style&gt;&#xa;&#x9;&#x9; #contenido{ &#xa;&#x9;&#x9;background: #0B6121;  /*Se le da un color de fondo*/&#xa;&#x9;&#x9;color: white;&#x9;&#x9;  /*Color a la letra*/&#xa;&#x9;&#x9;}&#xa;&#x9;&lt;/style&gt;&#xa;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;&#x9;&lt;div id=contenido&gt;&#xa;&#x9;&#x9;&lt;h2&gt;A&#xf1;adir&lt;/h2&gt;&#xa;&#x9;&#x9;&lt;!-- &lt;img src=&quot;Path img&quot;&gt; --&gt;&#xa;&#x9;&lt;/div&gt;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor de Mano"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnA&#xf1;adirProductoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="920" y="470" width="100" height="70"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblTotalPagar">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="73" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Total a pagar:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="590" y="380" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="73" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Monto:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="590" y="440" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtTotalPagar">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="780" y="380" width="180" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtMontoProducto">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="670" y="430" width="180" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="73" green="ff" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Vuelto:"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="870" y="440" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtVueltoProducto">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Consolas" size="24" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="99" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="970" y="430" width="180" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblProveedorProducto">
+                <Component class="javax.swing.JLabel" name="lblAnioTapachula">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Consolas" size="30" style="1"/>
@@ -1328,24 +877,34 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="9b" green="ff" red="cc" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Proveedor:"/>
+                    <Property name="text" type="java.lang.String" value="A&#xf1;o:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="40" y="350" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="210" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="rojerusan.RSComboMetro" name="cmbTipoCompraProducto">
+                <Component class="rojerusan.RSComboMetro" name="cmbMesTapachula">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="66" red="99" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Escoja una opci&#xf3;n"/>
-                        <StringItem index="1" value="Contado"/>
-                        <StringItem index="2" value="Cr&#xe9;dito"/>
+                      <StringArray count="13">
+                        <StringItem index="0" value="Todos los meses"/>
+                        <StringItem index="1" value="Enero"/>
+                        <StringItem index="2" value="Febrero"/>
+                        <StringItem index="3" value="Marzo"/>
+                        <StringItem index="4" value="Abril"/>
+                        <StringItem index="5" value="Mayo"/>
+                        <StringItem index="6" value="Junio"/>
+                        <StringItem index="7" value="Julio"/>
+                        <StringItem index="8" value="Agosto"/>
+                        <StringItem index="9" value="Septiembre"/>
+                        <StringItem index="10" value="Octubre"/>
+                        <StringItem index="11" value="Noviembre"/>
+                        <StringItem index="12" value="Diciembre"/>
                       </StringArray>
                     </Property>
                     <Property name="colorArrow" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1362,11 +921,11 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTipoCompraProductoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMesTapachulaActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="402" width="290" height="40"/>
+                      <AbsoluteConstraints x="700" y="60" width="290" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>

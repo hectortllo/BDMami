@@ -6,14 +6,13 @@
 package Grafico;
 
 import javax.swing.JOptionPane;
-import rojerusan.RSNotifyAnimated;
 import rojerusan.RSPanelsSlider;
 import Clases.Cliente;
 import Clases.Proveedor;
 import Clases.compra;
+import Clases.viajes_tapachula;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
 import rojerusan.RSComboMetro;
 /**
  *
@@ -29,12 +28,15 @@ public class busquedas extends javax.swing.JFrame {
         cliente = new Cliente();
         proveedor = new Proveedor();
         compra = new compra();
+        tapachula = new viajes_tapachula();
         initComponents();
         cmbBusquedaCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaCliente.getModel()));
         cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
-        cmbProveedorProducto.setModel(proveedor.getProveedor((DefaultComboBoxModel) cmbProveedorProducto.getModel()));
+        cmbAnioTapachula.setModel(tapachula.getAnio((DefaultComboBoxModel) cmbAnioTapachula.getModel()));
         tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
         tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
+        tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula((String)cmbAnioTapachula.getSelectedItem(), (String)cmbMesTapachula.getSelectedItem(), tblBusquedaTapachula));
+        
     }
 
     /**
@@ -83,37 +85,13 @@ public class busquedas extends javax.swing.JFrame {
         tblBusquedaProveedor = new rojerusan.RSTableMetro();
         pnlBuscarTapachula = new keeptoo.KGradientPanel();
         jLabel3 = new javax.swing.JLabel();
-        lblNombreProducto = new javax.swing.JLabel();
-        lblPresentacionProducto = new javax.swing.JLabel();
-        lblDescripcionProducto = new javax.swing.JLabel();
-        lblCostoProducto = new javax.swing.JLabel();
-        lblPrecioProducto = new javax.swing.JLabel();
-        lblCantidadProducto = new javax.swing.JLabel();
-        txtCantidadProducto = new javax.swing.JTextField();
-        txtPresentacionProducto = new javax.swing.JTextField();
-        txtDescripcionProducto = new javax.swing.JTextField();
-        txtCostoProducto = new javax.swing.JTextField();
-        txtPrecioProducto = new javax.swing.JTextField();
-        txtNombreProducto = new javax.swing.JTextField();
-        lblTipoCompra = new javax.swing.JLabel();
-        cmbProveedorProducto = new rojerusan.RSComboMetro();
+        lblMesTapachula = new javax.swing.JLabel();
+        cmbAnioTapachula = new rojerusan.RSComboMetro();
         jScrollPane4 = new javax.swing.JScrollPane();
-        rsTablaProducto = new rojerusan.RSTableMetro();
-        btnFinalizarCompra = new javax.swing.JButton();
+        tblBusquedaTapachula = new rojerusan.RSTableMetro();
         btnRegresarProducto = new javax.swing.JButton();
-        btnLimpiarProducto = new javax.swing.JButton();
-        btnCancelarCompraProducto = new javax.swing.JButton();
-        btnEditarProducto = new javax.swing.JButton();
-        btnCancelarProducto = new javax.swing.JButton();
-        btnAñadirProducto = new javax.swing.JButton();
-        lblTotalPagar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtTotalPagar = new javax.swing.JTextField();
-        txtMontoProducto = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtVueltoProducto = new javax.swing.JTextField();
-        lblProveedorProducto = new javax.swing.JLabel();
-        cmbTipoCompraProducto = new rojerusan.RSComboMetro();
+        lblAnioTapachula = new javax.swing.JLabel();
+        cmbMesTapachula = new rojerusan.RSComboMetro();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
 
@@ -444,106 +422,46 @@ public class busquedas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 255, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("INSERTAR PRODUCTO");
+        jLabel3.setText("BÚSQUEDA VIAJE TAPACHULA");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pnlBuscarTapachula.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 50));
 
-        lblNombreProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblNombreProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblNombreProducto.setText("Nombre:");
-        pnlBuscarTapachula.add(lblNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        lblMesTapachula.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblMesTapachula.setForeground(new java.awt.Color(204, 255, 155));
+        lblMesTapachula.setText("Mes:");
+        pnlBuscarTapachula.add(lblMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
 
-        lblPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblPresentacionProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblPresentacionProducto.setText("Presentación:");
-        pnlBuscarTapachula.add(lblPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        lblDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblDescripcionProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblDescripcionProducto.setText("Descripción:");
-        pnlBuscarTapachula.add(lblDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-
-        lblCostoProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblCostoProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblCostoProducto.setText("Costo:");
-        pnlBuscarTapachula.add(lblCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
-
-        lblPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblPrecioProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblPrecioProducto.setText("Precio:");
-        pnlBuscarTapachula.add(lblPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-
-        lblCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblCantidadProducto.setForeground(new java.awt.Color(204, 255, 155));
-        lblCantidadProducto.setText("Cantidad:");
-        pnlBuscarTapachula.add(lblCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        txtCantidadProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtCantidadProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtCantidadProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 290, 40));
-
-        txtPresentacionProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtPresentacionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtPresentacionProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtPresentacionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 290, 40));
-
-        txtDescripcionProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtDescripcionProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtDescripcionProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtDescripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 290, 40));
-
-        txtCostoProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtCostoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtCostoProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtCostoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 290, 40));
-
-        txtPrecioProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtPrecioProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtPrecioProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 290, 40));
-
-        txtNombreProducto.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombreProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        txtNombreProducto.setForeground(new java.awt.Color(153, 102, 255));
-        pnlBuscarTapachula.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 290, 40));
-
-        lblTipoCompra.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-        lblTipoCompra.setForeground(new java.awt.Color(204, 255, 155));
-        lblTipoCompra.setText("Tipo Compra:");
-        pnlBuscarTapachula.add(lblTipoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
-
-        cmbProveedorProducto.setForeground(new java.awt.Color(153, 102, 255));
-        cmbProveedorProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
-        cmbProveedorProducto.setColorArrow(new java.awt.Color(255, 204, 204));
-        cmbProveedorProducto.setColorBorde(new java.awt.Color(153, 153, 255));
-        cmbProveedorProducto.setColorFondo(new java.awt.Color(204, 204, 255));
-        cmbProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        cmbProveedorProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+        cmbAnioTapachula.setForeground(new java.awt.Color(153, 102, 255));
+        cmbAnioTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los años", " " }));
+        cmbAnioTapachula.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbAnioTapachula.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbAnioTapachula.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbAnioTapachula.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbAnioTapachula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbProveedorProductoMouseClicked(evt);
+                cmbAnioTapachulaMouseClicked(evt);
             }
         });
-        cmbProveedorProducto.addActionListener(new java.awt.event.ActionListener() {
+        cmbAnioTapachula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbProveedorProductoActionPerformed(evt);
+                cmbAnioTapachulaActionPerformed(evt);
             }
         });
-        pnlBuscarTapachula.add(cmbProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 290, 40));
+        pnlBuscarTapachula.add(cmbAnioTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 290, 40));
 
         jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        rsTablaProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        rsTablaProducto.setModel(new javax.swing.table.DefaultTableModel(
+        tblBusquedaTapachula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblBusquedaTapachula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Cantidad", "Costo", "Subtotal"
+                "Número", "Fecha", "Lugares visitados"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -551,27 +469,15 @@ public class busquedas extends javax.swing.JFrame {
             }
         }
     );
-    rsTablaProducto.setAltoHead(40);
-    rsTablaProducto.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
-    rsTablaProducto.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
-    rsTablaProducto.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
-    rsTablaProducto.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
-    rsTablaProducto.setRowHeight(25);
-    jScrollPane4.setViewportView(rsTablaProducto);
+    tblBusquedaTapachula.setAltoHead(40);
+    tblBusquedaTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+    tblBusquedaTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+    tblBusquedaTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+    tblBusquedaTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
+    tblBusquedaTapachula.setRowHeight(25);
+    jScrollPane4.setViewportView(tblBusquedaTapachula);
 
-    pnlBuscarTapachula.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 560, 310));
-
-    btnFinalizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/finalizar_compra.png"))); // NOI18N
-    btnFinalizarCompra.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Finalizar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnFinalizarCompra.setContentAreaFilled(false);
-    btnFinalizarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnFinalizarCompra.setEnabled(false);
-    btnFinalizarCompra.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnFinalizarCompraActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 470, -1, -1));
+    pnlBuscarTapachula.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1090, 390));
 
     btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
     btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -582,113 +488,25 @@ public class busquedas extends javax.swing.JFrame {
             btnRegresarProductoActionPerformed(evt);
         }
     });
-    pnlBuscarTapachula.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 90, 80));
+    pnlBuscarTapachula.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 90, 80));
 
-    btnLimpiarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/limpiar.png"))); // NOI18N
-    btnLimpiarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Limpiar campos</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnLimpiarProducto.setContentAreaFilled(false);
-    btnLimpiarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnLimpiarProducto.addActionListener(new java.awt.event.ActionListener() {
+    lblAnioTapachula.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+    lblAnioTapachula.setForeground(new java.awt.Color(204, 255, 155));
+    lblAnioTapachula.setText("Año:");
+    pnlBuscarTapachula.add(lblAnioTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
+
+    cmbMesTapachula.setForeground(new java.awt.Color(153, 102, 255));
+    cmbMesTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los meses", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+    cmbMesTapachula.setColorArrow(new java.awt.Color(255, 204, 204));
+    cmbMesTapachula.setColorBorde(new java.awt.Color(153, 153, 255));
+    cmbMesTapachula.setColorFondo(new java.awt.Color(204, 204, 255));
+    cmbMesTapachula.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+    cmbMesTapachula.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnLimpiarProductoActionPerformed(evt);
+            cmbMesTapachulaActionPerformed(evt);
         }
     });
-    pnlBuscarTapachula.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
-
-    btnCancelarCompraProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar_compra.png"))); // NOI18N
-    btnCancelarCompraProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnCancelarCompraProducto.setContentAreaFilled(false);
-    btnCancelarCompraProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnCancelarCompraProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnCancelarCompraProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, -1, -1));
-
-    btnEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/editar.png"))); // NOI18N
-    btnEditarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Editar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnEditarProducto.setContentAreaFilled(false);
-    btnEditarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnEditarProducto.setEnabled(false);
-    btnEditarProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnEditarProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, -1, -1));
-
-    btnCancelarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
-    btnCancelarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnCancelarProducto.setContentAreaFilled(false);
-    btnCancelarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnCancelarProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnCancelarProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnCancelarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 455, 100, 90));
-
-    btnAñadirProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/añadir.png"))); // NOI18N
-    btnAñadirProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Añadir</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnAñadirProducto.setContentAreaFilled(false);
-    btnAñadirProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAñadirProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnAñadirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 470, 100, 70));
-
-    lblTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    lblTotalPagar.setForeground(new java.awt.Color(204, 255, 115));
-    lblTotalPagar.setText("Total a pagar:");
-    pnlBuscarTapachula.add(lblTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
-
-    jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(204, 255, 115));
-    jLabel1.setText("Monto:");
-    pnlBuscarTapachula.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
-
-    txtTotalPagar.setEditable(false);
-    txtTotalPagar.setBackground(new java.awt.Color(204, 204, 255));
-    txtTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    txtTotalPagar.setForeground(new java.awt.Color(153, 102, 255));
-    pnlBuscarTapachula.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 180, 40));
-
-    txtMontoProducto.setBackground(new java.awt.Color(204, 204, 255));
-    txtMontoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    txtMontoProducto.setForeground(new java.awt.Color(153, 102, 255));
-    pnlBuscarTapachula.add(txtMontoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 180, 40));
-
-    jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    jLabel6.setForeground(new java.awt.Color(204, 255, 115));
-    jLabel6.setText("Vuelto:");
-    pnlBuscarTapachula.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 440, -1, -1));
-
-    txtVueltoProducto.setEditable(false);
-    txtVueltoProducto.setBackground(new java.awt.Color(204, 204, 255));
-    txtVueltoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    txtVueltoProducto.setForeground(new java.awt.Color(153, 102, 255));
-    pnlBuscarTapachula.add(txtVueltoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 180, 40));
-
-    lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-    lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
-    lblProveedorProducto.setText("Proveedor:");
-    pnlBuscarTapachula.add(lblProveedorProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
-
-    cmbTipoCompraProducto.setForeground(new java.awt.Color(153, 102, 255));
-    cmbTipoCompraProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Contado", "Crédito" }));
-    cmbTipoCompraProducto.setColorArrow(new java.awt.Color(255, 204, 204));
-    cmbTipoCompraProducto.setColorBorde(new java.awt.Color(153, 153, 255));
-    cmbTipoCompraProducto.setColorFondo(new java.awt.Color(204, 204, 255));
-    cmbTipoCompraProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    cmbTipoCompraProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cmbTipoCompraProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(cmbTipoCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 402, 290, 40));
+    pnlBuscarTapachula.add(cmbMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 290, 40));
 
     rSPanelsSlider1.add(pnlBuscarTapachula, "card5");
 
@@ -727,12 +545,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnProveedor.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(false);
         }
     }//GEN-LAST:event_btnBusquedaClienteActionPerformed
@@ -745,12 +557,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaTapachula.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(false);
             rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
         }
@@ -764,14 +570,7 @@ public class busquedas extends javax.swing.JFrame {
             this.btnProveedor.setSelected(false);
             this.btnRegresarBusquedaCliente.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            agregarCamposAComboBox(cmbProveedorProducto, cmbBusquedaProveedor, 2);
+            //agregarCamposAComboBox(cmbAnioTapachula, cmbBusquedaProveedor, 2);
             rSPanelsSlider1.setPanelSlider(10, pnlBuscarTapachula, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_btnBusquedaTapachulaActionPerformed
@@ -795,12 +594,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(false);
             rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
         }
@@ -815,12 +608,6 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(true);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(false);
             rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
         }
@@ -888,39 +675,16 @@ public class busquedas extends javax.swing.JFrame {
         direccion = cmbBusquedaProveedor.getSelectedItem().equals("Ver Todo") ? "" : (String) cmbBusquedaProveedor.getSelectedItem();
         tblBusquedaProveedor.setModel(proveedor.buscarProveedores(txtNombreBusquedaProveedor.getText(), direccion, tblBusquedaProveedor));
     }
+    
+    private void BusquedaTapachula(){
+        String anio, mes;
+        anio = cmbAnioTapachula.getSelectedItem().equals("Todos los años") ? "Todos los años" : (String)cmbAnioTapachula.getSelectedItem();
+        mes = cmbMesTapachula.getSelectedItem().equals("Todos los meses") ? "Todos los meses" : String.valueOf(cmbMesTapachula.getSelectedIndex());
+        tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula(anio, mes, tblBusquedaTapachula));
+    }
     private void cmbBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBusquedaClienteActionPerformed
         BusquedaCliente();      
     }//GEN-LAST:event_cmbBusquedaClienteActionPerformed
-
-    private boolean verificarFinalizarCompra()
-    {
-        if(txtMontoProducto.getText().length() == 0){
-            new rojerusan.RSNotifyAnimated("ERROR", "Campo Monto vacío, favor de llenarlo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-            txtMontoProducto.requestFocus();
-            return false;
-        } else            
-            return true;
-    }
-    private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
-        int n = JOptionPane.showConfirmDialog(null, "¿Finalizar venta?", "FINALIZANDO VENTA", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION){
-            if(verificarFinalizarCompra()){
-                float monto = Float.parseFloat(txtMontoProducto.getText());
-                float total = Float.parseFloat(txtTotalPagar.getText());
-                if(monto < total){
-                    new rojerusan.RSNotifyAnimated("ERROR", "El monto no puede ser menor a la cantidad a pagar",
-                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-                    txtMontoProducto.requestFocus();
-                } else {                    
-                    float vuelto = monto - total;
-                    txtVueltoProducto.setText(String.valueOf(vuelto));
-                }
-            }
-        }
-    }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
         if(!this.btnRegresarProducto.isSelected())
@@ -930,53 +694,22 @@ public class busquedas extends javax.swing.JFrame {
             this.btnBusquedaTapachula.setSelected(false);
             this.btnProveedor.setSelected(false);
             this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
             this.btnRegresarProducto.setSelected(true);
             rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_btnRegresarProductoActionPerformed
 
-    private void btnLimpiarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProductoActionPerformed
-        
-        bloquear_DesbloquearDatosProducto(true);
-    }//GEN-LAST:event_btnLimpiarProductoActionPerformed
+    private void cmbAnioTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioTapachulaActionPerformed
+        BusquedaTapachula();
+    }//GEN-LAST:event_cmbAnioTapachulaActionPerformed
 
-    private void btnCancelarCompraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraProductoActionPerformed
+    private void cmbAnioTapachulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbAnioTapachulaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarCompraProductoActionPerformed
+    }//GEN-LAST:event_cmbAnioTapachulaMouseClicked
 
-    private void btnEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarProductoActionPerformed
-
-    private void btnCancelarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProductoActionPerformed
-        
-    }//GEN-LAST:event_btnCancelarProductoActionPerformed
-
-    private void btnAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductoActionPerformed
-        
-    }//GEN-LAST:event_btnAñadirProductoActionPerformed
-
-    private void cmbProveedorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProveedorProductoActionPerformed
-        if(cmbProveedorProducto.getSelectedItem().equals("Agregar"))
-        {
-            cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
-            rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
-        }
-    }//GEN-LAST:event_cmbProveedorProductoActionPerformed
-
-    private void cmbProveedorProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbProveedorProductoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbProveedorProductoMouseClicked
-
-    private void cmbTipoCompraProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoCompraProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTipoCompraProductoActionPerformed
+    private void cmbMesTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMesTapachulaActionPerformed
+        BusquedaTapachula();
+    }//GEN-LAST:event_cmbMesTapachulaActionPerformed
 
     private void txtNombreBusquedaClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreBusquedaClienteKeyPressed
         BusquedaCliente();
@@ -990,73 +723,43 @@ public class busquedas extends javax.swing.JFrame {
         BusquedaProveedor();
     }//GEN-LAST:event_txtNombreBusquedaProveedorKeyPressed
 
-    
-    
-    private void bloquear_DesbloquearDatosProducto(boolean bloqueo){
-        txtNombreProducto.setEnabled(bloqueo);
-        txtCantidadProducto.setEnabled(bloqueo);
-        txtPrecioProducto.setEnabled(bloqueo);
-        txtCostoProducto.setEnabled(bloqueo);
-        txtDescripcionProducto.setEnabled(bloqueo);
-        txtPresentacionProducto.setEnabled(bloqueo);
-        cmbProveedorProducto.setEnabled(bloqueo);
-        cmbTipoCompraProducto.setEnabled(bloqueo);        
-        txtMontoProducto.setEnabled(bloqueo);
-        btnAñadirProducto.setEnabled(bloqueo);
-        btnCancelarCompraProducto.setEnabled(bloqueo);
-        btnAñadirProducto.setEnabled(bloqueo);
-    }
-       
+           
     private final Cliente cliente;
     private final Proveedor proveedor;
     private final compra compra;
+    private final viajes_tapachula tapachula;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnBusquedaCliente;
     private javax.swing.JButton btnBusquedaTapachula;
-    private javax.swing.JButton btnCancelarCompraProducto;
-    private javax.swing.JButton btnCancelarProducto;
-    private javax.swing.JButton btnEditarProducto;
-    private javax.swing.JButton btnFinalizarCompra;
-    private javax.swing.JButton btnLimpiarProducto;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegresarBusquedaCliente;
     private javax.swing.JButton btnRegresarProducto;
     private javax.swing.JButton btnRegresarProveedor;
+    private rojerusan.RSComboMetro cmbAnioTapachula;
     private rojerusan.RSComboMetro cmbBusquedaCliente;
     private rojerusan.RSComboMetro cmbBusquedaProveedor;
-    private rojerusan.RSComboMetro cmbProveedorProducto;
-    private rojerusan.RSComboMetro cmbTipoCompraProducto;
-    private javax.swing.JLabel jLabel1;
+    private rojerusan.RSComboMetro cmbMesTapachula;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private javax.swing.JLabel lblCantidadProducto;
+    private javax.swing.JLabel lblAnioTapachula;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblCostoProducto;
-    private javax.swing.JLabel lblDescripcionProducto;
     private javax.swing.JLabel lblDireccionBusquedaCliente;
     private javax.swing.JLabel lblDireccionBusquedaProveedor;
     private javax.swing.JLabel lblDisenio;
     private javax.swing.JLabel lblMenuPrincipal;
+    private javax.swing.JLabel lblMesTapachula;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblNombreBusquedaCliente;
     private javax.swing.JLabel lblNombreBusquedaProveedor;
-    private javax.swing.JLabel lblNombreProducto;
-    private javax.swing.JLabel lblPrecioProducto;
-    private javax.swing.JLabel lblPresentacionProducto;
     private javax.swing.JLabel lblProveedor;
-    private javax.swing.JLabel lblProveedorProducto;
-    private javax.swing.JLabel lblTipoCompra;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTotalPagar;
     private javax.swing.JLabel lblViajeTapachula;
     private javax.swing.JLabel lblViajeTapachula1;
     private keeptoo.KGradientPanel pnlBuscarProveedor;
@@ -1065,19 +768,10 @@ public class busquedas extends javax.swing.JFrame {
     private keeptoo.KGradientPanel pnlBusquedas;
     private javax.swing.JPanel pnlOpciones;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
-    private rojerusan.RSTableMetro rsTablaProducto;
     private rojerusan.RSTableMetro tblBusquedaCliente;
     private rojerusan.RSTableMetro tblBusquedaProveedor;
-    private javax.swing.JTextField txtCantidadProducto;
-    private javax.swing.JTextField txtCostoProducto;
-    private javax.swing.JTextField txtDescripcionProducto;
-    private javax.swing.JTextField txtMontoProducto;
+    private rojerusan.RSTableMetro tblBusquedaTapachula;
     private javax.swing.JTextField txtNombreBusquedaCliente;
     private javax.swing.JTextField txtNombreBusquedaProveedor;
-    private javax.swing.JTextField txtNombreProducto;
-    private javax.swing.JTextField txtPrecioProducto;
-    private javax.swing.JTextField txtPresentacionProducto;
-    private javax.swing.JTextField txtTotalPagar;
-    private javax.swing.JTextField txtVueltoProducto;
     // End of variables declaration//GEN-END:variables
 }

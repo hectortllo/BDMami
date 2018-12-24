@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -76,6 +78,82 @@ public class viajes_tapachula {
         } catch (SQLException ex) {
             Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }
+    }
+    
+    public DefaultTableModel buscarViajeTapachula(String anio, String mes, JTable tabla) {
+        try {
+            String titulos[] = new String[3];
+            for (byte i = 0; i < titulos.length; i++) {
+                titulos[i] = tabla.getColumnName(i);
+            }
+            /*
+                consultaLike1 -> anio en todos los años y mes en todos los meses
+                consultaLike2 -> anio en todos los años y mes en !todos los meses
+                consultaIgual1 -> anio en !todos los años y mes en todos los meses
+                consultaIgual2 -> anio en !todos los años y mes en !todos los meses
+            */
+            String consultaLike1 = " MONTH(fecha) LIKE '%" + "" + "%' AND YEAR(fecha) LIKE '%" + "" + "%'";
+            String consultaLike2 = " MONTH(fecha) = " + mes + " AND YEAR(fecha) LIKE '%" + "" + "%'";
+            String consultaIgual1 = " MONTH(fecha) LIKE '%" + "" + "%' AND YEAR(fecha) = " + anio;
+            String consultaIgual2 = " MONTH(fecha) = " + mes + " AND YEAR(fecha) = " + anio;
+            String sql = "";
+            if(mes.equals("Todos los meses") && anio.equals("Todos los años")){
+                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                        + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
+                        " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
+                        " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
+                        +consultaLike1+ " GROUP BY viajes_tapachula.id;";
+            } else if(anio.equals("Todos los años") && !mes.equals("Todos los meses")){
+                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                        + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
+                        " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
+                        " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
+                        +consultaLike2+ " GROUP BY viajes_tapachula.id;";
+            }
+            else if(!anio.equals("Todos los años") && mes.equals("Todos los meses")) {
+                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                        + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
+                        " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
+                        " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
+                        +consultaIgual1+ " GROUP BY viajes_tapachula.id;";
+            } else {
+                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                        + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
+                        " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
+                        " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
+                        +consultaIgual2+ " GROUP BY viajes_tapachula.id;";
+            }            
+            DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            String registros[] = new String[3];
+            while (rs.next()) {
+                registros[0] = rs.getString("num");
+                registros[1] = rs.getString("fecha");
+                registros[2] = rs.getString("lugares");
+                modelo.addRow(registros);
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    //SELECT YEAR(viajes_tapachula.fecha) AS afecha FROM viajes_tapachula GROUP BY afecha;
+    public DefaultComboBoxModel getAnio(DefaultComboBoxModel modelo) {
+        try {
+            String sql = "SELECT YEAR(viajes_tapachula.fecha) AS afecha FROM viajes_tapachula GROUP BY afecha;";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                modelo.addElement(rs.getString("afecha"));
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
+            return modelo;
         }
     }
 }
