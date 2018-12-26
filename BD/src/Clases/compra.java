@@ -21,11 +21,13 @@ public class compra {
     }
     
     //Función para insertar en la tabla compra
-    public boolean insertarCompra(float total)
+    public boolean insertarCompra(float total, float totalContado, float totalCredito)
     {
         try {
-            CallableStatement procedimiento = con.prepareCall("{CALL InsertarCompra(?)}");
+            CallableStatement procedimiento = con.prepareCall("{CALL InsertarCompra(?,?,?)}");
             procedimiento.setFloat(1, total);
+            procedimiento.setFloat(2, totalCredito);
+            procedimiento.setFloat(3, totalContado);
             return !procedimiento.execute() == true;
         } catch (SQLException ex) {
             Logger.getLogger(compra.class.getName()).log(Level.SEVERE, null, ex);

@@ -7,6 +7,7 @@ DROP PROCEDURE IF EXISTS InsertarCompra //
 DROP PROCEDURE IF EXISTS InsertarLugar //
 DROP PROCEDURE IF EXISTS InsertarViajeTapachula //
 DROP PROCEDURE IF EXISTS InsertarFechaViajeTapachula //
+
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
 BEGIN
@@ -43,9 +44,10 @@ BEGIN
     
 END; //
 
-CREATE PROCEDURE InsertarCompra(vMonto FLOAT)
+CREATE PROCEDURE InsertarCompra(vMonto FLOAT, vMontoCredito FLOAT, vMontoContado FLOAT)
 BEGIN
-	INSERT INTO compra(monto, fecha) VALUES(vMonto, NOW());
+	INSERT INTO compra(monto, monto_credito, monto_contado, fecha) 
+		VALUES(vMonto, vMontoCredito, vMontoContado, NOW());
 END; //
 
 CREATE PROCEDURE InsertarProducto(vNombre VARCHAR(45), vCantidad INT, vPrecio FLOAT, vCosto FLOAT, 

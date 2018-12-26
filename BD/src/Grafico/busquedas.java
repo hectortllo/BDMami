@@ -49,6 +49,15 @@ public class busquedas extends javax.swing.JFrame {
     private void initComponents() {
 
         lblDisenio = new javax.swing.JLabel();
+        PMEditarCliente = new javax.swing.JPopupMenu();
+        MenuEditarCliente = new javax.swing.JMenu();
+        ItemEditarCliente = new javax.swing.JMenuItem();
+        PMEditarProveedor = new javax.swing.JPopupMenu();
+        MenuEditarProveedor = new javax.swing.JMenu();
+        ItemEditarProveedor = new javax.swing.JMenuItem();
+        PMEditarTapachula = new javax.swing.JPopupMenu();
+        MenuEditarTapachula = new javax.swing.JMenu();
+        ItemEditarTapachula = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
@@ -94,6 +103,44 @@ public class busquedas extends javax.swing.JFrame {
         cmbMesTapachula = new rojerusan.RSComboMetro();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
+
+        MenuEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        MenuEditarCliente.setText("Opciones");
+        MenuEditarCliente.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        ItemEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        ItemEditarCliente.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        ItemEditarCliente.setText("Editar");
+        ItemEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemEditarClienteActionPerformed(evt);
+            }
+        });
+        MenuEditarCliente.add(ItemEditarCliente);
+
+        PMEditarCliente.add(MenuEditarCliente);
+
+        MenuEditarProveedor.setBackground(new java.awt.Color(204, 204, 255));
+        MenuEditarProveedor.setText("Opciones");
+        MenuEditarProveedor.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        ItemEditarProveedor.setBackground(new java.awt.Color(204, 204, 255));
+        ItemEditarProveedor.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        ItemEditarProveedor.setText("Editar");
+        MenuEditarProveedor.add(ItemEditarProveedor);
+
+        PMEditarProveedor.add(MenuEditarProveedor);
+
+        MenuEditarTapachula.setBackground(new java.awt.Color(204, 204, 255));
+        MenuEditarTapachula.setText("Opciones");
+        MenuEditarTapachula.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        ItemEditarTapachula.setBackground(new java.awt.Color(204, 204, 255));
+        ItemEditarTapachula.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        ItemEditarTapachula.setText("Detalle");
+        MenuEditarTapachula.add(ItemEditarTapachula);
+
+        PMEditarTapachula.add(MenuEditarTapachula);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -315,6 +362,7 @@ public class busquedas extends javax.swing.JFrame {
         });
         tblBusquedaCliente.setAltoHead(40);
         tblBusquedaCliente.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblBusquedaCliente.setComponentPopupMenu(PMEditarCliente);
         tblBusquedaCliente.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaCliente.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaCliente.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
@@ -403,6 +451,7 @@ public class busquedas extends javax.swing.JFrame {
             }
         });
         tblBusquedaProveedor.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblBusquedaProveedor.setComponentPopupMenu(PMEditarProveedor);
         tblBusquedaProveedor.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaProveedor.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaProveedor.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
@@ -471,6 +520,7 @@ public class busquedas extends javax.swing.JFrame {
     );
     tblBusquedaTapachula.setAltoHead(40);
     tblBusquedaTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+    tblBusquedaTapachula.setComponentPopupMenu(PMEditarTapachula);
     tblBusquedaTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
     tblBusquedaTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
     tblBusquedaTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
@@ -723,12 +773,28 @@ public class busquedas extends javax.swing.JFrame {
         BusquedaProveedor();
     }//GEN-LAST:event_txtNombreBusquedaProveedorKeyPressed
 
+    private void ItemEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEditarClienteActionPerformed
+        int seleccion = tblBusquedaCliente.getSelectedRow();
+        if (seleccion != -1) {
+            System.out.println("Entré");
+        }
+    }//GEN-LAST:event_ItemEditarClienteActionPerformed
+
            
     private final Cliente cliente;
     private final Proveedor proveedor;
     private final compra compra;
     private final viajes_tapachula tapachula;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItemEditarCliente;
+    private javax.swing.JMenuItem ItemEditarProveedor;
+    private javax.swing.JMenuItem ItemEditarTapachula;
+    private javax.swing.JMenu MenuEditarCliente;
+    private javax.swing.JMenu MenuEditarProveedor;
+    private javax.swing.JMenu MenuEditarTapachula;
+    private javax.swing.JPopupMenu PMEditarCliente;
+    private javax.swing.JPopupMenu PMEditarProveedor;
+    private javax.swing.JPopupMenu PMEditarTapachula;
     private javax.swing.JButton btnBusquedaCliente;
     private javax.swing.JButton btnBusquedaTapachula;
     private javax.swing.JButton btnProveedor;

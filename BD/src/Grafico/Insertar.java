@@ -55,6 +55,9 @@ public class Insertar extends javax.swing.JFrame {
     private void initComponents() {
 
         lblDisenio = new javax.swing.JLabel();
+        PMEditarProducto = new javax.swing.JPopupMenu();
+        MenuEditarProducto = new javax.swing.JMenu();
+        ItemEditarProducto = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
@@ -134,13 +137,17 @@ public class Insertar extends javax.swing.JFrame {
         btnCancelarProducto = new javax.swing.JButton();
         btnAñadirProducto = new javax.swing.JButton();
         lblTotalPagar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblMontoProducto = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
         txtMontoProducto = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblVueltoProducto = new javax.swing.JLabel();
         txtVueltoProducto = new javax.swing.JTextField();
         lblProveedorProducto = new javax.swing.JLabel();
         cmbTipoCompraProducto = new rojerusan.RSComboMetro();
+        lblTotalCrédito = new javax.swing.JLabel();
+        txtTotalCredito = new javax.swing.JTextField();
+        lblTotalContado = new javax.swing.JLabel();
+        txtTotalContado = new javax.swing.JTextField();
         pnlInsertarTapachula = new keeptoo.KGradientPanel();
         lblTitulo1 = new javax.swing.JLabel();
         lblNombre1 = new javax.swing.JLabel();
@@ -159,6 +166,17 @@ public class Insertar extends javax.swing.JFrame {
         btnEditarLugar = new javax.swing.JButton();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
+
+        MenuEditarProducto.setBackground(new java.awt.Color(204, 204, 255));
+        MenuEditarProducto.setText("Opciones");
+        MenuEditarProducto.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        ItemEditarProducto.setBackground(new java.awt.Color(204, 204, 255));
+        ItemEditarProducto.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        ItemEditarProducto.setText("Editar");
+        MenuEditarProducto.add(ItemEditarProducto);
+
+        PMEditarProducto.add(MenuEditarProducto);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -661,11 +679,11 @@ public class Insertar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Cantidad", "Costo", "Subtotal"
+                "Nombre", "Cantidad", "Costo", "Subtotal", "Tipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -675,6 +693,7 @@ public class Insertar extends javax.swing.JFrame {
     );
     rsTablaProducto.setAltoHead(40);
     rsTablaProducto.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+    rsTablaProducto.setComponentPopupMenu(PMEditarProducto);
     rsTablaProducto.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
     rsTablaProducto.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
     rsTablaProducto.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
@@ -693,7 +712,7 @@ public class Insertar extends javax.swing.JFrame {
             btnFinalizarCompraActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 470, -1, -1));
+    pnlInsertarProducto.add(btnFinalizarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
 
     btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
     btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -704,7 +723,7 @@ public class Insertar extends javax.swing.JFrame {
             btnRegresarProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 90, 80));
+    pnlInsertarProducto.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 90, 80));
 
     btnLimpiarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/limpiar.png"))); // NOI18N
     btnLimpiarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Limpiar campos</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -715,7 +734,7 @@ public class Insertar extends javax.swing.JFrame {
             btnLimpiarProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
+    pnlInsertarProducto.add(btnLimpiarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
 
     btnCancelarCompraProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar_compra.png"))); // NOI18N
     btnCancelarCompraProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar compra</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -726,7 +745,7 @@ public class Insertar extends javax.swing.JFrame {
             btnCancelarCompraProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, -1, -1));
+    pnlInsertarProducto.add(btnCancelarCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, -1, -1));
 
     btnEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/editar.png"))); // NOI18N
     btnEditarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Editar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -738,7 +757,7 @@ public class Insertar extends javax.swing.JFrame {
             btnEditarProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, -1, -1));
+    pnlInsertarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
 
     btnCancelarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
     btnCancelarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -749,7 +768,7 @@ public class Insertar extends javax.swing.JFrame {
             btnCancelarProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnCancelarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 455, 100, 90));
+    pnlInsertarProducto.add(btnCancelarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 90, 80));
 
     btnAñadirProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/añadir.png"))); // NOI18N
     btnAñadirProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Añadir</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -760,39 +779,39 @@ public class Insertar extends javax.swing.JFrame {
             btnAñadirProductoActionPerformed(evt);
         }
     });
-    pnlInsertarProducto.add(btnAñadirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 470, 100, 70));
+    pnlInsertarProducto.add(btnAñadirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 100, 70));
 
-    lblTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+    lblTotalPagar.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
     lblTotalPagar.setForeground(new java.awt.Color(204, 255, 115));
-    lblTotalPagar.setText("Total a pagar:");
-    pnlInsertarProducto.add(lblTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+    lblTotalPagar.setText("Total:");
+    pnlInsertarProducto.add(lblTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 390, -1, -1));
 
-    jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(204, 255, 115));
-    jLabel1.setText("Monto:");
-    pnlInsertarProducto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
+    lblMontoProducto.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
+    lblMontoProducto.setForeground(new java.awt.Color(204, 255, 115));
+    lblMontoProducto.setText("Monto:");
+    pnlInsertarProducto.add(lblMontoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 450, -1, -1));
 
     txtTotalPagar.setEditable(false);
     txtTotalPagar.setBackground(new java.awt.Color(204, 204, 255));
     txtTotalPagar.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
     txtTotalPagar.setForeground(new java.awt.Color(153, 102, 255));
-    pnlInsertarProducto.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 180, 40));
+    pnlInsertarProducto.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 380, 150, 40));
 
     txtMontoProducto.setBackground(new java.awt.Color(204, 204, 255));
     txtMontoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
     txtMontoProducto.setForeground(new java.awt.Color(153, 102, 255));
-    pnlInsertarProducto.add(txtMontoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 180, 40));
+    pnlInsertarProducto.add(txtMontoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 440, 150, 40));
 
-    jLabel6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    jLabel6.setForeground(new java.awt.Color(204, 255, 115));
-    jLabel6.setText("Vuelto:");
-    pnlInsertarProducto.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 440, -1, -1));
+    lblVueltoProducto.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
+    lblVueltoProducto.setForeground(new java.awt.Color(204, 255, 115));
+    lblVueltoProducto.setText("Vuelto:");
+    pnlInsertarProducto.add(lblVueltoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 510, -1, -1));
 
     txtVueltoProducto.setEditable(false);
     txtVueltoProducto.setBackground(new java.awt.Color(204, 204, 255));
     txtVueltoProducto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
     txtVueltoProducto.setForeground(new java.awt.Color(153, 102, 255));
-    pnlInsertarProducto.add(txtVueltoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 180, 40));
+    pnlInsertarProducto.add(txtVueltoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 500, 150, 40));
 
     lblProveedorProducto.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
     lblProveedorProducto.setForeground(new java.awt.Color(204, 255, 155));
@@ -811,6 +830,28 @@ public class Insertar extends javax.swing.JFrame {
         }
     });
     pnlInsertarProducto.add(cmbTipoCompraProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 402, 290, 40));
+
+    lblTotalCrédito.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
+    lblTotalCrédito.setForeground(new java.awt.Color(204, 255, 115));
+    lblTotalCrédito.setText("Total Crédito:");
+    pnlInsertarProducto.add(lblTotalCrédito, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+
+    txtTotalCredito.setEditable(false);
+    txtTotalCredito.setBackground(new java.awt.Color(204, 204, 255));
+    txtTotalCredito.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+    txtTotalCredito.setForeground(new java.awt.Color(153, 102, 255));
+    pnlInsertarProducto.add(txtTotalCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 370, 150, 40));
+
+    lblTotalContado.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
+    lblTotalContado.setForeground(new java.awt.Color(204, 255, 115));
+    lblTotalContado.setText("Total Contado:");
+    pnlInsertarProducto.add(lblTotalContado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, -1, -1));
+
+    txtTotalContado.setEditable(false);
+    txtTotalContado.setBackground(new java.awt.Color(204, 204, 255));
+    txtTotalContado.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+    txtTotalContado.setForeground(new java.awt.Color(153, 102, 255));
+    pnlInsertarProducto.add(txtTotalContado, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 430, 150, 40));
 
     rSPanelsSlider1.add(pnlInsertarProducto, "card5");
 
@@ -1271,23 +1312,23 @@ public class Insertar extends javax.swing.JFrame {
         Numeros(evt);
     }//GEN-LAST:event_txtDuedaProveedorKeyTyped
 
-    private boolean verificarFinalizarCompra()
-    {
+    private boolean verificarFinalizarCompra(){
         if(txtMontoProducto.getText().length() == 0){
             new rojerusan.RSNotifyAnimated("ERROR", "Campo Monto vacío, favor de llenarlo",
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtMontoProducto.requestFocus();
             return false;
-        } else            
+        } else
             return true;
     }
+        
     private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
         int n = JOptionPane.showConfirmDialog(null, "¿Finalizar venta?", "FINALIZANDO VENTA", JOptionPane.YES_NO_OPTION);
         if(n == JOptionPane.YES_OPTION){
             if(verificarFinalizarCompra()){
                 float monto = Float.parseFloat(txtMontoProducto.getText());
-                float total = Float.parseFloat(txtTotalPagar.getText());
+                float total = Float.parseFloat(txtTotalContado.getText());
                 if(monto < total){
                     new rojerusan.RSNotifyAnimated("ERROR", "El monto no puede ser menor a la cantidad a pagar",
                     5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
@@ -1296,7 +1337,8 @@ public class Insertar extends javax.swing.JFrame {
                 } else {                    
                     float vuelto = monto - total;
                     txtVueltoProducto.setText(String.valueOf(vuelto));
-                    if(compra.insertarCompra(Float.parseFloat(txtTotalPagar.getText()))){
+                    if(compra.insertarCompra(Float.parseFloat(txtTotalPagar.getText()), 
+                            Float.parseFloat(txtTotalCredito.getText()), Float.parseFloat(txtTotalContado.getText()))){
                         producto.forEach((productos) -> {
                             compra.insertarProductos(productos.getNombre(), productos.getCantidad(),
                                     productos.getPrecio(), productos.getCosto(), productos.getDescripcion(),
@@ -1505,13 +1547,9 @@ public class Insertar extends javax.swing.JFrame {
         String presentacion = txtPresentacionProducto.getText();
         int proveedor_id = cmbProveedorProducto.getSelectedIndex() - 1;
         int tipo_compra = cmbTipoCompraProducto.getSelectedIndex();
-        //System.out.println("tipo: " + tipo_compra);
-        float subtotal = cantidad * costo;
-        float total = 0;
-        if(txtTotalPagar.getText().length() == 0)
-            total = subtotal;
-        else
-            total = Float.parseFloat(txtTotalPagar.getText()) + subtotal;
+        String tipoCompra = "";
+        System.out.println("tipo: " + tipo_compra);
+        
         producto.add(new producto());
         producto.get(producto.size()-1).setNombre(nombre);
         producto.get(producto.size()-1).setCantidad(cantidad);
@@ -1520,28 +1558,63 @@ public class Insertar extends javax.swing.JFrame {
         producto.get(producto.size()-1).setDescripcion(descripcion);
         producto.get(producto.size()-1).setPresentacion(presentacion);
         producto.get(producto.size()-1).setProveedor_id(proveedor_id);
-        //Si tipo_compra es igual a 1 la compra fue al contado
-        if(tipo_compra == 1){
+        
+        /*
+            tipo_compra:
+                contado -> 1
+                crédito -> 2
+        */
+        float subtotal = cantidad * costo;
+        float totalCredito, totalContado, total = 0;
+        if(txtTotalPagar.getText().length() == 0 && tipo_compra == 1){
+            total = subtotal;
+            totalContado = subtotal;
+            txtTotalContado.setText(String.valueOf(totalContado));
+            txtTotalCredito.setText("0");
             producto.get(producto.size()-1).setTipo_compra(true);
             producto.get(producto.size()-1).setFinalizado(true);
-        }
-        else {
+            tipoCompra = "Contado";
+        } else if(txtTotalPagar.getText().length() == 0 && tipo_compra != 1){
+            total = subtotal;
+            totalCredito = subtotal;
+            txtTotalCredito.setText(String.valueOf(totalCredito));
+            txtTotalContado.setText("0");
             producto.get(producto.size()-1).setTipo_compra(false);
             producto.get(producto.size()-1).setFinalizado(false);
+            tipoCompra = "Crédito";
+        }
+        else {
+            if(tipo_compra == 1) {
+                totalContado = Float.parseFloat(txtTotalContado.getText()) + subtotal;
+                txtTotalContado.setText(String.valueOf(totalContado));
+                total = Float.parseFloat(txtTotalPagar.getText()) + subtotal;
+                producto.get(producto.size()-1).setTipo_compra(true);
+                producto.get(producto.size()-1).setFinalizado(true);
+                tipoCompra = "Contado";
+            }
+            else {
+                totalCredito = Float.parseFloat(txtTotalCredito.getText()) + subtotal;
+                txtTotalCredito.setText(String.valueOf(totalCredito));
+                total = Float.parseFloat(txtTotalPagar.getText()) + subtotal;
+                producto.get(producto.size()-1).setTipo_compra(false);
+                producto.get(producto.size()-1).setFinalizado(false);
+                tipoCompra = "Crédito";
+            }
         }
         
         DefaultTableModel modelo = (DefaultTableModel) rsTablaProducto.getModel();
         
-        String[] datos = new String[4];
+        String[] datos = new String[5];
         datos[0] = nombre;
         datos[1] = String.valueOf(cantidad);
         datos[2] = String.valueOf(costo);
         datos[3] = String.valueOf(subtotal);
+        datos[4] = tipoCompra;
         modelo.addRow(datos);
         txtTotalPagar.setText(String.valueOf(total));
         limpiarProducto();
         btnFinalizarCompra.setEnabled(true);
-        /*for(int i=0; i<producto.size(); i++)
+        for(int i=0; i<producto.size(); i++)
         {
             System.out.println("Nombre: " + producto.get(i).getNombre());
             System.out.println("Cantidad: " + producto.get(i).getCantidad());
@@ -1552,7 +1625,7 @@ public class Insertar extends javax.swing.JFrame {
             System.out.println("Proveedor: " + producto.get(i).getProveedor_id());
             System.out.println("Proveedor: " + producto.get(i).getTipo_compra());
             System.out.println("Proveedor: " + producto.get(i).getFinalizado());
-        }*/
+        }
     }
     
     private void limpiarCamposTapachula(){
@@ -1614,6 +1687,8 @@ public class Insertar extends javax.swing.JFrame {
             modelo.removeRow(i);
             i -= 1;
         }
+        txtTotalContado.setText("");
+        txtTotalCredito.setText("");
         txtTotalPagar.setText("");
         txtMontoProducto.setText("");
         txtVueltoProducto.setText("");
@@ -1796,6 +1871,9 @@ public class Insertar extends javax.swing.JFrame {
     private ArrayList<ALTapachula> tapa;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.componentes.RSDateChooser DCTapachula;
+    private javax.swing.JMenuItem ItemEditarProducto;
+    private javax.swing.JMenu MenuEditarProducto;
+    private javax.swing.JPopupMenu PMEditarProducto;
     private javax.swing.JButton btnAnadirLugar;
     private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnCancelarCliente;
@@ -1823,12 +1901,10 @@ public class Insertar extends javax.swing.JFrame {
     private rojerusan.RSComboMetro cmbLugarTapachula;
     private rojerusan.RSComboMetro cmbProveedorProducto;
     private rojerusan.RSComboMetro cmbTipoCompraProducto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1852,6 +1928,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblDisenio;
     private javax.swing.JLabel lblMenuPrincipal;
     private javax.swing.JLabel lblMinimizar;
+    private javax.swing.JLabel lblMontoProducto;
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
@@ -1868,7 +1945,10 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipoCompra1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTotalContado;
+    private javax.swing.JLabel lblTotalCrédito;
     private javax.swing.JLabel lblTotalPagar;
+    private javax.swing.JLabel lblVueltoProducto;
     private keeptoo.KGradientPanel pnlInsertarCliente;
     private keeptoo.KGradientPanel pnlInsertarInicio;
     private keeptoo.KGradientPanel pnlInsertarProducto;
@@ -1896,6 +1976,8 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField txtPresentacionProducto;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoProveedor;
+    private javax.swing.JTextField txtTotalContado;
+    private javax.swing.JTextField txtTotalCredito;
     private javax.swing.JTextField txtTotalPagar;
     private javax.swing.JTextField txtVueltoProducto;
     // End of variables declaration//GEN-END:variables
