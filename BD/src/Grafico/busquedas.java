@@ -13,7 +13,9 @@ import Clases.compra;
 import Clases.viajes_tapachula;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 import rojerusan.RSComboMetro;
+import rojerusan.RSNotifyAnimated;
 /**
  *
  * @author hectortllo
@@ -30,13 +32,14 @@ public class busquedas extends javax.swing.JFrame {
         compra = new compra();
         tapachula = new viajes_tapachula();
         initComponents();
+        lblClienteId.setVisible(false);
         cmbBusquedaCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaCliente.getModel()));
         cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
         cmbAnioTapachula.setModel(tapachula.getAnio((DefaultComboBoxModel) cmbAnioTapachula.getModel()));
+        cmbDireccionEditarCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionEditarCliente.getModel()));
         tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
         tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
         tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula((String)cmbAnioTapachula.getSelectedItem(), (String)cmbMesTapachula.getSelectedItem(), tblBusquedaTapachula));
-        
     }
 
     /**
@@ -101,6 +104,25 @@ public class busquedas extends javax.swing.JFrame {
         btnRegresarProducto = new javax.swing.JButton();
         lblAnioTapachula = new javax.swing.JLabel();
         cmbMesTapachula = new rojerusan.RSComboMetro();
+        pnlEditarCliente = new keeptoo.KGradientPanel();
+        lblClienteId = new javax.swing.JLabel();
+        lblTitulo1 = new javax.swing.JLabel();
+        lblNombreEditarCliente = new javax.swing.JLabel();
+        lblApellidoEditarCliente = new javax.swing.JLabel();
+        lblDireccion = new javax.swing.JLabel();
+        cmbDireccionEditarCliente = new rojerusan.RSComboMetro();
+        txtApellidoEditarCliente = new javax.swing.JTextField();
+        txtTelefonoEditarCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombreEditarCliente = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaDescripcionEditarCliente = new javax.swing.JTextArea();
+        btnGuardarEditarCliente = new javax.swing.JButton();
+        btnRegresarEditarCliente = new javax.swing.JButton();
+        btnCancelarEditarCliente = new javax.swing.JButton();
+        lblDeudaEditarCliente = new javax.swing.JLabel();
+        txtDeudaEditarCliente = new javax.swing.JTextField();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
 
@@ -295,7 +317,7 @@ public class busquedas extends javax.swing.JFrame {
         lblNombreBusquedaCliente.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblNombreBusquedaCliente.setForeground(new java.awt.Color(204, 255, 153));
         lblNombreBusquedaCliente.setText("Nombre: ");
-        pnlBusquedaCliente.add(lblNombreBusquedaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        pnlBusquedaCliente.add(lblNombreBusquedaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         lblDireccionBusquedaCliente.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         lblDireccionBusquedaCliente.setForeground(new java.awt.Color(204, 255, 153));
@@ -344,6 +366,11 @@ public class busquedas extends javax.swing.JFrame {
         });
         pnlBusquedaCliente.add(btnRegresarBusquedaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 80, 80));
 
+        tblBusquedaCliente = new rojerusan.RSTableMetro() {
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tblBusquedaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -351,15 +378,7 @@ public class busquedas extends javax.swing.JFrame {
             new String [] {
                 "No.", "Nombre", "Apellido", "Teléfono", "Descripción", "Dirección", "Deuda"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tblBusquedaCliente.setAltoHead(40);
         tblBusquedaCliente.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
         tblBusquedaCliente.setComponentPopupMenu(PMEditarCliente);
@@ -367,6 +386,7 @@ public class busquedas extends javax.swing.JFrame {
         tblBusquedaCliente.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaCliente.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
         tblBusquedaCliente.setRowHeight(25);
+        tblBusquedaCliente.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblBusquedaCliente);
 
         pnlBusquedaCliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1090, 350));
@@ -434,6 +454,11 @@ public class busquedas extends javax.swing.JFrame {
         });
         pnlBuscarProveedor.add(btnRegresarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 110, 80));
 
+        tblBusquedaProveedor = new rojerusan.RSTableMetro() {
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tblBusquedaProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -443,7 +468,7 @@ public class busquedas extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -456,6 +481,7 @@ public class busquedas extends javax.swing.JFrame {
         tblBusquedaProveedor.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblBusquedaProveedor.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
         tblBusquedaProveedor.setRowHeight(25);
+        tblBusquedaProveedor.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblBusquedaProveedor);
 
         pnlBuscarProveedor.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1100, 390));
@@ -500,13 +526,18 @@ public class busquedas extends javax.swing.JFrame {
 
         jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        tblBusquedaTapachula = new rojerusan.RSTableMetro() {
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tblBusquedaTapachula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblBusquedaTapachula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Número", "Fecha", "Lugares visitados"
+                "No.", "Fecha", "Lugares vistiados"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -516,55 +547,201 @@ public class busquedas extends javax.swing.JFrame {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
-        }
-    );
-    tblBusquedaTapachula.setAltoHead(40);
-    tblBusquedaTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
-    tblBusquedaTapachula.setComponentPopupMenu(PMEditarTapachula);
-    tblBusquedaTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
-    tblBusquedaTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
-    tblBusquedaTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
-    tblBusquedaTapachula.setRowHeight(25);
-    jScrollPane4.setViewportView(tblBusquedaTapachula);
+        });
+        tblBusquedaTapachula.setAltoHead(40);
+        tblBusquedaTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblBusquedaTapachula.setComponentPopupMenu(PMEditarTapachula);
+        tblBusquedaTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        tblBusquedaTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        tblBusquedaTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
+        tblBusquedaTapachula.setRowHeight(25);
+        tblBusquedaTapachula.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tblBusquedaTapachula);
 
-    pnlBuscarTapachula.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1090, 390));
+        pnlBuscarTapachula.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1090, 390));
 
-    btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
-    btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-    btnRegresarProducto.setContentAreaFilled(false);
-    btnRegresarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnRegresarProducto.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnRegresarProductoActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 90, 80));
+        btnRegresarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarProducto.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarProducto.setContentAreaFilled(false);
+        btnRegresarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarProductoActionPerformed(evt);
+            }
+        });
+        pnlBuscarTapachula.add(btnRegresarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 90, 80));
 
-    lblAnioTapachula.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
-    lblAnioTapachula.setForeground(new java.awt.Color(204, 255, 155));
-    lblAnioTapachula.setText("Año:");
-    pnlBuscarTapachula.add(lblAnioTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
+        lblAnioTapachula.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
+        lblAnioTapachula.setForeground(new java.awt.Color(204, 255, 155));
+        lblAnioTapachula.setText("Año:");
+        pnlBuscarTapachula.add(lblAnioTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
-    cmbMesTapachula.setForeground(new java.awt.Color(153, 102, 255));
-    cmbMesTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los meses", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-    cmbMesTapachula.setColorArrow(new java.awt.Color(255, 204, 204));
-    cmbMesTapachula.setColorBorde(new java.awt.Color(153, 153, 255));
-    cmbMesTapachula.setColorFondo(new java.awt.Color(204, 204, 255));
-    cmbMesTapachula.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-    cmbMesTapachula.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cmbMesTapachulaActionPerformed(evt);
-        }
-    });
-    pnlBuscarTapachula.add(cmbMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 290, 40));
+        cmbMesTapachula.setForeground(new java.awt.Color(153, 102, 255));
+        cmbMesTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los meses", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cmbMesTapachula.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbMesTapachula.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbMesTapachula.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbMesTapachula.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbMesTapachula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMesTapachulaActionPerformed(evt);
+            }
+        });
+        pnlBuscarTapachula.add(cmbMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 290, 40));
 
-    rSPanelsSlider1.add(pnlBuscarTapachula, "card5");
+        rSPanelsSlider1.add(pnlBuscarTapachula, "card5");
 
-    jPanel1.add(rSPanelsSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1170, 550));
+        pnlEditarCliente.setkEndColor(new java.awt.Color(0, 51, 51));
+        pnlEditarCliente.setkGradientFocus(1000);
+        pnlEditarCliente.setkStartColor(new java.awt.Color(0, 204, 204));
+        pnlEditarCliente.setName("pnlEditarCliente"); // NOI18N
+        pnlEditarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlEditarCliente.add(lblClienteId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 50, 20));
 
-    getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 660));
+        lblTitulo1.setFont(new java.awt.Font("Consolas", 1, 60)); // NOI18N
+        lblTitulo1.setForeground(new java.awt.Color(204, 255, 153));
+        lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo1.setText("EDITAR CLIENTE");
+        lblTitulo1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        pnlEditarCliente.add(lblTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1170, 50));
 
-    pack();
+        lblNombreEditarCliente.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblNombreEditarCliente.setForeground(new java.awt.Color(204, 255, 153));
+        lblNombreEditarCliente.setText("Nombre: ");
+        pnlEditarCliente.add(lblNombreEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        lblApellidoEditarCliente.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblApellidoEditarCliente.setForeground(new java.awt.Color(204, 255, 153));
+        lblApellidoEditarCliente.setText("Apellido:");
+        pnlEditarCliente.add(lblApellidoEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        lblDireccion.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(204, 255, 153));
+        lblDireccion.setText("Dirección:");
+        pnlEditarCliente.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, -1, -1));
+
+        cmbDireccionEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        cmbDireccionEditarCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción" }));
+        cmbDireccionEditarCliente.setColorArrow(new java.awt.Color(255, 204, 204));
+        cmbDireccionEditarCliente.setColorBorde(new java.awt.Color(153, 153, 255));
+        cmbDireccionEditarCliente.setColorFondo(new java.awt.Color(204, 204, 255));
+        cmbDireccionEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        cmbDireccionEditarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbDireccionEditarClienteMouseClicked(evt);
+            }
+        });
+        cmbDireccionEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDireccionEditarClienteActionPerformed(evt);
+            }
+        });
+        pnlEditarCliente.add(cmbDireccionEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 290, 40));
+
+        txtApellidoEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        txtApellidoEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtApellidoEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        txtApellidoEditarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoEditarClienteKeyTyped(evt);
+            }
+        });
+        pnlEditarCliente.add(txtApellidoEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 290, 40));
+
+        txtTelefonoEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        txtTelefonoEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtTelefonoEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        txtTelefonoEditarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoEditarClienteKeyTyped(evt);
+            }
+        });
+        pnlEditarCliente.add(txtTelefonoEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 80, 290, 40));
+
+        jLabel4.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 255, 153));
+        jLabel4.setText("Teléfono:");
+        pnlEditarCliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+
+        txtNombreEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombreEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtNombreEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        txtNombreEditarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEditarClienteKeyTyped(evt);
+            }
+        });
+        pnlEditarCliente.add(txtNombreEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 290, 40));
+
+        jLabel5.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 255, 153));
+        jLabel5.setText("Descripción:");
+        pnlEditarCliente.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, -1, -1));
+
+        txtAreaDescripcionEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        txtAreaDescripcionEditarCliente.setColumns(20);
+        txtAreaDescripcionEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtAreaDescripcionEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        txtAreaDescripcionEditarCliente.setRows(5);
+        jScrollPane3.setViewportView(txtAreaDescripcionEditarCliente);
+
+        pnlEditarCliente.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 380, 140));
+
+        btnGuardarEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
+        btnGuardarEditarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnGuardarEditarCliente.setContentAreaFilled(false);
+        btnGuardarEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEditarClienteActionPerformed(evt);
+            }
+        });
+        pnlEditarCliente.add(btnGuardarEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
+
+        btnRegresarEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarEditarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarEditarCliente.setContentAreaFilled(false);
+        btnRegresarEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarEditarClienteActionPerformed(evt);
+            }
+        });
+        pnlEditarCliente.add(btnRegresarEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
+
+        btnCancelarEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cancelar.png"))); // NOI18N
+        btnCancelarEditarCliente.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Cancelar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnCancelarEditarCliente.setContentAreaFilled(false);
+        btnCancelarEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEditarClienteActionPerformed(evt);
+            }
+        });
+        pnlEditarCliente.add(btnCancelarEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
+
+        lblDeudaEditarCliente.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        lblDeudaEditarCliente.setForeground(new java.awt.Color(204, 255, 153));
+        lblDeudaEditarCliente.setText("Deuda inicial:");
+        pnlEditarCliente.add(lblDeudaEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+
+        txtDeudaEditarCliente.setBackground(new java.awt.Color(204, 204, 255));
+        txtDeudaEditarCliente.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        txtDeudaEditarCliente.setForeground(new java.awt.Color(153, 102, 255));
+        txtDeudaEditarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDeudaEditarClienteKeyTyped(evt);
+            }
+        });
+        pnlEditarCliente.add(txtDeudaEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 290, 40));
+
+        rSPanelsSlider1.add(pnlEditarCliente, "card3");
+
+        jPanel1.add(rSPanelsSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1170, 550));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 660));
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
@@ -775,10 +952,170 @@ public class busquedas extends javax.swing.JFrame {
 
     private void ItemEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEditarClienteActionPerformed
         int seleccion = tblBusquedaCliente.getSelectedRow();
+        String registros[] = new String[7];
         if (seleccion != -1) {
-            System.out.println("Entré");
+            int id = Integer.parseInt((String) tblBusquedaCliente.getValueAt(seleccion, 0));
+            System.out.println("seleccion: " + seleccion);
+            this.btnRegresarBusquedaCliente.setSelected(false);
+            this.btnBusquedaCliente.setSelected(false);
+            this.btnBusquedaTapachula.setSelected(false);
+            this.btnProveedor.setSelected(false);
+            this.btnRegresarProveedor.setSelected(false);
+            this.btnRegresarProducto.setSelected(false);
+            this.btnGuardarEditarCliente.setSelected(false);
+            this.btnCancelarEditarCliente.setSelected(false);
+            this.btnRegresarEditarCliente.setSelected(false);
+            rSPanelsSlider1.setPanelSlider(10, pnlEditarCliente, RSPanelsSlider.DIRECT.RIGHT);
+            lblClienteId.setText(String.valueOf(id));
+            registros = cliente.getCliente(id);
+            txtNombreEditarCliente.setText(registros[1]);
+            txtApellidoEditarCliente.setText(registros[2]);
+            txtAreaDescripcionEditarCliente.setText(registros[3]);
+            txtTelefonoEditarCliente.setText(registros[4]);
+            cmbDireccionEditarCliente.setSelectedItem(registros[5]);
+            txtDeudaEditarCliente.setText(registros[6]);
         }
     }//GEN-LAST:event_ItemEditarClienteActionPerformed
+
+    private void Letras(KeyEvent e) {
+        char c = e.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            e.consume();
+        }
+    }
+    
+    private void puntoFlotante(KeyEvent e, JTextField txt) {
+        if (!Character.isDigit(e.getKeyChar()) && e.getKeyChar() != '.' && e.getKeyChar() != 8) {
+            e.consume();
+        }
+        if (e.getKeyChar() == '.' && txt.getText().contains(".")) {
+            e.consume();
+        }
+    }
+    
+    private void txtApellidoEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEditarClienteKeyTyped
+        Letras(evt);
+    }//GEN-LAST:event_txtApellidoEditarClienteKeyTyped
+
+    private void txtTelefonoEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEditarClienteKeyTyped
+        Numeros(evt);
+    }//GEN-LAST:event_txtTelefonoEditarClienteKeyTyped
+
+    private void txtNombreEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEditarClienteKeyTyped
+        Letras(evt);
+    }//GEN-LAST:event_txtNombreEditarClienteKeyTyped
+
+    private void limpiarCajasCliente()
+    {
+        txtNombreEditarCliente.setText("");
+        txtApellidoEditarCliente.setText("");
+        txtTelefonoEditarCliente.setText("");
+        txtAreaDescripcionEditarCliente.setText("");
+        cmbDireccionEditarCliente.setSelectedIndex(0);
+        txtDeudaEditarCliente.setText("");
+    }
+    
+    private boolean verificarCliente()
+    {
+        if(txtNombreEditarCliente.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtNombreEditarCliente.requestFocus();
+            return false;
+        }
+        else if(txtApellidoEditarCliente.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Apellido vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtApellidoEditarCliente.requestFocus();
+            return false;
+        }
+        else if(txtTelefonoEditarCliente.getText().length() == 0)
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtTelefonoEditarCliente.requestFocus();
+            return false;
+        }
+        else if(cmbDireccionEditarCliente.getSelectedItem().equals("Escoja una opción"))
+        {
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja un campo correcto en la dirección",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            cmbDireccionEditarCliente.requestFocus();
+            return false;
+        }
+        else if(txtDeudaEditarCliente.getText().length() == 0){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Deuda Inicial vacío, por favor llénelo",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            txtDeudaEditarCliente.requestFocus();
+            return false;
+        }
+        else
+            return true;
+    }
+    private void btnGuardarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEditarClienteActionPerformed
+        if(verificarCliente())
+        {
+            System.out.println(cmbDireccionEditarCliente.getSelectedIndex());
+            if(cliente.ActualizarCliente(Integer.parseInt(lblClienteId.getText()), txtNombreEditarCliente.getText(), 
+                    txtApellidoEditarCliente.getText(), cmbDireccionEditarCliente.getSelectedIndex(), 
+                    txtAreaDescripcionEditarCliente.getText(), txtTelefonoEditarCliente.getText(), 
+                    Float.parseFloat(txtDeudaEditarCliente.getText()))){
+                new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Cliente actualizado correctamente",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                limpiarCajasCliente();
+            }
+            if(!this.btnGuardarEditarCliente.isSelected())
+            {
+                this.btnRegresarEditarCliente.setSelected(false);
+                this.btnGuardarEditarCliente.setSelected(true);
+                this.btnCancelarEditarCliente.setSelected(false);
+                this.btnProveedor.setSelected(false);
+                this.btnRegresarProveedor.setSelected(false);
+                tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
+                rSPanelsSlider1.setPanelSlider(10, pnlBusquedaCliente, RSPanelsSlider.DIRECT.RIGHT);
+            }
+        }
+        
+    }//GEN-LAST:event_btnGuardarEditarClienteActionPerformed
+
+    private void btnRegresarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarEditarClienteActionPerformed
+        if(!this.btnRegresarEditarCliente.isSelected())
+        {
+            this.btnRegresarEditarCliente.setSelected(true);
+            this.btnGuardarEditarCliente.setSelected(false);
+            this.btnCancelarEditarCliente.setSelected(false);
+            this.btnProveedor.setSelected(false);
+            this.btnRegresarProveedor.setSelected(false);
+            this.btnRegresarProducto.setSelected(false);
+            //rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_btnRegresarEditarClienteActionPerformed
+
+    private void btnCancelarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarClienteActionPerformed
+        int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+        if(n == JOptionPane.YES_OPTION)
+        limpiarCajasCliente();
+    }//GEN-LAST:event_btnCancelarEditarClienteActionPerformed
+
+    private void txtDeudaEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeudaEditarClienteKeyTyped
+        puntoFlotante(evt, txtDeudaEditarCliente);
+    }//GEN-LAST:event_txtDeudaEditarClienteKeyTyped
+
+    private void cmbDireccionEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionEditarClienteActionPerformed
+
+    }//GEN-LAST:event_cmbDireccionEditarClienteActionPerformed
+
+    private void cmbDireccionEditarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbDireccionEditarClienteMouseClicked
+
+    }//GEN-LAST:event_cmbDireccionEditarClienteMouseClicked
 
            
     private final Cliente cliente;
@@ -797,24 +1134,35 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PMEditarTapachula;
     private javax.swing.JButton btnBusquedaCliente;
     private javax.swing.JButton btnBusquedaTapachula;
+    private javax.swing.JButton btnCancelarEditarCliente;
+    private javax.swing.JButton btnGuardarEditarCliente;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegresarBusquedaCliente;
+    private javax.swing.JButton btnRegresarEditarCliente;
     private javax.swing.JButton btnRegresarProducto;
     private javax.swing.JButton btnRegresarProveedor;
     private rojerusan.RSComboMetro cmbAnioTapachula;
     private rojerusan.RSComboMetro cmbBusquedaCliente;
     private rojerusan.RSComboMetro cmbBusquedaProveedor;
+    private rojerusan.RSComboMetro cmbDireccionEditarCliente;
     private rojerusan.RSComboMetro cmbMesTapachula;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblAnioTapachula;
+    private javax.swing.JLabel lblApellidoEditarCliente;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblClienteId;
+    private javax.swing.JLabel lblDeudaEditarCliente;
+    private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblDireccionBusquedaCliente;
     private javax.swing.JLabel lblDireccionBusquedaProveedor;
     private javax.swing.JLabel lblDisenio;
@@ -824,20 +1172,28 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JLabel lblMover;
     private javax.swing.JLabel lblNombreBusquedaCliente;
     private javax.swing.JLabel lblNombreBusquedaProveedor;
+    private javax.swing.JLabel lblNombreEditarCliente;
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblViajeTapachula;
     private javax.swing.JLabel lblViajeTapachula1;
     private keeptoo.KGradientPanel pnlBuscarProveedor;
     private keeptoo.KGradientPanel pnlBuscarTapachula;
     private keeptoo.KGradientPanel pnlBusquedaCliente;
     private keeptoo.KGradientPanel pnlBusquedas;
+    private keeptoo.KGradientPanel pnlEditarCliente;
     private javax.swing.JPanel pnlOpciones;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro tblBusquedaCliente;
     private rojerusan.RSTableMetro tblBusquedaProveedor;
     private rojerusan.RSTableMetro tblBusquedaTapachula;
+    private javax.swing.JTextField txtApellidoEditarCliente;
+    private javax.swing.JTextArea txtAreaDescripcionEditarCliente;
+    private javax.swing.JTextField txtDeudaEditarCliente;
     private javax.swing.JTextField txtNombreBusquedaCliente;
     private javax.swing.JTextField txtNombreBusquedaProveedor;
+    private javax.swing.JTextField txtNombreEditarCliente;
+    private javax.swing.JTextField txtTelefonoEditarCliente;
     // End of variables declaration//GEN-END:variables
 }

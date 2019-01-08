@@ -7,6 +7,7 @@ DROP PROCEDURE IF EXISTS InsertarCompra //
 DROP PROCEDURE IF EXISTS InsertarLugar //
 DROP PROCEDURE IF EXISTS InsertarViajeTapachula //
 DROP PROCEDURE IF EXISTS InsertarFechaViajeTapachula //
+DROP PROCEDURE IF EXISTS ActualizarCliente //
 
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
@@ -21,6 +22,15 @@ BEGIN
     
     INSERT INTO detalle_pago_venta(cliente_id, deuda_inicial, deuda_actual, fecha_pago) 
     VALUES(vIdCliente, vDeudaInicial, vDeudaInicial, CURDATE());
+END; //
+
+CREATE PROCEDURE ActualizarCliente(vIdCliente INT, vNombre VARCHAR(45), vApellido VARCHAR(45), 
+	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeuda FLOAT)
+BEGIN
+	UPDATE cliente SET nombre = vNombre, apellido = vApellido, descripcion = vDescripcion,
+	direccion_id = vIdDireccion	WHERE id = vIdCliente;
+    UPDATE telefono SET telefono = vTelefono WHERE telefono.cliente_id = vIdCliente;
+    UPDATE detalle_pago_venta SET deuda_actual = vDeuda WHERE detalle_pago_venta.cliente_id = vIdCliente;
 END; //
 
 CREATE PROCEDURE InsertarProveedor(vNombre VARCHAR(45), vApellido VARCHAR(45),

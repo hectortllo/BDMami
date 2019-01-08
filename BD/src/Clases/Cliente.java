@@ -2,6 +2,7 @@ package Clases;
 
 import com.mysql.jdbc.Connection;
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -91,6 +92,54 @@ public class Cliente {
         } catch (SQLException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    
+    public String[] getCliente(int cliente_id){
+        String registros[] = new String[7];
+        try {
+            String sql = "SELECT cliente.id AS num, cliente.nombre AS nombre, cliente.apellido AS apellido, " +
+                    "cliente.descripcion AS descp, telefono.telefono AS telefono, direccion.direccion AS direccion, " +
+                    "detalle_pago_venta.deuda_actual AS deuda FROM cliente INNER JOIN telefono "
+                    + "ON telefono.cliente_id = cliente.id INNER JOIN direccion ON " +
+                    "direccion.id = cliente.direccion_id INNER JOIN detalle_pago_venta " +
+                    " ON detalle_pago_venta.cliente_id = cliente.id  WHERE cliente.id = " + cliente_id +";";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                registros[0] = String.valueOf(rs.getInt("num"));
+                registros[1] = rs.getString("nombre");
+                registros[2] = rs.getString("apellido");
+                registros[3] = rs.getString("descp");
+                registros[4] = rs.getString("telefono");
+                registros[5] = rs.getString("direccion");
+                registros[6] = String.valueOf(rs.getFloat("deuda"));
+            }
+            
+            for (String registro : registros) {
+                System.out.println("valores: " + registro);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return registros;
+    }
+    
+    public boolean ActualizarCliente(int clienteId, String nombre, String apellido,
+            int direccion_id, String descripcion, String telefono, float deuda) {
+        try {
+            CallableStatement procedimiento = con.prepareCall("{call ActualizarCliente(?,?,?,?,?,?,?)}");
+            procedimiento.setInt(1, clienteId);
+            procedimiento.setString(2, nombre);
+            procedimiento.setString(3, apellido);
+            procedimiento.setInt(4, direccion_id);
+            procedimiento.setString(5, descripcion);
+            procedimiento.setString(6, telefono);
+            procedimiento.setFloat(7, deuda);
+            return !procedimiento.execute() == true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }

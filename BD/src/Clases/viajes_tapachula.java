@@ -144,11 +144,12 @@ public class viajes_tapachula {
     //SELECT YEAR(viajes_tapachula.fecha) AS afecha FROM viajes_tapachula GROUP BY afecha;
     public DefaultComboBoxModel getAnio(DefaultComboBoxModel modelo) {
         try {
-            String sql = "SELECT YEAR(viajes_tapachula.fecha) AS afecha FROM viajes_tapachula GROUP BY afecha;";
+            String sql = "SELECT YEAR(viajes_tapachula.fecha) FROM viajes_tapachula "
+                    + " GROUP BY YEAR(viajes_tapachula.fecha);";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                modelo.addElement(rs.getString("afecha"));
+                modelo.addElement(rs.getString("YEAR(viajes_tapachula.fecha)"));
             }
             return modelo;
         } catch (SQLException ex) {
