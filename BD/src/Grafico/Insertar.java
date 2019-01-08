@@ -1356,9 +1356,6 @@ public class Insertar extends javax.swing.JFrame {
                 }
                 break;
                 
-            case 2:
-                cmbDireccionCliente.setModel(proveedor.getProveedor((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
-                break;
         }
     }
     private void cmbDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionClienteActionPerformed
@@ -1944,14 +1941,6 @@ public class Insertar extends javax.swing.JFrame {
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtTelefonoProveedor.requestFocus();
-            return false;
-        }
-        else if(txtDuedaProveedor.getText().length() == 0)
-        {
-            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Deuda inicial vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-            txtDuedaProveedor.requestFocus();
             return false;
         }
         else if(cmbDireccionProveedor.getSelectedItem().equals("Escoja una opción"))

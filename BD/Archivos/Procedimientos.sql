@@ -8,6 +8,7 @@ DROP PROCEDURE IF EXISTS InsertarLugar //
 DROP PROCEDURE IF EXISTS InsertarViajeTapachula //
 DROP PROCEDURE IF EXISTS InsertarFechaViajeTapachula //
 DROP PROCEDURE IF EXISTS ActualizarCliente //
+DROP PROCEDURE IF EXISTS ActualizarProveedor //
 
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
@@ -33,6 +34,15 @@ BEGIN
     UPDATE detalle_pago_venta SET deuda_actual = vDeuda WHERE detalle_pago_venta.cliente_id = vIdCliente;
 END; //
 
+CREATE PROCEDURE ActualizarProveedor(vIdProveedor INT, vNombre VARCHAR(45), vApellido VARCHAR(45),
+	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeuda FLOAT)
+BEGIN
+	UPDATE proveedor SET nombre = vNombre, apellido = vApellido, descripcion = vDescripcion,
+    direccion_id = vIdDireccion WHERE id = vIdProveedor;
+    UPDATE telefono SET telefono = vTelefono WHERE telefono.proveedor_id = vIdProveedor;
+    UPDATE detalle_pago_compra SET deuda_actual = vDeuda WHERE detalle_pago_compra.proveedor_id = vIdProveedor;
+END; //
+
 CREATE PROCEDURE InsertarProveedor(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
 BEGIN
@@ -44,7 +54,8 @@ BEGIN
     SELECT MAX(id) INTO vIdProveedor FROM proveedor;
     INSERT INTO telefono(telefono, proveedor_id) VALUES(vTelefono, vIdProveedor);
     
-    INSERT INTO detalle_pago_compra(proveedor_id, deuda_inicial, deuda_actual, fecha_pago) VALUES(vIdProveedor, vDeudaInicial, vDeudaInicial, CURDATE());
+    INSERT INTO detalle_pago_compra(proveedor_id, deuda_inicial, deuda_actual, fecha_pago) 
+    VALUES(vIdProveedor, vDeudaInicial, vDeudaInicial, CURDATE());
 END; //
 
 CREATE PROCEDURE InsertarDireccion(Direccion VARCHAR(60))
