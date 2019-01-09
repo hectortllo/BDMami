@@ -157,4 +157,35 @@ public class viajes_tapachula {
             return modelo;
         }
     }
+        
+    public DefaultTableModel getDetalleTapachula(int viaje_TapachulaId, JTable tabla){
+        try {
+            String titulos[] = new String[4];
+            for (byte i = 0; i < titulos.length; i++) {
+                titulos[i] = tabla.getColumnName(i);
+            }
+            String sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, " +
+            " detalle_tapachula.descripcion AS descp, lugar_tapachula.lugar AS lugar " +
+            " FROM viajes_tapachula INNER JOIN detalle_tapachula ON " +
+            " detalle_tapachula.viajes_tapachula_id = viajes_tapachula.id INNER JOIN lugar_tapachula ON " +
+            " detalle_tapachula.lugar_tapachula_id = lugar_tapachula.id " +
+            " WHERE viajes_tapachula.id = " + viaje_TapachulaId + ";";
+            
+            DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            String registros[] = new String[4];
+            while (rs.next()) {
+                registros[0] = rs.getString("num");
+                registros[1] = rs.getString("fecha");
+                registros[2] = rs.getString("lugar");
+                registros[3] = rs.getString("descp");
+                modelo.addRow(registros);
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            Logger.getLogger(viajes_tapachula.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

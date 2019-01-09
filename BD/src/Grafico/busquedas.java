@@ -13,7 +13,9 @@ import Clases.compra;
 import Clases.viajes_tapachula;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JTextField;
+import keeptoo.KGradientPanel;
 import rojerusan.RSNotifyAnimated;
 /**
  *
@@ -33,6 +35,7 @@ public class busquedas extends javax.swing.JFrame {
         initComponents();
         lblClienteId.setVisible(false);
         lblProveedorId.setVisible(false);
+        lblTapachulaId.setVisible(false);
         cmbBusquedaCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaCliente.getModel()));
         cmbBusquedaProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbBusquedaProveedor.getModel()));
         cmbAnioTapachula.setModel(tapachula.getAnio((DefaultComboBoxModel) cmbAnioTapachula.getModel()));
@@ -105,6 +108,7 @@ public class busquedas extends javax.swing.JFrame {
         btnRegresarProducto = new javax.swing.JButton();
         lblAnioTapachula = new javax.swing.JLabel();
         cmbMesTapachula = new rojerusan.RSComboMetro();
+        lblTapachulaId = new javax.swing.JLabel();
         pnlEditarCliente = new keeptoo.KGradientPanel();
         lblClienteId = new javax.swing.JLabel();
         lblTitulo1 = new javax.swing.JLabel();
@@ -143,6 +147,11 @@ public class busquedas extends javax.swing.JFrame {
         btnEditarCancelarProveedor = new javax.swing.JButton();
         btnEditarRegresarProveedor = new javax.swing.JButton();
         lblProveedorId = new javax.swing.JLabel();
+        pnlDetalleTapachula = new keeptoo.KGradientPanel();
+        lblDetalleViajeTapachula = new javax.swing.JLabel();
+        btnRegresarDetalleTapachula = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblDetalleViajeTapachula = new rojerusan.RSTableMetro();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
 
@@ -185,6 +194,11 @@ public class busquedas extends javax.swing.JFrame {
         ItemEditarTapachula.setBackground(new java.awt.Color(204, 204, 255));
         ItemEditarTapachula.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         ItemEditarTapachula.setText("Detalle");
+        ItemEditarTapachula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemEditarTapachulaActionPerformed(evt);
+            }
+        });
         MenuEditarTapachula.add(ItemEditarTapachula);
 
         PMEditarTapachula.add(MenuEditarTapachula);
@@ -413,6 +427,11 @@ public class busquedas extends javax.swing.JFrame {
         tblBusquedaCliente.setRowHeight(25);
         tblBusquedaCliente.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblBusquedaCliente);
+        if (tblBusquedaCliente.getColumnModel().getColumnCount() > 0) {
+            tblBusquedaCliente.getColumnModel().getColumn(4).setHeaderValue("Descripción");
+            tblBusquedaCliente.getColumnModel().getColumn(5).setHeaderValue("Dirección");
+            tblBusquedaCliente.getColumnModel().getColumn(6).setHeaderValue("Deuda");
+        }
 
         pnlBusquedaCliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1090, 350));
 
@@ -613,6 +632,7 @@ public class busquedas extends javax.swing.JFrame {
             }
         });
         pnlBuscarTapachula.add(cmbMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 290, 40));
+        pnlBuscarTapachula.add(lblTapachulaId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
         rSPanelsSlider1.add(pnlBuscarTapachula, "card5");
 
@@ -907,6 +927,66 @@ public class busquedas extends javax.swing.JFrame {
 
         rSPanelsSlider1.add(pnlEditarProveedor, "card4");
 
+        pnlDetalleTapachula.setkEndColor(new java.awt.Color(0, 51, 51));
+        pnlDetalleTapachula.setkGradientFocus(1000);
+        pnlDetalleTapachula.setkStartColor(new java.awt.Color(0, 204, 204));
+        pnlDetalleTapachula.setName("pnlBusquedaCliente"); // NOI18N
+        pnlDetalleTapachula.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDetalleViajeTapachula.setFont(new java.awt.Font("Consolas", 1, 60)); // NOI18N
+        lblDetalleViajeTapachula.setForeground(new java.awt.Color(204, 255, 153));
+        lblDetalleViajeTapachula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDetalleViajeTapachula.setText("DETALLE VAIJE TAPACHULA");
+        lblDetalleViajeTapachula.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        pnlDetalleTapachula.add(lblDetalleViajeTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1170, 60));
+
+        btnRegresarDetalleTapachula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
+        btnRegresarDetalleTapachula.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnRegresarDetalleTapachula.setContentAreaFilled(false);
+        btnRegresarDetalleTapachula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarDetalleTapachula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarDetalleTapachulaActionPerformed(evt);
+            }
+        });
+        pnlDetalleTapachula.add(btnRegresarDetalleTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 40, 80, 80));
+
+        tblDetalleViajeTapachula = new rojerusan.RSTableMetro() {
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tblDetalleViajeTapachula.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "No.", "Fecha", "Lugar", "Descripción"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDetalleViajeTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblDetalleViajeTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
+        tblDetalleViajeTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
+        tblDetalleViajeTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
+        tblDetalleViajeTapachula.setRowHeight(25);
+        tblDetalleViajeTapachula.getTableHeader().setReorderingAllowed(false);
+        jScrollPane6.setViewportView(tblDetalleViajeTapachula);
+
+        pnlDetalleTapachula.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1100, 360));
+
+        rSPanelsSlider1.add(pnlDetalleTapachula, "card3");
+
         jPanel1.add(rSPanelsSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1170, 550));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 660));
@@ -934,42 +1014,15 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMoverMousePressed
 
     private void btnBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaClienteActionPerformed
-        if(!this.btnBusquedaCliente.isSelected())
-        {
-            rSPanelsSlider1.setPanelSlider(10, pnlBusquedaCliente, RSPanelsSlider.DIRECT.RIGHT);
-            this.btnBusquedaCliente.setSelected(true);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-        }
+        moverPanel(pnlBusquedaCliente, true, false, btnBusquedaCliente, true);
     }//GEN-LAST:event_btnBusquedaClienteActionPerformed
 
     private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
-        if(!this.btnProveedor.isSelected())
-        {
-            this.btnProveedor.setSelected(true);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBuscarProveedor, true, false, btnProveedor, true);
     }//GEN-LAST:event_btnProveedorActionPerformed
 
     private void btnBusquedaTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaTapachulaActionPerformed
-        if(!this.btnBusquedaTapachula.isSelected())
-        {
-            this.btnBusquedaTapachula.setSelected(true);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            //agregarCamposAComboBox(cmbAnioTapachula, cmbBusquedaProveedor, 2);
-            rSPanelsSlider1.setPanelSlider(10, pnlBuscarTapachula, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBuscarTapachula, true, false, btnBusquedaTapachula, true);
     }//GEN-LAST:event_btnBusquedaTapachulaActionPerformed
 
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
@@ -984,30 +1037,12 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void btnRegresarBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarBusquedaClienteActionPerformed
-        if(!this.btnRegresarBusquedaCliente.isSelected())
-        {
-            this.btnRegresarBusquedaCliente.setSelected(true);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBusquedas, true, false, btnRegresarBusquedaCliente, true);
     }//GEN-LAST:event_btnRegresarBusquedaClienteActionPerformed
 
     
     private void btnRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProveedorActionPerformed
-        if(!this.btnRegresarProveedor.isSelected())
-        {
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(true);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBusquedas, true, false, btnRegresarProveedor, true);
     }//GEN-LAST:event_btnRegresarProveedorActionPerformed
 
     private void cmbBusquedaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbBusquedaClienteMouseClicked
@@ -1051,16 +1086,7 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbBusquedaClienteActionPerformed
 
     private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
-        if(!this.btnRegresarProducto.isSelected())
-        {
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(true);
-            rSPanelsSlider1.setPanelSlider(10, pnlBusquedas, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBusquedas, true, false, btnRegresarProducto, true);
     }//GEN-LAST:event_btnRegresarProductoActionPerformed
 
     private void cmbAnioTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioTapachulaActionPerformed
@@ -1094,19 +1120,7 @@ public class busquedas extends javax.swing.JFrame {
         if (seleccion != -1) {
             int id = Integer.parseInt((String) tblBusquedaCliente.getValueAt(seleccion, 0));
             System.out.println("seleccion: " + seleccion);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarEditarCliente.setSelected(false);
-            this.btnCancelarEditarCliente.setSelected(false);
-            this.btnRegresarEditarCliente.setSelected(false);
-            this.btnEditarCancelarProveedor.setSelected(false);
-            this.btnEditarGuardarProveedor.setSelected(false);
-            this.btnEditarRegresarProveedor.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlEditarCliente, RSPanelsSlider.DIRECT.RIGHT);
+            moverPanel(pnlEditarCliente, false, false, null, false);
             lblClienteId.setText(String.valueOf(id));
             registros = cliente.getCliente(id);
             txtNombreEditarCliente.setText(registros[1]);
@@ -1213,41 +1227,14 @@ public class busquedas extends javax.swing.JFrame {
                 RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasCliente();
             }
-            if(!this.btnGuardarEditarCliente.isSelected())
-            {
-                this.btnRegresarEditarCliente.setSelected(false);
-                this.btnGuardarEditarCliente.setSelected(true);
-                this.btnCancelarEditarCliente.setSelected(false);
-                this.btnProveedor.setSelected(false);
-                this.btnRegresarProveedor.setSelected(false);
-                tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
-                rSPanelsSlider1.setPanelSlider(10, pnlBusquedaCliente, RSPanelsSlider.DIRECT.RIGHT);
-            }
+            tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
+            moverPanel(pnlBusquedaCliente, true, false, btnGuardarEditarCliente, true);
         }
         
     }//GEN-LAST:event_btnGuardarEditarClienteActionPerformed
 
     private void btnRegresarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarEditarClienteActionPerformed
-        if(!this.btnRegresarEditarCliente.isSelected())
-        {
-            this.btnRegresarEditarCliente.setSelected(true);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarEditarCliente.setSelected(false);
-            this.btnCancelarEditarCliente.setSelected(false);
-            this.btnRegresarEditarCliente.setSelected(false);
-            this.btnEditarCancelarProveedor.setSelected(false);
-            this.btnEditarGuardarProveedor.setSelected(false);
-            this.btnEditarRegresarProveedor.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlBusquedaCliente, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlBusquedaCliente, true, false, btnRegresarEditarCliente, true);
     }//GEN-LAST:event_btnRegresarEditarClienteActionPerformed
 
     private void btnCancelarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarClienteActionPerformed
@@ -1350,27 +1337,8 @@ public class busquedas extends javax.swing.JFrame {
                     5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                     RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasProveedor();
-                if(!this.btnEditarGuardarProveedor.isSelected())
-                {
-                    this.btnEditarGuardarProveedor.setSelected(true);
-                    this.btnRegresarEditarCliente.setSelected(false);
-                    this.btnRegresarBusquedaCliente.setSelected(false);
-                    this.btnBusquedaCliente.setSelected(false);
-                    this.btnBusquedaTapachula.setSelected(false);
-                    this.btnProveedor.setSelected(false);
-                    this.btnRegresarProveedor.setSelected(false);
-                    this.btnRegresarProducto.setSelected(false);
-                    this.btnGuardarEditarCliente.setSelected(false);
-                    this.btnCancelarEditarCliente.setSelected(false);
-                    this.btnRegresarEditarCliente.setSelected(false);
-                    this.btnEditarCancelarProveedor.setSelected(false);
-                    this.btnEditarGuardarProveedor.setSelected(false);
-                    this.btnProveedor.setSelected(false);
-                    this.btnRegresarProveedor.setSelected(false);
-                    this.btnRegresarProducto.setSelected(false);
-                    tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
-                    rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
-                }
+                tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
+                moverPanel(pnlBuscarProveedor, true, false, btnEditarGuardarProveedor, true);
             }
         }
     }//GEN-LAST:event_btnEditarGuardarProveedorActionPerformed
@@ -1379,27 +1347,57 @@ public class busquedas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEditarCancelarProveedorActionPerformed
 
-    private void btnEditarRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarRegresarProveedorActionPerformed
-        if(!this.btnEditarRegresarProveedor.isSelected())
-        {
-            this.btnRegresarEditarCliente.setSelected(false);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarEditarCliente.setSelected(false);
-            this.btnCancelarEditarCliente.setSelected(false);
-            this.btnRegresarEditarCliente.setSelected(false);
-            this.btnEditarCancelarProveedor.setSelected(false);
-            this.btnEditarGuardarProveedor.setSelected(false);
-            this.btnEditarRegresarProveedor.setSelected(true);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlBuscarProveedor, RSPanelsSlider.DIRECT.RIGHT);
+    private void moverPanel(KGradientPanel panel, boolean mover, boolean no_mover, JButton boton, boolean opcion){
+        /*
+            Si la variable opcion es verdadera quiere decir que la llamada a la función viene desde un botón, 
+            si opcion es falsa quiere decir que la llamada a la función solo quiere mover un panel, y no viene
+            desde ningún botón
+        */
+        if(opcion){
+            if(!boton.isSelected()){
+                boton.setSelected(mover);
+                this.btnRegresarEditarCliente.setSelected(no_mover);
+                this.btnRegresarBusquedaCliente.setSelected(no_mover);
+                this.btnBusquedaCliente.setSelected(no_mover);
+                this.btnBusquedaTapachula.setSelected(no_mover);
+                this.btnProveedor.setSelected(no_mover);
+                this.btnRegresarProveedor.setSelected(no_mover);
+                this.btnRegresarProducto.setSelected(no_mover);
+                this.btnGuardarEditarCliente.setSelected(no_mover);
+                this.btnCancelarEditarCliente.setSelected(no_mover);
+                this.btnRegresarEditarCliente.setSelected(no_mover);
+                this.btnEditarCancelarProveedor.setSelected(no_mover);
+                this.btnEditarGuardarProveedor.setSelected(no_mover);
+                this.btnEditarRegresarProveedor.setSelected(no_mover);
+                this.btnProveedor.setSelected(no_mover);
+                this.btnRegresarProveedor.setSelected(no_mover);
+                this.btnRegresarProducto.setSelected(no_mover);
+                rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
+            }
+        } else {
+            this.btnRegresarEditarCliente.setSelected(no_mover);
+                this.btnRegresarBusquedaCliente.setSelected(no_mover);
+                this.btnBusquedaCliente.setSelected(no_mover);
+                this.btnBusquedaTapachula.setSelected(no_mover);
+                this.btnProveedor.setSelected(no_mover);
+                this.btnRegresarProveedor.setSelected(no_mover);
+                this.btnRegresarProducto.setSelected(no_mover);
+                this.btnGuardarEditarCliente.setSelected(no_mover);
+                this.btnCancelarEditarCliente.setSelected(no_mover);
+                this.btnRegresarEditarCliente.setSelected(no_mover);
+                this.btnEditarCancelarProveedor.setSelected(no_mover);
+                this.btnEditarGuardarProveedor.setSelected(no_mover);
+                this.btnEditarRegresarProveedor.setSelected(no_mover);
+                this.btnProveedor.setSelected(no_mover);
+                this.btnRegresarProveedor.setSelected(no_mover);
+                this.btnRegresarProducto.setSelected(no_mover);
+                this.btnRegresarDetalleTapachula.setSelected(no_mover);
+                rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
         }
+        
+    }
+    private void btnEditarRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarRegresarProveedorActionPerformed
+        moverPanel(pnlBuscarProveedor, true, false, btnEditarRegresarProveedor, true);
     }//GEN-LAST:event_btnEditarRegresarProveedorActionPerformed
 
     private void ItemEditarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEditarProveedorActionPerformed
@@ -1409,19 +1407,7 @@ public class busquedas extends javax.swing.JFrame {
         if (seleccion != -1) {
             int id = Integer.parseInt((String) tblBusquedaProveedor.getValueAt(seleccion, 0));
             System.out.println("seleccion: " + seleccion);
-            this.btnRegresarBusquedaCliente.setSelected(false);
-            this.btnBusquedaCliente.setSelected(false);
-            this.btnBusquedaTapachula.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarEditarCliente.setSelected(false);
-            this.btnCancelarEditarCliente.setSelected(false);
-            this.btnRegresarEditarCliente.setSelected(false);
-            this.btnEditarCancelarProveedor.setSelected(false);
-            this.btnEditarGuardarProveedor.setSelected(false);
-            this.btnEditarRegresarProveedor.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlEditarProveedor, RSPanelsSlider.DIRECT.RIGHT);
+            moverPanel(pnlEditarProveedor, false, false, null, false);
             lblProveedorId.setText(String.valueOf(id));
             System.out.println("id: " + lblProveedorId.getText());
             registros = proveedor.getProveedor(id);
@@ -1434,6 +1420,23 @@ public class busquedas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ItemEditarProveedorActionPerformed
 
+    private void ItemEditarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEditarTapachulaActionPerformed
+        int seleccion = tblBusquedaTapachula.getSelectedRow();
+        System.out.println("seleccion: " + seleccion);
+        if (seleccion != -1) {
+            int id = Integer.parseInt((String) tblBusquedaTapachula.getValueAt(seleccion, 0));
+            moverPanel(pnlDetalleTapachula, false, false, null, false);
+            lblTapachulaId.setText(String.valueOf(id));
+            System.out.println("id: " + id);
+                    tblDetalleViajeTapachula.setModel(tapachula.getDetalleTapachula(id, tblDetalleViajeTapachula));
+        }
+    }//GEN-LAST:event_ItemEditarTapachulaActionPerformed
+
+    private void btnRegresarDetalleTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarDetalleTapachulaActionPerformed
+        moverPanel(pnlBuscarTapachula, true, false, btnRegresarDetalleTapachula, true);
+    }//GEN-LAST:event_btnRegresarDetalleTapachulaActionPerformed
+
+    
            
     private final Cliente cliente;
     private final Proveedor proveedor;
@@ -1458,6 +1461,7 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarEditarCliente;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegresarBusquedaCliente;
+    private javax.swing.JButton btnRegresarDetalleTapachula;
     private javax.swing.JButton btnRegresarEditarCliente;
     private javax.swing.JButton btnRegresarProducto;
     private javax.swing.JButton btnRegresarProveedor;
@@ -1478,6 +1482,7 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel lblAnioTapachula;
     private javax.swing.JLabel lblApellidoEditarCliente;
@@ -1486,6 +1491,7 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblClienteId;
     private javax.swing.JLabel lblDescripcionProveedor;
+    private javax.swing.JLabel lblDetalleViajeTapachula;
     private javax.swing.JLabel lblDeudaEditarCliente;
     private javax.swing.JLabel lblDeudaProveedor;
     private javax.swing.JLabel lblDireccion;
@@ -1503,6 +1509,7 @@ public class busquedas extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreProveedor;
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblProveedorId;
+    private javax.swing.JLabel lblTapachulaId;
     private javax.swing.JLabel lblTelefonoProveedor;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
@@ -1512,6 +1519,7 @@ public class busquedas extends javax.swing.JFrame {
     private keeptoo.KGradientPanel pnlBuscarTapachula;
     private keeptoo.KGradientPanel pnlBusquedaCliente;
     private keeptoo.KGradientPanel pnlBusquedas;
+    private keeptoo.KGradientPanel pnlDetalleTapachula;
     private keeptoo.KGradientPanel pnlEditarCliente;
     private keeptoo.KGradientPanel pnlEditarProveedor;
     private javax.swing.JPanel pnlOpciones;
@@ -1519,6 +1527,7 @@ public class busquedas extends javax.swing.JFrame {
     private rojerusan.RSTableMetro tblBusquedaCliente;
     private rojerusan.RSTableMetro tblBusquedaProveedor;
     private rojerusan.RSTableMetro tblBusquedaTapachula;
+    private rojerusan.RSTableMetro tblDetalleViajeTapachula;
     private javax.swing.JTextField txtApellidoEditarCliente;
     private javax.swing.JTextArea txtAreaDescripcionEditarCliente;
     private javax.swing.JTextField txtDeudaEditarCliente;
