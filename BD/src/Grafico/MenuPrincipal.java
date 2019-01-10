@@ -67,6 +67,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnNegocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-pequeña-empresa-256.png"))); // NOI18N
         btnNegocio.setContentAreaFilled(false);
         btnNegocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNegocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNegocioActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(btnNegocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
         lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/icons8-chevron-abajo-en-círculo-95.png"))); // NOI18N
@@ -160,6 +165,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         busquedas buscar = new busquedas();
         buscar.setVisible(true);
     }//GEN-LAST:event_btnBusquedasActionPerformed
+
+    private void btnNegocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNegocioActionPerformed
+        this.dispose();
+        Negocio negocio = new Negocio();
+        negocio.setVisible(true);
+    }//GEN-LAST:event_btnNegocioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBusquedas;

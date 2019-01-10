@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import keeptoo.KGradientPanel;
 import rojerusan.RSNotifyAnimated;
+
 /**
  *
  * @author hectortllo
@@ -27,6 +28,7 @@ public class busquedas extends javax.swing.JFrame {
      * Creates new form Insertar
      */
     int x, y;
+
     public busquedas() {
         cliente = new Cliente();
         proveedor = new Proveedor();
@@ -43,7 +45,7 @@ public class busquedas extends javax.swing.JFrame {
         cmbEditarDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbEditarDireccionProveedor.getModel()));
         tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
         tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
-        tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula((String)cmbAnioTapachula.getSelectedItem(), (String)cmbMesTapachula.getSelectedItem(), tblBusquedaTapachula));
+        tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula((String) cmbAnioTapachula.getSelectedItem(), (String) cmbMesTapachula.getSelectedItem(), tblBusquedaTapachula));
     }
 
     /**
@@ -1000,8 +1002,9 @@ public class busquedas extends javax.swing.JFrame {
 
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         int n = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "CERRANDO", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION)
+        if (n == JOptionPane.YES_OPTION) {
             System.exit(0);
+        }
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void lblMoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMoverMouseDragged
@@ -1027,20 +1030,19 @@ public class busquedas extends javax.swing.JFrame {
 
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
         int n = JOptionPane.showConfirmDialog(null, "¿Volver al menú principal?", "MENÚ PRINCIPAL", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION)
-        {
+        if (n == JOptionPane.YES_OPTION) {
             this.dispose();
             MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
         }
-            
+
     }//GEN-LAST:event_lblMenuPrincipalMouseClicked
 
     private void btnRegresarBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarBusquedaClienteActionPerformed
         moverPanel(pnlBusquedas, true, false, btnRegresarBusquedaCliente, true);
     }//GEN-LAST:event_btnRegresarBusquedaClienteActionPerformed
 
-    
+
     private void btnRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProveedorActionPerformed
         moverPanel(pnlBusquedas, true, false, btnRegresarProveedor, true);
     }//GEN-LAST:event_btnRegresarProveedorActionPerformed
@@ -1060,29 +1062,29 @@ public class busquedas extends javax.swing.JFrame {
             e.consume();
         }
     }
-       
+
     private void BusquedaCliente() {
         //Declaro variables a utilizar. Y les asigno valores con if ternarios si dicen ver todo les mando cadena vacía si no lo que este en el combobox.
-        String direccion; 
+        String direccion;
         direccion = cmbBusquedaCliente.getSelectedItem().equals("Ver Todo") ? "" : (String) cmbBusquedaCliente.getSelectedItem();
         tblBusquedaCliente.setModel(cliente.buscarClientes(txtNombreBusquedaCliente.getText(), direccion, tblBusquedaCliente));
     }
-    
+
     private void BusquedaProveedor() {
         //Declaro variables a utilizar. Y les asigno valores con if ternarios si dicen ver todo les mando cadena vacía si no lo que este en el combobox.
-        String direccion; 
+        String direccion;
         direccion = cmbBusquedaProveedor.getSelectedItem().equals("Ver Todo") ? "" : (String) cmbBusquedaProveedor.getSelectedItem();
         tblBusquedaProveedor.setModel(proveedor.buscarProveedores(txtNombreBusquedaProveedor.getText(), direccion, tblBusquedaProveedor));
     }
-    
-    private void BusquedaTapachula(){
+
+    private void BusquedaTapachula() {
         String anio, mes;
-        anio = cmbAnioTapachula.getSelectedItem().equals("Todos los años") ? "Todos los años" : (String)cmbAnioTapachula.getSelectedItem();
+        anio = cmbAnioTapachula.getSelectedItem().equals("Todos los años") ? "Todos los años" : (String) cmbAnioTapachula.getSelectedItem();
         mes = cmbMesTapachula.getSelectedItem().equals("Todos los meses") ? "Todos los meses" : String.valueOf(cmbMesTapachula.getSelectedIndex());
         tblBusquedaTapachula.setModel(tapachula.buscarViajeTapachula(anio, mes, tblBusquedaTapachula));
     }
     private void cmbBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBusquedaClienteActionPerformed
-        BusquedaCliente();      
+        BusquedaCliente();
     }//GEN-LAST:event_cmbBusquedaClienteActionPerformed
 
     private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
@@ -1138,7 +1140,7 @@ public class busquedas extends javax.swing.JFrame {
             e.consume();
         }
     }
-    
+
     private void puntoFlotante(KeyEvent e, JTextField txt) {
         if (!Character.isDigit(e.getKeyChar()) && e.getKeyChar() != '.' && e.getKeyChar() != 8) {
             e.consume();
@@ -1147,7 +1149,7 @@ public class busquedas extends javax.swing.JFrame {
             e.consume();
         }
     }
-    
+
     private void txtApellidoEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEditarClienteKeyTyped
         Letras(evt);
     }//GEN-LAST:event_txtApellidoEditarClienteKeyTyped
@@ -1160,8 +1162,7 @@ public class busquedas extends javax.swing.JFrame {
         Letras(evt);
     }//GEN-LAST:event_txtNombreEditarClienteKeyTyped
 
-    private void limpiarCajasCliente()
-    {
+    private void limpiarCajasCliente() {
         txtNombreEditarCliente.setText("");
         txtApellidoEditarCliente.setText("");
         txtTelefonoEditarCliente.setText("");
@@ -1169,68 +1170,58 @@ public class busquedas extends javax.swing.JFrame {
         cmbDireccionEditarCliente.setSelectedIndex(0);
         txtDeudaEditarCliente.setText("");
     }
-    
-    private boolean verificarCliente()
-    {
-        if(txtNombreEditarCliente.getText().length() == 0)
-        {
+
+    private boolean verificarCliente() {
+        if (txtNombreEditarCliente.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtNombreEditarCliente.requestFocus();
             return false;
-        }
-        else if(txtApellidoEditarCliente.getText().length() == 0)
-        {
+        } else if (txtApellidoEditarCliente.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Apellido vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtApellidoEditarCliente.requestFocus();
             return false;
-        }
-        else if(txtTelefonoEditarCliente.getText().length() == 0)
-        {
+        } else if (txtTelefonoEditarCliente.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtTelefonoEditarCliente.requestFocus();
             return false;
-        }
-        else if(cmbDireccionEditarCliente.getSelectedItem().equals("Escoja una opción"))
-        {
+        } else if (cmbDireccionEditarCliente.getSelectedItem().equals("Escoja una opción")) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja un campo correcto en la dirección",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             cmbDireccionEditarCliente.requestFocus();
             return false;
-        }
-        else if(txtDeudaEditarCliente.getText().length() == 0){
+        } else if (txtDeudaEditarCliente.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Deuda Inicial vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtDeudaEditarCliente.requestFocus();
             return false;
-        }
-        else
+        } else {
             return true;
+        }
     }
     private void btnGuardarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEditarClienteActionPerformed
-        if(verificarCliente())
-        {
+        if (verificarCliente()) {
             System.out.println(cmbDireccionEditarCliente.getSelectedIndex());
-            if(cliente.ActualizarCliente(Integer.parseInt(lblClienteId.getText()), txtNombreEditarCliente.getText(), 
-                    txtApellidoEditarCliente.getText(), cmbDireccionEditarCliente.getSelectedIndex(), 
-                    txtAreaDescripcionEditarCliente.getText(), txtTelefonoEditarCliente.getText(), 
-                    Float.parseFloat(txtDeudaEditarCliente.getText()))){
+            if (cliente.ActualizarCliente(Integer.parseInt(lblClienteId.getText()), txtNombreEditarCliente.getText(),
+                    txtApellidoEditarCliente.getText(), cmbDireccionEditarCliente.getSelectedIndex(),
+                    txtAreaDescripcionEditarCliente.getText(), txtTelefonoEditarCliente.getText(),
+                    Float.parseFloat(txtDeudaEditarCliente.getText()))) {
                 new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Cliente actualizado correctamente",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                        5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasCliente();
             }
             tblBusquedaCliente.setModel(cliente.buscarClientes("", "", tblBusquedaCliente));
             moverPanel(pnlBusquedaCliente, true, false, btnGuardarEditarCliente, true);
         }
-        
+
     }//GEN-LAST:event_btnGuardarEditarClienteActionPerformed
 
     private void btnRegresarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarEditarClienteActionPerformed
@@ -1239,8 +1230,9 @@ public class busquedas extends javax.swing.JFrame {
 
     private void btnCancelarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarClienteActionPerformed
         int n = JOptionPane.showConfirmDialog(null, "¿Desea cancelar?", "CANCELAR", JOptionPane.YES_NO_OPTION);
-        if(n == JOptionPane.YES_OPTION)
-        limpiarCajasCliente();
+        if (n == JOptionPane.YES_OPTION) {
+            limpiarCajasCliente();
+        }
     }//GEN-LAST:event_btnCancelarEditarClienteActionPerformed
 
     private void txtDeudaEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeudaEditarClienteKeyTyped
@@ -1278,45 +1270,37 @@ public class busquedas extends javax.swing.JFrame {
         puntoFlotante(evt, txtEditarDuedaProveedor);
     }//GEN-LAST:event_txtEditarDuedaProveedorKeyTyped
 
-    private boolean verificarDatosProveedor()
-    {
-        if(txtEditarNombreProveedor.getText().length() == 0)
-        {
+    private boolean verificarDatosProveedor() {
+        if (txtEditarNombreProveedor.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Nombre vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtEditarNombreProveedor.requestFocus();
             return false;
-        }
-        else if(txtEditarApellidoProveedor.getText().length() == 0)
-        {
+        } else if (txtEditarApellidoProveedor.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Apellido vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtEditarApellidoProveedor.requestFocus();
             return false;
-        }
-        else if(txtEditarTelefonoProveedor.getText().length() == 0)
-        {
+        } else if (txtEditarTelefonoProveedor.getText().length() == 0) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtEditarTelefonoProveedor.requestFocus();
             return false;
-        }
-        else if(cmbEditarDireccionProveedor.getSelectedItem().equals("Escoja una opción"))
-        {
+        } else if (cmbEditarDireccionProveedor.getSelectedItem().equals("Escoja una opción")) {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Escoja un campo correcto en la dirección",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             cmbEditarDireccionProveedor.requestFocus();
             return false;
-        }
-        else
+        } else {
             return true;
+        }
     }
-    private void limpiarCajasProveedor()
-    {
+
+    private void limpiarCajasProveedor() {
         txtEditarNombreProveedor.setText("");
         txtEditarApellidoProveedor.setText("");
         txtEditarTelefonoProveedor.setText("");
@@ -1324,18 +1308,16 @@ public class busquedas extends javax.swing.JFrame {
         txtEditarAreaDescripcionProveedor.setText("");
         cmbEditarDireccionProveedor.setSelectedIndex(0);
     }
-    
+
     private void btnEditarGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarGuardarProveedorActionPerformed
-        if(verificarDatosProveedor())
-        {
-            if(proveedor.ActualizarProveedor(Integer.parseInt(lblProveedorId.getText()), txtEditarNombreProveedor.getText(),
-                txtEditarApellidoProveedor.getText(), cmbEditarDireccionProveedor.getSelectedIndex(),
-                txtEditarAreaDescripcionProveedor.getText(), txtEditarTelefonoProveedor.getText(), 
-                Float.parseFloat(txtEditarDuedaProveedor.getText())))
-            {
+        if (verificarDatosProveedor()) {
+            if (proveedor.ActualizarProveedor(Integer.parseInt(lblProveedorId.getText()), txtEditarNombreProveedor.getText(),
+                    txtEditarApellidoProveedor.getText(), cmbEditarDireccionProveedor.getSelectedIndex(),
+                    txtEditarAreaDescripcionProveedor.getText(), txtEditarTelefonoProveedor.getText(),
+                    Float.parseFloat(txtEditarDuedaProveedor.getText()))) {
                 new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Proveedor editado correctamente",
-                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                    RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                        5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasProveedor();
                 tblBusquedaProveedor.setModel(proveedor.buscarProveedores("", "", tblBusquedaProveedor));
                 moverPanel(pnlBuscarProveedor, true, false, btnEditarGuardarProveedor, true);
@@ -1344,17 +1326,17 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarGuardarProveedorActionPerformed
 
     private void btnEditarCancelarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCancelarProveedorActionPerformed
-        
+
     }//GEN-LAST:event_btnEditarCancelarProveedorActionPerformed
 
-    private void moverPanel(KGradientPanel panel, boolean mover, boolean no_mover, JButton boton, boolean opcion){
+    private void moverPanel(KGradientPanel panel, boolean mover, boolean no_mover, JButton boton, boolean opcion) {
         /*
             Si la variable opcion es verdadera quiere decir que la llamada a la función viene desde un botón, 
             si opcion es falsa quiere decir que la llamada a la función solo quiere mover un panel, y no viene
             desde ningún botón
-        */
-        if(opcion){
-            if(!boton.isSelected()){
+         */
+        if (opcion) {
+            if (!boton.isSelected()) {
                 boton.setSelected(mover);
                 this.btnRegresarEditarCliente.setSelected(no_mover);
                 this.btnRegresarBusquedaCliente.setSelected(no_mover);
@@ -1377,25 +1359,25 @@ public class busquedas extends javax.swing.JFrame {
         } else {
             //Esto se usa para cuando el click vino de un JMenuItem y no desde un JButton
             this.btnRegresarEditarCliente.setSelected(no_mover);
-                this.btnRegresarBusquedaCliente.setSelected(no_mover);
-                this.btnBusquedaCliente.setSelected(no_mover);
-                this.btnBusquedaTapachula.setSelected(no_mover);
-                this.btnProveedor.setSelected(no_mover);
-                this.btnRegresarProveedor.setSelected(no_mover);
-                this.btnRegresarProducto.setSelected(no_mover);
-                this.btnGuardarEditarCliente.setSelected(no_mover);
-                this.btnCancelarEditarCliente.setSelected(no_mover);
-                this.btnRegresarEditarCliente.setSelected(no_mover);
-                this.btnEditarCancelarProveedor.setSelected(no_mover);
-                this.btnEditarGuardarProveedor.setSelected(no_mover);
-                this.btnEditarRegresarProveedor.setSelected(no_mover);
-                this.btnProveedor.setSelected(no_mover);
-                this.btnRegresarProveedor.setSelected(no_mover);
-                this.btnRegresarProducto.setSelected(no_mover);
-                this.btnRegresarDetalleTapachula.setSelected(no_mover);
-                rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
+            this.btnRegresarBusquedaCliente.setSelected(no_mover);
+            this.btnBusquedaCliente.setSelected(no_mover);
+            this.btnBusquedaTapachula.setSelected(no_mover);
+            this.btnProveedor.setSelected(no_mover);
+            this.btnRegresarProveedor.setSelected(no_mover);
+            this.btnRegresarProducto.setSelected(no_mover);
+            this.btnGuardarEditarCliente.setSelected(no_mover);
+            this.btnCancelarEditarCliente.setSelected(no_mover);
+            this.btnRegresarEditarCliente.setSelected(no_mover);
+            this.btnEditarCancelarProveedor.setSelected(no_mover);
+            this.btnEditarGuardarProveedor.setSelected(no_mover);
+            this.btnEditarRegresarProveedor.setSelected(no_mover);
+            this.btnProveedor.setSelected(no_mover);
+            this.btnRegresarProveedor.setSelected(no_mover);
+            this.btnRegresarProducto.setSelected(no_mover);
+            this.btnRegresarDetalleTapachula.setSelected(no_mover);
+            rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
         }
-        
+
     }
     private void btnEditarRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarRegresarProveedorActionPerformed
         moverPanel(pnlBuscarProveedor, true, false, btnEditarRegresarProveedor, true);
@@ -1429,7 +1411,7 @@ public class busquedas extends javax.swing.JFrame {
             moverPanel(pnlDetalleTapachula, false, false, null, false);
             lblTapachulaId.setText(String.valueOf(id));
             System.out.println("id: " + id);
-                    tblDetalleViajeTapachula.setModel(tapachula.getDetalleTapachula(id, tblDetalleViajeTapachula));
+            tblDetalleViajeTapachula.setModel(tapachula.getDetalleTapachula(id, tblDetalleViajeTapachula));
         }
     }//GEN-LAST:event_ItemEditarTapachulaActionPerformed
 
@@ -1437,8 +1419,6 @@ public class busquedas extends javax.swing.JFrame {
         moverPanel(pnlBuscarTapachula, true, false, btnRegresarDetalleTapachula, true);
     }//GEN-LAST:event_btnRegresarDetalleTapachulaActionPerformed
 
-    
-           
     private final Cliente cliente;
     private final Proveedor proveedor;
     private final compra compra;
