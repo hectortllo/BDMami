@@ -18,8 +18,10 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import keeptoo.KGradientPanel;
 import rojeru_san.componentes.RSDateChooser;
 import rojerusan.RSComboMetro;
 /**
@@ -1061,85 +1063,15 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMoverMousePressed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        if(!this.btnCliente.isSelected())
-        {
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarCliente, RSPanelsSlider.DIRECT.RIGHT);
-            this.btnCliente.setSelected(true);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnTapachula.setSelected(false);
-            this.btnGuardarTapachula.setSelected(false);
-            this.btnCancelarTapachula.setSelected(false);
-            this.btnRegresarTapachula.setSelected(false);
-        }
+        moverPanel(pnlInsertarCliente, true, false, btnCliente);
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
-        if(!this.btnProveedor.isSelected())
-        {
-            this.btnProveedor.setSelected(true);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnTapachula.setSelected(false);
-            this.btnGuardarTapachula.setSelected(false);
-            this.btnCancelarTapachula.setSelected(false);
-            this.btnRegresarTapachula.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarProveedor, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarProveedor, true, false, btnProveedor);
     }//GEN-LAST:event_btnProveedorActionPerformed
 
     private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
-        if(!this.btnProducto.isSelected())
-        {
-            this.btnProducto.setSelected(true);
-            this.btnCliente.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnTapachula.setSelected(false);
-            this.btnGuardarTapachula.setSelected(false);
-            this.btnCancelarTapachula.setSelected(false);
-            this.btnRegresarTapachula.setSelected(false);
-            agregarCamposAComboBox(cmbProveedorProducto, cmbDireccionProveedor, 2);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarProducto, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarProducto, true, false, btnProducto);
     }//GEN-LAST:event_btnProductoActionPerformed
 
     private void lblMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuPrincipalMouseClicked
@@ -1164,44 +1096,13 @@ public class Insertar extends javax.swing.JFrame {
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasCliente();
-                if(!this.btnGuardarCliente.isSelected())
-                {
-                    this.btnRegresarCliente.setSelected(false);
-                    this.btnGuardarCliente.setSelected(true);
-                    this.btnCancelarCliente.setSelected(false);
-                    this.btnCliente.setSelected(false);
-                    this.btnProducto.setSelected(false);
-                    this.btnProveedor.setSelected(false);
-                    this.btnGuardarProveedor.setSelected(false);
-                    this.btnCancelarProveedor.setSelected(false);
-                    this.btnRegresarProveedor.setSelected(false);
-                    rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-                }
+                moverPanel(pnlInsertarInicio, true, false, btnGuardarCliente);
             }
         }
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
     private void btnRegresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarClienteActionPerformed
-        if(!this.btnRegresarCliente.isSelected())
-        {
-            this.btnRegresarCliente.setSelected(true);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarInicio, true, false, btnRegresarCliente);
     }//GEN-LAST:event_btnRegresarClienteActionPerformed
 
     private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
@@ -1236,19 +1137,7 @@ public class Insertar extends javax.swing.JFrame {
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 limpiarCajasProveedor();
-                if(!this.btnGuardarProveedor.isSelected())
-                {
-                    this.btnRegresarCliente.setSelected(false);
-                    this.btnGuardarCliente.setSelected(false);
-                    this.btnCancelarCliente.setSelected(false);
-                    this.btnCliente.setSelected(false);
-                    this.btnProducto.setSelected(false);
-                    this.btnProveedor.setSelected(false);
-                    this.btnGuardarProveedor.setSelected(true);
-                    this.btnCancelarProveedor.setSelected(false);
-                    this.btnRegresarProveedor.setSelected(false);
-                    rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-                }
+                moverPanel(pnlInsertarInicio, true, false, btnGuardarProveedor);
             }
         }
         
@@ -1261,26 +1150,7 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarProveedorActionPerformed
 
     private void btnRegresarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProveedorActionPerformed
-        if(!this.btnRegresarProveedor.isSelected())
-        {
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(true);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarInicio, true, false, btnRegresarProveedor);
     }//GEN-LAST:event_btnRegresarProveedorActionPerformed
 
     private void cmbDireccionClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbDireccionClienteMouseClicked
@@ -1414,26 +1284,7 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnRegresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarProductoActionPerformed
-        if(!this.btnRegresarProducto.isSelected())
-        {
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(true);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarInicio, true, false, btnRegresarProducto);
     }//GEN-LAST:event_btnRegresarProductoActionPerformed
 
     private void btnLimpiarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProductoActionPerformed
@@ -1481,30 +1332,7 @@ public class Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbTipoCompraProductoActionPerformed
 
     private void btnTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTapachulaActionPerformed
-        if(!this.btnTapachula.isSelected())
-        {
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarTapachula, RSPanelsSlider.DIRECT.RIGHT);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarTapachula.setSelected(false);
-            this.btnCancelarTapachula.setSelected(false);
-            this.btnRegresarTapachula.setSelected(false);
-            this.btnTapachula.setSelected(true);
-        }
+        moverPanel(pnlInsertarTapachula, true, false, btnTapachula);
     }//GEN-LAST:event_btnTapachulaActionPerformed
 
     public String getFecha(RSDateChooser jd) {
@@ -1533,32 +1361,11 @@ public class Insertar extends javax.swing.JFrame {
                     5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                     RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
         }
+        moverPanel(pnlInsertarInicio, true, false, btnGuardarTapachula);
     }//GEN-LAST:event_btnGuardarTapachulaActionPerformed
 
     private void btnRegresarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarTapachulaActionPerformed
-        if(!this.btnRegresarTapachula.isSelected())
-        {
-            this.btnRegresarCliente.setSelected(false);
-            this.btnGuardarCliente.setSelected(false);
-            this.btnCancelarCliente.setSelected(false);
-            this.btnCliente.setSelected(false);
-            this.btnProducto.setSelected(false);
-            this.btnProveedor.setSelected(false);
-            this.btnGuardarProveedor.setSelected(false);
-            this.btnCancelarProveedor.setSelected(false);
-            this.btnRegresarProveedor.setSelected(false);
-            this.btnCancelarProducto.setSelected(false);
-            this.btnEditarProducto.setSelected(false);
-            this.btnLimpiarProducto.setSelected(false);
-            this.btnCancelarCompraProducto.setSelected(false);
-            this.btnAñadirProducto.setSelected(false);
-            this.btnFinalizarCompra.setSelected(false);
-            this.btnRegresarProducto.setSelected(false);
-            this.btnGuardarTapachula.setSelected(false);
-            this.btnCancelarTapachula.setSelected(false);
-            this.btnRegresarTapachula.setSelected(true);
-            rSPanelsSlider1.setPanelSlider(10, pnlInsertarInicio, RSPanelsSlider.DIRECT.RIGHT);
-        }
+        moverPanel(pnlInsertarInicio, true, false, btnRegresarTapachula);
     }//GEN-LAST:event_btnRegresarTapachulaActionPerformed
 
     private void btnCancelarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTapachulaActionPerformed
@@ -1955,6 +1762,35 @@ public class Insertar extends javax.swing.JFrame {
             return true;
     }
     
+    private void moverPanel(KGradientPanel panel, boolean mover, boolean no_mover, JButton boton){
+        /*
+            Si la variable opcion es verdadera quiere decir que la llamada a la función viene desde un botón, 
+            si opcion es falsa quiere decir que la llamada a la función solo quiere mover un panel, y no viene
+            desde ningún botón
+        */
+        if(!boton.isSelected()){
+            boton.setSelected(mover);
+            this.btnRegresarCliente.setSelected(no_mover);
+            this.btnGuardarCliente.setSelected(no_mover);
+            this.btnCancelarCliente.setSelected(no_mover);
+            this.btnCliente.setSelected(no_mover);
+            this.btnProducto.setSelected(no_mover);
+            this.btnProveedor.setSelected(no_mover);
+            this.btnGuardarProveedor.setSelected(no_mover);
+            this.btnCancelarProveedor.setSelected(no_mover);
+            this.btnRegresarProveedor.setSelected(no_mover);
+            this.btnCancelarProducto.setSelected(no_mover);
+            this.btnEditarProducto.setSelected(no_mover);
+            this.btnLimpiarProducto.setSelected(no_mover);
+            this.btnCancelarCompraProducto.setSelected(no_mover);
+            this.btnAñadirProducto.setSelected(no_mover);
+            this.btnFinalizarCompra.setSelected(no_mover);
+            this.btnRegresarProducto.setSelected(no_mover);
+            this.btnGuardarTapachula.setSelected(no_mover);
+            this.btnCancelarTapachula.setSelected(no_mover);
+            rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }    
     private final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
     private final Cliente cliente;
     private final Proveedor proveedor;

@@ -1375,6 +1375,7 @@ public class busquedas extends javax.swing.JFrame {
                 rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
             }
         } else {
+            //Esto se usa para cuando el click vino de un JMenuItem y no desde un JButton
             this.btnRegresarEditarCliente.setSelected(no_mover);
                 this.btnRegresarBusquedaCliente.setSelected(no_mover);
                 this.btnBusquedaCliente.setSelected(no_mover);
