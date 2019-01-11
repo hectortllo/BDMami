@@ -99,26 +99,26 @@ public class viajes_tapachula {
             String consultaIgual2 = " MONTH(fecha) = " + mes + " AND YEAR(fecha) = " + anio;
             String sql = "";
             if(mes.equals("Todos los meses") && anio.equals("Todos los años")){
-                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                sql = "SELECT viajes_tapachula.id AS num, DATE_FORMAT(viajes_tapachula.fecha,'%d/%m/%Y') AS fecha, "
                         + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
                         " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
                         " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
                         +consultaLike1+ " GROUP BY viajes_tapachula.id;";
             } else if(anio.equals("Todos los años") && !mes.equals("Todos los meses")){
-                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                sql = "SELECT viajes_tapachula.id AS num, DATE_FORMAT(viajes_tapachula.fecha,'%d/%m/%Y') AS fecha, "
                         + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
                         " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
                         " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
                         +consultaLike2+ " GROUP BY viajes_tapachula.id;";
             }
             else if(!anio.equals("Todos los años") && mes.equals("Todos los meses")) {
-                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                sql = "SELECT viajes_tapachula.id AS num, DATE_FORMAT(viajes_tapachula.fecha,'%d/%m/%Y') AS fecha, "
                         + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
                         " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
                         " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
                         +consultaIgual1+ " GROUP BY viajes_tapachula.id;";
             } else {
-                sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, "
+                sql = "SELECT viajes_tapachula.id AS num, DATE_FORMAT(viajes_tapachula.fecha,'%d/%m/%Y') AS fecha, "
                         + " COUNT(detalle_tapachula.lugar_tapachula_id)" +
                         " AS lugares FROM viajes_tapachula INNER JOIN detalle_tapachula " +
                         " ON viajes_tapachula.id = detalle_tapachula.viajes_tapachula_id WHERE "
@@ -164,7 +164,7 @@ public class viajes_tapachula {
             for (byte i = 0; i < titulos.length; i++) {
                 titulos[i] = tabla.getColumnName(i);
             }
-            String sql = "SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha, " +
+            String sql = "SELECT viajes_tapachula.id AS num, DATE_FORMAT(viajes_tapachula.fecha,'%d/%m/%Y') AS fecha, " +
             " detalle_tapachula.descripcion AS descp, lugar_tapachula.lugar AS lugar " +
             " FROM viajes_tapachula INNER JOIN detalle_tapachula ON " +
             " detalle_tapachula.viajes_tapachula_id = viajes_tapachula.id INNER JOIN lugar_tapachula ON " +

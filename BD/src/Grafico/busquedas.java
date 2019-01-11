@@ -64,6 +64,7 @@ public class busquedas extends javax.swing.JFrame {
         PMEditarProveedor = new javax.swing.JPopupMenu();
         MenuEditarProveedor = new javax.swing.JMenu();
         ItemEditarProveedor = new javax.swing.JMenuItem();
+        ItemDetalleProveedor = new javax.swing.JMenuItem();
         PMEditarTapachula = new javax.swing.JPopupMenu();
         MenuEditarTapachula = new javax.swing.JMenu();
         ItemEditarTapachula = new javax.swing.JMenuItem();
@@ -186,6 +187,11 @@ public class busquedas extends javax.swing.JFrame {
             }
         });
         MenuEditarProveedor.add(ItemEditarProveedor);
+
+        ItemDetalleProveedor.setBackground(new java.awt.Color(204, 204, 255));
+        ItemDetalleProveedor.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
+        ItemDetalleProveedor.setText("Detalle");
+        MenuEditarProveedor.add(ItemDetalleProveedor);
 
         PMEditarProveedor.add(MenuEditarProveedor);
 
@@ -553,7 +559,7 @@ public class busquedas extends javax.swing.JFrame {
         pnlBuscarTapachula.add(lblMesTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
 
         cmbAnioTapachula.setForeground(new java.awt.Color(153, 102, 255));
-        cmbAnioTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los años", " " }));
+        cmbAnioTapachula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos los años" }));
         cmbAnioTapachula.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbAnioTapachula.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbAnioTapachula.setColorFondo(new java.awt.Color(204, 204, 255));
@@ -1424,6 +1430,7 @@ public class busquedas extends javax.swing.JFrame {
     private final compra compra;
     private final viajes_tapachula tapachula;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItemDetalleProveedor;
     private javax.swing.JMenuItem ItemEditarCliente;
     private javax.swing.JMenuItem ItemEditarProveedor;
     private javax.swing.JMenuItem ItemEditarTapachula;

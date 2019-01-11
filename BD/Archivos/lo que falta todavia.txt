@@ -1,0 +1,10 @@
+¿Qué me falta?
+	1. Editar los productos al momento de estarlos comprando.
+	2. Detalle de qué se le compró a cada proveedor 
+	3. Detalle de qué compró cada cliente
+	4. Hacer todo el módulo 'negocio'
+		4.1 Vender
+		4.3 Ver ventas y detalle de ventas.
+	5. Reportes
+		5.1 Agregar el botón de imprimir reporte grupal.
+		5.2 Agregar el botón de imprimir reporte individual.
