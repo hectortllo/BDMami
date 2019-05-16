@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 /**
@@ -14,6 +9,7 @@ public class ALTapachula {
     public ALTapachula() {
         this.idLugar = 0;
         this.Descripcion = "";
+        this.posicion = 0;
     }
 
     public int getLugar() {
@@ -31,7 +27,25 @@ public class ALTapachula {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }  
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+
+    public String getNombreLugar() {
+        return nombreLugar;
+    }
+
+    public void setNombreLugar(String nombreLugar) {
+        this.nombreLugar = nombreLugar;
+    }
     
     private int idLugar;
     private String Descripcion;
+    private int posicion;
+    private String nombreLugar;
 }

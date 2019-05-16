@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 //Clase que hace la conexión con la bd
 public class conexion 
 {
-    private String url = "jdbc:mysql://127.0.0.1:3308/bdd_mami?autoReconnect=true&useSSL=false";
+    private String url = "jdbc:mysql://127.0.0.1:3306/bdd_mami?autoReconnect=true&useSSL=false";
     private String user = "root";
     private String password = "";
     

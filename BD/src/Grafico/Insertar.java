@@ -40,6 +40,9 @@ public class Insertar extends javax.swing.JFrame {
         tapachula = new viajes_tapachula();
         tapa = new ArrayList<>();
         initComponents();
+        lblIdViajeTapachula.setVisible(false);
+        lblIdLugar.setVisible(false);
+        btnEditarTapachula.setEnabled(false);
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
         cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
         cmbLugarTapachula.setModel(tapachula.getDireccion((DefaultComboBoxModel) cmbLugarTapachula.getModel()));
@@ -55,6 +58,9 @@ public class Insertar extends javax.swing.JFrame {
     private void initComponents() {
 
         lblDisenio = new javax.swing.JLabel();
+        popMenuEditarViajeTapachula = new javax.swing.JPopupMenu();
+        menuEditarViajeTapachula = new javax.swing.JMenu();
+        itemEditarViajeTapachula = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
@@ -121,9 +127,27 @@ public class Insertar extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txtAreaDescripcionLugarTapachula = new javax.swing.JTextArea();
         btnAnadirLugar = new javax.swing.JButton();
-        btnEditarLugar = new javax.swing.JButton();
+        btnEditarTapachula = new javax.swing.JButton();
+        lblIdViajeTapachula = new javax.swing.JLabel();
+        lblIdLugar = new javax.swing.JLabel();
 
         lblDisenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/lineas.png"))); // NOI18N
+
+        menuEditarViajeTapachula.setBackground(new java.awt.Color(204, 204, 255));
+        menuEditarViajeTapachula.setText("Opciones");
+        menuEditarViajeTapachula.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        itemEditarViajeTapachula.setBackground(new java.awt.Color(204, 204, 255));
+        itemEditarViajeTapachula.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        itemEditarViajeTapachula.setText("Editar");
+        itemEditarViajeTapachula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarViajeTapachulaActionPerformed(evt);
+            }
+        });
+        menuEditarViajeTapachula.add(itemEditarViajeTapachula);
+
+        popMenuEditarViajeTapachula.add(menuEditarViajeTapachula);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -281,7 +305,7 @@ public class Insertar extends javax.swing.JFrame {
         pnlInsertarCliente.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, -1, -1));
 
         cmbDireccionCliente.setForeground(new java.awt.Color(153, 102, 255));
-        cmbDireccionCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción" }));
+        cmbDireccionCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Escoja una opción", "Agregar" }));
         cmbDireccionCliente.setColorArrow(new java.awt.Color(255, 204, 204));
         cmbDireccionCliente.setColorBorde(new java.awt.Color(153, 153, 255));
         cmbDireccionCliente.setColorFondo(new java.awt.Color(204, 204, 255));
@@ -564,8 +588,8 @@ public class Insertar extends javax.swing.JFrame {
         jLabel8.setText("Descripción:");
         pnlInsertarTapachula.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        btnGuardarTapachula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar.png"))); // NOI18N
-        btnGuardarTapachula.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnGuardarTapachula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/finalizar.png"))); // NOI18N
+        btnGuardarTapachula.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Finalizar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
         btnGuardarTapachula.setContentAreaFilled(false);
         btnGuardarTapachula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardarTapachula.addActionListener(new java.awt.event.ActionListener() {
@@ -573,7 +597,7 @@ public class Insertar extends javax.swing.JFrame {
                 btnGuardarTapachulaActionPerformed(evt);
             }
         });
-        pnlInsertarTapachula.add(btnGuardarTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 110, 90));
+        pnlInsertarTapachula.add(btnGuardarTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 460, 100, 80));
 
         btnRegresarTapachula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/regresar.png"))); // NOI18N
         btnRegresarTapachula.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Volver</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
@@ -628,16 +652,20 @@ public class Insertar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Lugar", "Descripción"
+                "No.", "Lugar", "Descripción"
             }
         ));
         tblDetalleTapachula.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblDetalleTapachula.setComponentPopupMenu(popMenuEditarViajeTapachula);
         tblDetalleTapachula.setFuenteFilas(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblDetalleTapachula.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         tblDetalleTapachula.setFuenteHead(new java.awt.Font("Microsoft JhengHei UI Light", 1, 18)); // NOI18N
         tblDetalleTapachula.setRowHeight(25);
         tblDetalleTapachula.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblDetalleTapachula);
+        if (tblDetalleTapachula.getColumnModel().getColumnCount() > 0) {
+            tblDetalleTapachula.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
         pnlInsertarTapachula.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 570, 390));
 
@@ -659,18 +687,21 @@ public class Insertar extends javax.swing.JFrame {
                 btnAnadirLugarActionPerformed(evt);
             }
         });
-        pnlInsertarTapachula.add(btnAnadirLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, 100, 70));
+        pnlInsertarTapachula.add(btnAnadirLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 90, 80));
 
-        btnEditarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/editartapa.png"))); // NOI18N
-        btnEditarLugar.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Editar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
-        btnEditarLugar.setContentAreaFilled(false);
-        btnEditarLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarLugar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarTapachula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/guardar_editar.png"))); // NOI18N
+        btnEditarTapachula.setToolTipText("<html>\n<head>\n\t<style>\n\t\t #contenido{ \n\t\tbackground: #0B6121;  /*Se le da un color de fondo*/\n\t\tcolor: white;\t\t  /*Color a la letra*/\n\t\t}\n\t</style>\n</head>\n<body>\n\t<div id=contenido>\n\t\t<h2>Guardar</h2>\n\t\t<!-- <img src=\"Path img\"> -->\n\t</div>\n</body>\n</html>");
+        btnEditarTapachula.setBorderPainted(false);
+        btnEditarTapachula.setContentAreaFilled(false);
+        btnEditarTapachula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarTapachula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarLugarActionPerformed(evt);
+                btnEditarTapachulaActionPerformed(evt);
             }
         });
-        pnlInsertarTapachula.add(btnEditarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, 100, 70));
+        pnlInsertarTapachula.add(btnEditarTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, -1, -1));
+        pnlInsertarTapachula.add(lblIdViajeTapachula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+        pnlInsertarTapachula.add(lblIdLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
 
         rSPanelsSlider1.add(pnlInsertarTapachula, "card3");
 
@@ -810,9 +841,12 @@ public class Insertar extends javax.swing.JFrame {
     }
 
     private void Letras(KeyEvent e) {
-        char c = e.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
-            e.consume();
+        char car = e.getKeyChar();       
+        if((car<'a' || car>'z') && (car<'A' || car>'Z') && car !='á' && car !='é'           
+            && car !='í' && car !='ó' && car !='ú' && car !='Á' && car !='É'           
+            && car !='Í' && car !='Ó'&& car !='Ú'&& car !='ñ'&& car !='Ñ' 
+            && (car!=(char)KeyEvent.VK_SPACE))     {     
+                e.consume();  
         }
     }
     
@@ -859,7 +893,6 @@ public class Insertar extends javax.swing.JFrame {
                     cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
                 }
                 break;
-                
         }
     }
     private void cmbDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDireccionClienteActionPerformed
@@ -887,8 +920,10 @@ public class Insertar extends javax.swing.JFrame {
     private void btnGuardarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarTapachulaActionPerformed
         String fecha = getFecha(DCTapachula);
         if(fecha != null){
-            int n = JOptionPane.showConfirmDialog(null, "¿Finalizar?", "FINALIZANDO", JOptionPane.YES_NO_OPTION);
-            if(n == JOptionPane.YES_OPTION){
+            if(txtAreaDescripcionLugarTapachula.getText().length() == 0){
+                System.out.println(txtAreaDescripcionLugarTapachula.getText().length());
+                int n = JOptionPane.showConfirmDialog(null, "¿Finalizar?", "FINALIZANDO", JOptionPane.YES_NO_OPTION);
+                if(n == JOptionPane.YES_OPTION){
                 tapachula.insertarFechaViaje(fecha);
                 tapa.forEach(lugares -> {
                     tapachula.insertarDetalleTapachula(lugares.getLugar(), lugares.getDescripcion());
@@ -896,8 +931,15 @@ public class Insertar extends javax.swing.JFrame {
                 new rojerusan.RSNotifyAnimated("¡ÉXITO!", "Viaje a Tapachula ingresado con éxito",
                         5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                         RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-                limpiarTablaTapachula();
+                limpiarTablaTapachula(false);
+                }
+            } else {
+                new rojerusan.RSNotifyAnimated("¡ERROR!", "Aún hay datos sin guardar, guárdelos y después presione"
+                        + "el botón Finalizar",
+                    5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             }
+            
         } else {
             new rojerusan.RSNotifyAnimated("¡ERROR!", "Seleccione una fecha correcta",
                     5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
@@ -939,7 +981,7 @@ public class Insertar extends javax.swing.JFrame {
     }
     private void btnAnadirLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirLugarActionPerformed
         if(verificarDetalleTapachula()){
-            agregarTablaTapachula();
+            agregarTablaTapachula(true);
         }
     }//GEN-LAST:event_btnAnadirLugarActionPerformed
     
@@ -948,26 +990,38 @@ public class Insertar extends javax.swing.JFrame {
         txtAreaDescripcionLugarTapachula.setText("");
     }
     
-    private void agregarTablaTapachula(){
+    private void agregarTablaTapachula(boolean editar){
         String lugar = (String)cmbLugarTapachula.getSelectedItem();
         int idlugar = cmbLugarTapachula.getSelectedIndex()-1;
         String descripcion = txtAreaDescripcionLugarTapachula.getText();
-        tapa.add(new ALTapachula());
-        tapa.get(tapa.size()-1).setLugar(idlugar);
-        tapa.get(tapa.size()-1).setDescripcion(descripcion);
+        if(editar){
+            tapa.add(new ALTapachula());
+            tapa.get(tapa.size()-1).setLugar(idlugar);
+            tapa.get(tapa.size()-1).setDescripcion(descripcion);
+            tapa.get(tapa.size()-1).setPosicion(tapa.size());
+            tapa.get(tapa.size()-1).setNombreLugar(lugar);
+            
+            DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
         
-        DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
+            String[] datos = new String[3];
+            datos[0] = String.valueOf(tapa.size());
+            datos[1] = lugar;
+            datos[2] = descripcion;
+            modelo.addRow(datos);
+            limpiarCamposTapachula();
+        }else{
+            DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
+            String[] datos = new String[3];
+            for (ALTapachula tapa1 : tapa) {
+                datos[0] = String.valueOf(tapa1.getPosicion());
+                datos[1] = String.valueOf(tapa1.getNombreLugar());
+                datos[2] = tapa1.getDescripcion();
+                modelo.addRow(datos);
+            }
+            limpiarCamposTapachula();
+        }
         
-        String[] datos = new String[4];
-        datos[0] = lugar;
-        datos[1] = descripcion;
-        modelo.addRow(datos);
-        limpiarCamposTapachula();
     }
-    private void btnEditarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarLugarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarLugarActionPerformed
-
     private void txtTelefonoProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoProveedorKeyTyped
         Numeros(evt);
     }//GEN-LAST:event_txtTelefonoProveedorKeyTyped
@@ -995,15 +1049,52 @@ public class Insertar extends javax.swing.JFrame {
     private void txtDeudaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeudaKeyTyped
         puntoFlotante(evt, txtDeuda);
     }//GEN-LAST:event_txtDeudaKeyTyped
+
+    private void itemEditarViajeTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarViajeTapachulaActionPerformed
+        int seleccion = tblDetalleTapachula.getSelectedRow();
+        String registros[] = new String[3];
+        System.out.println(seleccion);
+        if (seleccion != -1) {
+            int id = Integer.parseInt((String) tblDetalleTapachula.getValueAt(seleccion, 0));
+            lblIdViajeTapachula.setText(String.valueOf(id));
+            registros[1] = (String)tblDetalleTapachula.getValueAt(seleccion, 1);
+            registros[2] = (String)tblDetalleTapachula.getValueAt(seleccion, 2);
+            cmbLugarTapachula.setSelectedItem(registros[1]);
+            txtAreaDescripcionLugarTapachula.setText(registros[2]);
+        }
+        btnEditarTapachula.setEnabled(true);
+    }//GEN-LAST:event_itemEditarViajeTapachulaActionPerformed
+
+    private void btnEditarTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTapachulaActionPerformed
+        int pos = 0;
+        if(verificarDetalleTapachula()){
+            while(tapa.size() != pos){
+                if(tapa.get(pos).getPosicion() == Integer.parseInt(lblIdViajeTapachula.getText())){
+                    tapa.get(pos).setDescripcion(txtAreaDescripcionLugarTapachula.getText());
+                    tapa.get(pos).setLugar(cmbLugarTapachula.getSelectedIndex()-1);
+                }
+                pos++;
+            }
+            for (ALTapachula tapa1 : tapa) {
+                System.out.println(tapa1.getDescripcion());
+                System.out.println("id lugar: " + tapa1.getLugar());
+                System.out.println(tapa1.getPosicion());
+            }
+            limpiarTablaTapachula(false);
+            agregarTablaTapachula(false);
+        }
+    }//GEN-LAST:event_btnEditarTapachulaActionPerformed
    
-    private void limpiarTablaTapachula(){
+    private void limpiarTablaTapachula(boolean editar){
         DefaultTableModel modelo = (DefaultTableModel) tblDetalleTapachula.getModel();
         for (int i = 0; i < tblDetalleTapachula.getRowCount(); i++) {
             modelo.removeRow(i);
             i -= 1;
         }
-        tapa.clear();
-        DCTapachula.setDatoFecha(null);
+        if(editar){
+            tapa.clear();
+            DCTapachula.setDatoFecha(null);
+        }
     }
     
     private void limpiarCajasCliente()
@@ -1032,14 +1123,6 @@ public class Insertar extends javax.swing.JFrame {
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             txtApellido.requestFocus();
-            return false;
-        }
-        else if(txtTelefono.getText().length() == 0)
-        {
-            new rojerusan.RSNotifyAnimated("¡ERROR!", "Campo Teléfono vacío, por favor llénelo",
-                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
-                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-            txtTelefono.requestFocus();
             return false;
         }
         else if(cmbDireccionCliente.getSelectedItem().equals("Escoja una opción"))
@@ -1112,11 +1195,14 @@ public class Insertar extends javax.swing.JFrame {
             this.btnCancelarCliente.setSelected(no_mover);
             this.btnCliente.setSelected(no_mover);
             this.btnProveedor.setSelected(no_mover);
+            this.btnTapachula.setSelected(no_mover);
             this.btnGuardarProveedor.setSelected(no_mover);
             this.btnCancelarProveedor.setSelected(no_mover);
             this.btnRegresarProveedor.setSelected(no_mover);
             this.btnGuardarTapachula.setSelected(no_mover);
             this.btnCancelarTapachula.setSelected(no_mover);
+            this.btnAnadirLugar.setSelected(no_mover);
+            this.btnRegresarTapachula.setSelected(no_mover);
             rSPanelsSlider1.setPanelSlider(10, panel, RSPanelsSlider.DIRECT.RIGHT);
         }
     }    
@@ -1125,6 +1211,7 @@ public class Insertar extends javax.swing.JFrame {
     private final Proveedor proveedor;
     private final viajes_tapachula tapachula;
     private ArrayList<ALTapachula> tapa;
+    private ArrayList<ALTapachula> tapa_copia;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.componentes.RSDateChooser DCTapachula;
     private javax.swing.JButton btnAnadirLugar;
@@ -1132,7 +1219,7 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelarProveedor;
     private javax.swing.JButton btnCancelarTapachula;
     private javax.swing.JButton btnCliente;
-    private javax.swing.JButton btnEditarLugar;
+    private javax.swing.JButton btnEditarTapachula;
     private javax.swing.JButton btnGuardarCliente;
     private javax.swing.JButton btnGuardarProveedor;
     private javax.swing.JButton btnGuardarTapachula;
@@ -1144,6 +1231,7 @@ public class Insertar extends javax.swing.JFrame {
     private rojerusan.RSComboMetro cmbDireccionCliente;
     private rojerusan.RSComboMetro cmbDireccionProveedor;
     private rojerusan.RSComboMetro cmbLugarTapachula;
+    private javax.swing.JMenuItem itemEditarViajeTapachula;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1164,6 +1252,8 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblDireccionProveedor;
     private javax.swing.JLabel lblDisenio;
+    private javax.swing.JLabel lblIdLugar;
+    private javax.swing.JLabel lblIdViajeTapachula;
     private javax.swing.JLabel lblMenuPrincipal;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMover;
@@ -1176,11 +1266,13 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipoCompra1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JMenu menuEditarViajeTapachula;
     private keeptoo.KGradientPanel pnlInsertarCliente;
     private keeptoo.KGradientPanel pnlInsertarInicio;
     private keeptoo.KGradientPanel pnlInsertarProveedor;
     private keeptoo.KGradientPanel pnlInsertarTapachula;
     private javax.swing.JPanel pnlOpciones;
+    private javax.swing.JPopupMenu popMenuEditarViajeTapachula;
     private rojerusan.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro tblDetalleTapachula;
     private javax.swing.JTextField txtApellido;
