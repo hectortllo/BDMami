@@ -63,6 +63,9 @@ public class Negocio extends javax.swing.JFrame {
         pMDetalleVerCompras = new javax.swing.JPopupMenu();
         MenuDetalleVerCompras = new javax.swing.JMenu();
         itemDetalleVerCompras = new javax.swing.JMenuItem();
+        pmDetalleCompraIndividual = new javax.swing.JPopupMenu();
+        pMDetalleVentaUnitaria = new javax.swing.JMenu();
+        itemDetalleVentaUnitaria = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
@@ -185,6 +188,22 @@ public class Negocio extends javax.swing.JFrame {
         MenuDetalleVerCompras.add(itemDetalleVerCompras);
 
         pMDetalleVerCompras.add(MenuDetalleVerCompras);
+
+        pMDetalleVentaUnitaria.setBackground(new java.awt.Color(204, 204, 255));
+        pMDetalleVentaUnitaria.setText("Opciones");
+        pMDetalleVentaUnitaria.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+
+        itemDetalleVentaUnitaria.setBackground(new java.awt.Color(204, 204, 255));
+        itemDetalleVentaUnitaria.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
+        itemDetalleVentaUnitaria.setText("Abonar a crédito");
+        itemDetalleVentaUnitaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDetalleVentaUnitariaActionPerformed(evt);
+            }
+        });
+        pMDetalleVentaUnitaria.add(itemDetalleVentaUnitaria);
+
+        pmDetalleCompraIndividual.add(pMDetalleVentaUnitaria);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(100, 30));
@@ -1067,6 +1086,7 @@ public class Negocio extends javax.swing.JFrame {
             }
         });
         tblDetalleVerCompras.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
+        tblDetalleVerCompras.setComponentPopupMenu(pmDetalleCompraIndividual);
         tblDetalleVerCompras.setFuenteFilas(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
         tblDetalleVerCompras.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
         tblDetalleVerCompras.setFuenteHead(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
@@ -1552,14 +1572,23 @@ public class Negocio extends javax.swing.JFrame {
     private void itemDetalleVerComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDetalleVerComprasActionPerformed
         int seleccion = tblVerCompas.getSelectedRow();
         System.out.println("seleccion: " + seleccion);
+        System.out.println("Entré");
         if (seleccion != -1) {
             int id = Integer.parseInt((String) tblVerCompas.getValueAt(seleccion, 0));
-            System.out.println(tblVerCompas.getValueAt(seleccion, 1));
             moverPanel(pnlDetalleCompras, false, false, null, false);
             System.out.println("id: " + id);
             tblDetalleVerCompras.setModel(compra.DetalleCompras(id, tblDetalleVerCompras));
         }
     }//GEN-LAST:event_itemDetalleVerComprasActionPerformed
+
+    private void itemDetalleVentaUnitariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDetalleVentaUnitariaActionPerformed
+       int seleccion = tblDetalleVerCompras.getSelectedRow();
+        System.out.println("selección: " + seleccion);
+        if (seleccion != -1){
+            int id = Integer.parseInt((String) tblDetalleVerCompras.getValueAt(seleccion, 0));
+            System.out.println(id);
+        }
+    }//GEN-LAST:event_itemDetalleVentaUnitariaActionPerformed
 
     private void limpiarProducto()
     {
@@ -1843,6 +1872,7 @@ public class Negocio extends javax.swing.JFrame {
     private rojerusan.RSComboMetro cmbMesVerCompras;
     private rojerusan.RSComboMetro cmbProveedorProducto;
     private rojerusan.RSComboMetro cmbTipoCompraProducto;
+    private javax.swing.JMenuItem itemDetalleVentaUnitaria;
     private javax.swing.JMenuItem itemDetalleVerCompras;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1892,7 +1922,9 @@ public class Negocio extends javax.swing.JFrame {
     private javax.swing.JLabel lblVerCompras;
     private javax.swing.JLabel lblVerVentas;
     private javax.swing.JLabel lblVueltoProducto;
+    private javax.swing.JMenu pMDetalleVentaUnitaria;
     private javax.swing.JPopupMenu pMDetalleVerCompras;
+    private javax.swing.JPopupMenu pmDetalleCompraIndividual;
     private keeptoo.KGradientPanel pnlComprar;
     private keeptoo.KGradientPanel pnlDetalleCompras;
     private keeptoo.KGradientPanel pnlInsertarInicio;
