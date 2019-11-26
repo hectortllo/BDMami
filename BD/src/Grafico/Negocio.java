@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import jdk.nashorn.internal.runtime.JSType;
 import keeptoo.KGradientPanel;
 import rojeru_san.componentes.RSDateChooser;
 import rojerusan.RSComboMetro;
@@ -1584,9 +1585,25 @@ public class Negocio extends javax.swing.JFrame {
     private void itemDetalleVentaUnitariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDetalleVentaUnitariaActionPerformed
        int seleccion = tblDetalleVerCompras.getSelectedRow();
         System.out.println("selección: " + seleccion);
+        boolean repetir = false;
         if (seleccion != -1){
             int id = Integer.parseInt((String) tblDetalleVerCompras.getValueAt(seleccion, 0));
-            System.out.println(id);
+            String abono = JOptionPane.showInputDialog("Ingrese cantidad");
+            Float abonoF = 0.f;
+            float deuda_actual = Float.parseFloat((String) tblDetalleVerCompras.getValueAt(seleccion, 3));
+            //Se valida que el dato a ingresar en el InputDialog no esté vacío
+            if(abono != null){
+                //Mientras repetir sea falsa
+                while(!repetir){
+                    //Se valida que el dato ingresado sea un dato numérico con punto flotante
+                    if(!abono.matches("[0-9]*.[0-9]*")){
+                        abono = JOptionPane.showInputDialog("Dato no válido, ingrese un número");
+                    }
+                    repetir = true;
+                }
+                abonoF = Float.parseFloat(abono);
+                System.out.println("abonoF: " + abonoF);
+            }
         }
     }//GEN-LAST:event_itemDetalleVentaUnitariaActionPerformed
 
