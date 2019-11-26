@@ -35,6 +35,7 @@ public class busquedas extends javax.swing.JFrame {
         compra = new compra();
         tapachula = new viajes_tapachula();
         initComponents();
+        setLocationRelativeTo(this);
         lblClienteId.setVisible(false);
         lblProveedorId.setVisible(false);
         lblTapachulaId.setVisible(false);
@@ -61,6 +62,7 @@ public class busquedas extends javax.swing.JFrame {
         PMEditarCliente = new javax.swing.JPopupMenu();
         MenuEditarCliente = new javax.swing.JMenu();
         ItemEditarCliente = new javax.swing.JMenuItem();
+        ItemDetalleCliente = new javax.swing.JMenuItem();
         PMEditarProveedor = new javax.swing.JPopupMenu();
         MenuEditarProveedor = new javax.swing.JMenu();
         ItemEditarProveedor = new javax.swing.JMenuItem();
@@ -171,6 +173,11 @@ public class busquedas extends javax.swing.JFrame {
             }
         });
         MenuEditarCliente.add(ItemEditarCliente);
+
+        ItemDetalleCliente.setBackground(new java.awt.Color(204, 204, 255));
+        ItemDetalleCliente.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
+        ItemDetalleCliente.setText("Detalle");
+        MenuEditarCliente.add(ItemDetalleCliente);
 
         PMEditarCliente.add(MenuEditarCliente);
 
@@ -1063,9 +1070,12 @@ public class busquedas extends javax.swing.JFrame {
         BusquedaProveedor();
     }//GEN-LAST:event_cmbBusquedaProveedorActionPerformed
 
-    private void Numeros(KeyEvent e) {
-        if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
+    private void Numeros(KeyEvent e, int limite, JTextField txtField) {
+        if(txtField.getText().length() == limite){
             e.consume();
+            if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
+                e.consume();
+            }
         }
     }
 
@@ -1161,7 +1171,7 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoEditarClienteKeyTyped
 
     private void txtTelefonoEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEditarClienteKeyTyped
-        Numeros(evt);
+        Numeros(evt, 8, txtTelefonoEditarCliente);
     }//GEN-LAST:event_txtTelefonoEditarClienteKeyTyped
 
     private void txtNombreEditarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEditarClienteKeyTyped
@@ -1254,7 +1264,7 @@ public class busquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbDireccionEditarClienteMouseClicked
 
     private void txtEditarTelefonoProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditarTelefonoProveedorKeyTyped
-        Numeros(evt);
+        Numeros(evt, 8, txtEditarTelefonoProveedor);
     }//GEN-LAST:event_txtEditarTelefonoProveedorKeyTyped
 
     private void txtEditarNombreProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditarNombreProveedorKeyTyped
@@ -1430,6 +1440,7 @@ public class busquedas extends javax.swing.JFrame {
     private final compra compra;
     private final viajes_tapachula tapachula;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItemDetalleCliente;
     private javax.swing.JMenuItem ItemDetalleProveedor;
     private javax.swing.JMenuItem ItemEditarCliente;
     private javax.swing.JMenuItem ItemEditarProveedor;

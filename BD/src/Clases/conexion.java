@@ -7,6 +7,7 @@ package Clases;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
+import rojerusan.RSNotifyAnimated;
 
 /**
  *
@@ -27,7 +28,9 @@ public class conexion
             con = (Connection) DriverManager.getConnection(url, user, password);
         }catch(Exception e)
         {
-            e.printStackTrace();
+            new rojerusan.RSNotifyAnimated("¡E R R O R!", "ERROR AL CONECTAR CON LA BASE DE DATOS",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
         }
         return con;
     }

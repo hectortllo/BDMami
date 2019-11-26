@@ -12,6 +12,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     int x, y;
     public MenuPrincipal() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     @SuppressWarnings("unchecked")

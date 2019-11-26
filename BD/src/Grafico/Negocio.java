@@ -42,6 +42,7 @@ public class Negocio extends javax.swing.JFrame {
         tapachula = new viajes_tapachula();
         tapa = new ArrayList<>();
         initComponents();
+        setLocationRelativeTo(this);
         cmbAnioVerCompras.setModel(tapachula.getAnio((DefaultComboBoxModel) cmbAnioVerCompras.getModel()));
         cmbDireccionCliente.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionCliente.getModel()));
         cmbDireccionProveedor.setModel(cliente.getDireccion((DefaultComboBoxModel) cmbDireccionProveedor.getModel()));
@@ -268,7 +269,7 @@ public class Negocio extends javax.swing.JFrame {
         lblVerCompras.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
         lblVerCompras.setForeground(new java.awt.Color(204, 204, 204));
         lblVerCompras.setText("VER COMPRAS");
-        pnlInsertarInicio.add(lblVerCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 300, 60));
+        pnlInsertarInicio.add(lblVerCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 300, 60));
 
         btnVerCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/carro-de-la-compra.png"))); // NOI18N
         btnVerCompras.setContentAreaFilled(false);
@@ -278,7 +279,7 @@ public class Negocio extends javax.swing.JFrame {
                 btnVerComprasActionPerformed(evt);
             }
         });
-        pnlInsertarInicio.add(btnVerCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, 170));
+        pnlInsertarInicio.add(btnVerCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, -1, 170));
 
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/dinero.png"))); // NOI18N
         btnVentas.setContentAreaFilled(false);
@@ -288,12 +289,12 @@ public class Negocio extends javax.swing.JFrame {
                 btnVentasActionPerformed(evt);
             }
         });
-        pnlInsertarInicio.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 170, 140));
+        pnlInsertarInicio.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 170, 140));
 
         lblVender.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
         lblVender.setForeground(new java.awt.Color(204, 204, 204));
         lblVender.setText("VENDER");
-        pnlInsertarInicio.add(lblVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 170, 40));
+        pnlInsertarInicio.add(lblVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 170, 40));
 
         btnVerVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/bolsa-de-dinero.png"))); // NOI18N
         btnVerVentas.setContentAreaFilled(false);
@@ -303,17 +304,17 @@ public class Negocio extends javax.swing.JFrame {
                 btnVerVentasActionPerformed(evt);
             }
         });
-        pnlInsertarInicio.add(btnVerVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 200, 150));
+        pnlInsertarInicio.add(btnVerVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 200, 150));
 
         lblVerVentas.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
         lblVerVentas.setForeground(new java.awt.Color(204, 204, 204));
         lblVerVentas.setText("VER VENTAS");
-        pnlInsertarInicio.add(lblVerVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 270, 60));
+        pnlInsertarInicio.add(lblVerVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 270, 60));
 
         lblComprar.setFont(new java.awt.Font("Comic Sans MS", 1, 40)); // NOI18N
         lblComprar.setForeground(new java.awt.Color(204, 204, 204));
         lblComprar.setText("COMPRAR");
-        pnlInsertarInicio.add(lblComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 210, 60));
+        pnlInsertarInicio.add(lblComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 210, 60));
 
         btnComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/bolsa-de-dinero.png"))); // NOI18N
         btnComprar.setContentAreaFilled(false);
@@ -323,7 +324,7 @@ public class Negocio extends javax.swing.JFrame {
                 btnComprarActionPerformed(evt);
             }
         });
-        pnlInsertarInicio.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 200, 150));
+        pnlInsertarInicio.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 200, 150));
 
         rSPanelsSlider1.add(pnlInsertarInicio, "card2");
 

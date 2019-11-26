@@ -40,6 +40,7 @@ public class Insertar extends javax.swing.JFrame {
         tapachula = new viajes_tapachula();
         tapa = new ArrayList<>();
         initComponents();
+        setLocationRelativeTo(this);
         lblIdViajeTapachula.setVisible(false);
         lblIdLugar.setVisible(false);
         btnEditarTapachula.setEnabled(false);
@@ -850,9 +851,12 @@ public class Insertar extends javax.swing.JFrame {
         }
     }
     
-    private void Numeros(KeyEvent e) {
-        if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
+    private void Numeros(KeyEvent e, int limite, JTextField txtField) {
+        if(txtField.getText().length() == limite){
             e.consume();
+            if ((e.getKeyChar() < '0' || e.getKeyChar() > '9')) {                           //Si no es un numero se va a consumir 
+                e.consume();
+            }
         }
     }
     
@@ -1023,11 +1027,11 @@ public class Insertar extends javax.swing.JFrame {
         
     }
     private void txtTelefonoProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoProveedorKeyTyped
-        Numeros(evt);
+        Numeros(evt, 8, txtTelefonoProveedor);
     }//GEN-LAST:event_txtTelefonoProveedorKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        Numeros(evt);
+        Numeros(evt, 8, txtTelefono);
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtNombreProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProveedorKeyTyped
@@ -1053,7 +1057,6 @@ public class Insertar extends javax.swing.JFrame {
     private void itemEditarViajeTapachulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarViajeTapachulaActionPerformed
         int seleccion = tblDetalleTapachula.getSelectedRow();
         String registros[] = new String[3];
-        System.out.println(seleccion);
         if (seleccion != -1) {
             int id = Integer.parseInt((String) tblDetalleTapachula.getValueAt(seleccion, 0));
             lblIdViajeTapachula.setText(String.valueOf(id));
@@ -1074,11 +1077,6 @@ public class Insertar extends javax.swing.JFrame {
                     tapa.get(pos).setLugar(cmbLugarTapachula.getSelectedIndex()-1);
                 }
                 pos++;
-            }
-            for (ALTapachula tapa1 : tapa) {
-                System.out.println(tapa1.getDescripcion());
-                System.out.println("id lugar: " + tapa1.getLugar());
-                System.out.println(tapa1.getPosicion());
             }
             limpiarTablaTapachula(false);
             agregarTablaTapachula(false);
