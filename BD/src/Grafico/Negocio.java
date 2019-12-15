@@ -1604,9 +1604,33 @@ public class Negocio extends javax.swing.JFrame {
                 abonoF = Float.parseFloat(abono);
                 System.out.println("abonoF: " + abonoF);
             }
+            System.out.println("deuda acutal: " + deuda_actual);
+            validarPagoDeudaIndividual(deuda_actual, abonoF);
         }
     }//GEN-LAST:event_itemDetalleVentaUnitariaActionPerformed
 
+    private boolean validarPagoDeudaIndividual(float deuda_actual, float abono){
+        boolean estado = false;
+        //Caso donde el abono es más grande que la deuda actual
+        if(abono > deuda_actual){
+            new rojerusan.RSNotifyAnimated("¡ERROR!", "El abono es mayor a la deuda actual",
+                5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
+                RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+        }
+        //Caso donde el abono es menor a la deuda actual
+        else if(abono < deuda_actual){
+            deuda_actual = deuda_actual - abono;
+            JOptionPane.showMessageDialog(null, "Su nuevo saldo es de: " + deuda_actual);
+            estado = true;
+        }
+        else {
+            deuda_actual = deuda_actual - abono;
+            JOptionPane.showMessageDialog(null, "Su cuenta ha sido totalmente saldada, "
+                    + "su saldo es de: " + deuda_actual);
+            estado = true;
+        }
+        return estado;
+    }
     private void limpiarProducto()
     {
         txtNombreProducto.setText("");
