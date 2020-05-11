@@ -64,9 +64,9 @@ public class Negocio extends javax.swing.JFrame {
         pMDetalleVerCompras = new javax.swing.JPopupMenu();
         MenuDetalleVerCompras = new javax.swing.JMenu();
         itemDetalleVerCompras = new javax.swing.JMenuItem();
+        itemDetalleVentaUnitaria = new javax.swing.JMenuItem();
         pmDetalleCompraIndividual = new javax.swing.JPopupMenu();
         pMDetalleVentaUnitaria = new javax.swing.JMenu();
-        itemDetalleVentaUnitaria = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblMover = new javax.swing.JLabel();
         pnlOpciones = new javax.swing.JPanel();
@@ -188,12 +188,6 @@ public class Negocio extends javax.swing.JFrame {
         });
         MenuDetalleVerCompras.add(itemDetalleVerCompras);
 
-        pMDetalleVerCompras.add(MenuDetalleVerCompras);
-
-        pMDetalleVentaUnitaria.setBackground(new java.awt.Color(204, 204, 255));
-        pMDetalleVentaUnitaria.setText("Opciones");
-        pMDetalleVentaUnitaria.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
-
         itemDetalleVentaUnitaria.setBackground(new java.awt.Color(204, 204, 255));
         itemDetalleVentaUnitaria.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
         itemDetalleVentaUnitaria.setText("Abonar a crédito");
@@ -202,8 +196,13 @@ public class Negocio extends javax.swing.JFrame {
                 itemDetalleVentaUnitariaActionPerformed(evt);
             }
         });
-        pMDetalleVentaUnitaria.add(itemDetalleVentaUnitaria);
+        MenuDetalleVerCompras.add(itemDetalleVentaUnitaria);
 
+        pMDetalleVerCompras.add(MenuDetalleVerCompras);
+
+        pMDetalleVentaUnitaria.setBackground(new java.awt.Color(204, 204, 255));
+        pMDetalleVentaUnitaria.setText("Opciones");
+        pMDetalleVentaUnitaria.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 16)); // NOI18N
         pmDetalleCompraIndividual.add(pMDetalleVentaUnitaria);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1087,12 +1086,16 @@ public class Negocio extends javax.swing.JFrame {
             }
         });
         tblDetalleVerCompras.setColorBackgoundHead(new java.awt.Color(0, 102, 102));
-        tblDetalleVerCompras.setComponentPopupMenu(pmDetalleCompraIndividual);
         tblDetalleVerCompras.setFuenteFilas(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
         tblDetalleVerCompras.setFuenteFilasSelect(new java.awt.Font("Microsoft JhengHei Light", 1, 16)); // NOI18N
         tblDetalleVerCompras.setFuenteHead(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
         tblDetalleVerCompras.setRowHeight(25);
         tblDetalleVerCompras.getTableHeader().setReorderingAllowed(false);
+        tblDetalleVerCompras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblDetalleVerComprasKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDetalleVerCompras);
         if (tblDetalleVerCompras.getColumnModel().getColumnCount() > 0) {
             tblDetalleVerCompras.getColumnModel().getColumn(0).setMinWidth(15);
@@ -1583,14 +1586,15 @@ public class Negocio extends javax.swing.JFrame {
     }//GEN-LAST:event_itemDetalleVerComprasActionPerformed
 
     private void itemDetalleVentaUnitariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDetalleVentaUnitariaActionPerformed
-       int seleccion = tblDetalleVerCompras.getSelectedRow();
+       int seleccion = tblVerCompas.getSelectedRow();
         System.out.println("selección: " + seleccion);
+        System.out.println("Entraste al item cambiado");
         boolean repetir = false;
         if (seleccion != -1){
-            int id = Integer.parseInt((String) tblDetalleVerCompras.getValueAt(seleccion, 0));
+            int id = Integer.parseInt((String) tblVerCompas.getValueAt(seleccion, 0));
             String abono = JOptionPane.showInputDialog("Ingrese cantidad");
             Float abonoF = 0.f;
-            float deuda_actual = Float.parseFloat((String) tblDetalleVerCompras.getValueAt(seleccion, 3));
+            float deuda_actual = Float.parseFloat((String) tblVerCompas.getValueAt(seleccion, 2));
             //Se valida que el dato a ingresar en el InputDialog no esté vacío
             if(abono != null){
                 //Mientras repetir sea falsa
@@ -1605,31 +1609,33 @@ public class Negocio extends javax.swing.JFrame {
                 System.out.println("abonoF: " + abonoF);
             }
             System.out.println("deuda acutal: " + deuda_actual);
-            validarPagoDeudaIndividual(deuda_actual, abonoF);
+            validarPagoDeuda(deuda_actual, abonoF, id);
+            
         }
     }//GEN-LAST:event_itemDetalleVentaUnitariaActionPerformed
 
-    private boolean validarPagoDeudaIndividual(float deuda_actual, float abono){
-        boolean estado = false;
+    private void tblDetalleVerComprasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDetalleVerComprasKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblDetalleVerComprasKeyReleased
+
+    private void validarPagoDeuda(float deuda_actual, float abono, int compra_id){
         //Caso donde el abono es más grande que la deuda actual
+        System.out.println("Abono: " + abono);
+        System.out.println("deuda_actual: " + deuda_actual);
         if(abono > deuda_actual){
             new rojerusan.RSNotifyAnimated("¡ERROR!", "El abono es mayor a la deuda actual",
                 5, RSNotifyAnimated.PositionNotify.BottomRight, RSNotifyAnimated.AnimationNotify.BottomUp,
                 RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
         }
         //Caso donde el abono es menor a la deuda actual
-        else if(abono < deuda_actual){
+        else if(abono < deuda_actual  || abono == deuda_actual){
+            System.out.println("entré al else");
             deuda_actual = deuda_actual - abono;
+            System.out.println("deuda actual: " + deuda_actual);
             JOptionPane.showMessageDialog(null, "Su nuevo saldo es de: " + deuda_actual);
-            estado = true;
+            compra.abonoAProveedores(deuda_actual, compra_id);
+            tblVerCompas.setModel(compra.buscarVerCompras((String)cmbAnioVerCompras.getSelectedItem(), (String)cmbMesVerCompras.getSelectedItem(), tblVerCompas));
         }
-        else {
-            deuda_actual = deuda_actual - abono;
-            JOptionPane.showMessageDialog(null, "Su cuenta ha sido totalmente saldada, "
-                    + "su saldo es de: " + deuda_actual);
-            estado = true;
-        }
-        return estado;
     }
     private void limpiarProducto()
     {

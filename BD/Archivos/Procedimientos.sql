@@ -9,6 +9,7 @@ DROP PROCEDURE IF EXISTS InsertarViajeTapachula //
 DROP PROCEDURE IF EXISTS InsertarFechaViajeTapachula //
 DROP PROCEDURE IF EXISTS ActualizarCliente //
 DROP PROCEDURE IF EXISTS ActualizarProveedor //
+DROP PROCEDURE IF EXISTS RealizarAbonoADeuda //
 
 CREATE PROCEDURE InsertarCliente(vNombre VARCHAR(45), vApellido VARCHAR(45),
 	vIdDireccion INT, vDescripcion VARCHAR(200), vTelefono VARCHAR(12), vDeudaInicial FLOAT)
@@ -41,6 +42,11 @@ BEGIN
     direccion_id = vIdDireccion WHERE id = vIdProveedor;
     UPDATE telefono SET telefono = vTelefono WHERE telefono.proveedor_id = vIdProveedor;
     UPDATE detalle_pago_compra SET deuda_actual = vDeuda WHERE detalle_pago_compra.proveedor_id = vIdProveedor;
+END; //
+
+CREATE PROCEDURE RealizarAbonoADeuda(vMonto FLOAT, vIdCompra INT)
+BEGIN
+	UPDATE compra SET monto = vMonto WHERE id = vIdCompra;
 END; //
 
 CREATE PROCEDURE InsertarProveedor(vNombre VARCHAR(45), vApellido VARCHAR(45),

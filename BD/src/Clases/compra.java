@@ -60,6 +60,21 @@ public class compra {
         return true;
     }
     
+    //Método para editar el monto actual de la deuda
+    public boolean abonoAProveedores(float monto, int compra_id){
+        try {
+            System.out.println("monto: " + monto);
+            System.out.println("id: " + compra_id);
+            CallableStatement procedimiento = con.prepareCall("{CALL RealizarAbonoADeuda(?,?)}");
+            procedimiento.setFloat(1, monto);
+            procedimiento.setInt(2, compra_id);
+            return !procedimiento.execute() == true;
+        } catch (SQLException ex) {
+            Logger.getLogger(compra.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
     //Función para mostrar datos en la tabla tblCompras que está en la clase gráfica Negocio.java
     public DefaultTableModel buscarVerCompras(String anio, String mes, JTable tabla) {
         try {

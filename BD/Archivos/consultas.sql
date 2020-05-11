@@ -64,7 +64,8 @@ SELECT viajes_tapachula.id AS num, viajes_tapachula.fecha AS fecha,
         detalle_tapachula.lugar_tapachula_id = lugar_tapachula.id WHERE viajes_tapachula.id = 5;
         
 /* Consulta usada para ver las compras hechas */
-SELECT compra.id AS num, DATE_FORMAT(compra.fecha,'%d/%m/%Y') AS fecha, compra.monto AS total, compra.monto_contado AS totalCont, 
+SELECT compra.id AS num, DATE_FORMAT(compra.fecha,'%d/%m/%Y') AS fecha, compra.monto AS total, 
+		compra.monto_contado AS totalCont, 
 		compra.monto_credito AS totalCred, COUNT(detalle_compra.productos_id) AS productos, 
         COUNT(DISTINCT proveedor_id) AS proveedores
         FROM compra INNER JOIN detalle_compra ON 
@@ -77,3 +78,8 @@ SELECT productos.nombre AS nombre, productos.descripcion AS descp, productos.pre
         proveedor.apellido AS apellido FROM productos INNER JOIN detalle_compra ON 
         productos.id = detalle_compra.productos_id INNER JOIN proveedor 
         ON proveedor.id = detalle_compra.proveedor_id WHERE detalle_compra.compra_id = 5;
+        
+SELECT * FROM detalle_pago_compra;
+SELECT * FROM cliente WHERE id = 1;
+SELECT * FROM compra;
+UPDATE compra SET monto_contado = 200 WHERE compra.id = 2;
